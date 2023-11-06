@@ -16,7 +16,14 @@ export default createMiddleware({
       en: "/post/[slug]",
       tr: "/yazi/[slug]",
     },
-
+    "/products": {
+      en: "/products",
+      tr: "/urunler",
+    },
+    "/product/[slug]": {
+      en: "/product/[slug]",
+      tr: "/urun/[slug]",
+    },
     "/pages": {
       en: "/pages",
       tr: "/sayfalar",

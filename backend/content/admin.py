@@ -4,7 +4,7 @@ from django.utils.safestring import mark_safe
 from django.utils.html import format_html
 from django.contrib.auth.admin import UserAdmin, GroupAdmin
 from django.contrib.auth.models import User, Group
-from .models import Category, Tag, Post, Page, Image, HomePage, MenuItem, Social
+from .models import Category, Tag, Post, Product, Page, Image, HomePage, MenuItem, Social
 from ckeditor.widgets import CKEditorWidget
 from django import forms
 from django.contrib.admin import AdminSite
@@ -25,9 +25,10 @@ MODEL_ORDER = {
     'menuitem': 2,
     'page': 3,
     'post': 4,
-    'image': 5,
-    'category': 6,
-    'tag': 7,
+    'products': 5,
+    'image': 6,
+    'category': 7,
+    'tag': 8,
 }
 
 class CustomAdminSite(AdminSite):
@@ -63,6 +64,9 @@ class ImageInlinePage(BaseImageInline):
 class ImageInlinePost(BaseImageInline):
     model = Post.images.through
 
+class ImageInlineProduct(BaseImageInline):
+    model = Product.images.through
+
 class ImageInlineHomePage(BaseImageInline):
     model = HomePage.images.through
 
@@ -93,6 +97,35 @@ class PostAdmin(SortableAdminMixin, admin.ModelAdmin):
     fieldsets = (
         ('Post', {
             'fields': ('lang', 'title', 'slug', 'pageinfo', 'langslug', 'image', 'image_thumbnail', 'content', 'categories', 'tags'),
+        }),
+    )
+    list_display = ('title', 'lang', 'order')
+    list_filter = ('lang',)
+
+class ProductAdminForm(forms.ModelForm):
+    content = forms.CharField(widget=CKEditorWidget())
+    images = forms.ModelChoiceField(queryset=Image.objects.all(),
+                                widget=ImageThumbnailWidget,
+                                required=False)
+    
+    class Meta:
+        model = Product
+        fields = '__all__'
+
+class ProductAdmin(SortableAdminMixin, admin.ModelAdmin):
+    form = ProductAdminForm
+    inlines = [ImageInlineProduct]
+    readonly_fields = ('image_thumbnail',)
+
+    def image_thumbnail(self, obj):
+        if obj.image and hasattr(obj.image.image, 'url'):
+            return format_html('<img src="{}" width="150" />', obj.image.image.url)
+        return '- No Image -'
+    image_thumbnail.short_description = 'Selected Cover Image Thumbnail'
+
+    fieldsets = (
+        ('Post', {
+            'fields': ('lang', 'title', 'slug', 'pageinfo', 'langslug', 'shoplink', 'image', 'image_thumbnail', 'content', 'categories'),
         }),
     )
     list_display = ('title', 'lang', 'order')
@@ -168,6 +201,7 @@ my_admin_site.register(MenuItem, MenuItemAdmin)
 my_admin_site.register(Category)
 my_admin_site.register(Tag)
 my_admin_site.register(Post, PostAdmin)
+my_admin_site.register(Product, ProductAdmin)
 my_admin_site.register(Page, PageAdmin)
 my_admin_site.register(Image, ImageAdmin)
 my_admin_site.register(HomePage, HomePageAdmin)

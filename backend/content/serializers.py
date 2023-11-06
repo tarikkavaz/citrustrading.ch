@@ -1,6 +1,6 @@
 from rest_framework import serializers, generics
 from urllib.parse import urlparse
-from .models import Category, Tag, Post, Page, Image, HomePage, MenuItem, Social
+from .models import Category, Tag, Post, Product, Page, Image, HomePage, MenuItem, Social
 
 class FilteredEmptyDictListSerializer(serializers.ListSerializer):
     def to_representation(self, data):
@@ -74,6 +74,19 @@ class PostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
+        fields = '__all__'
+
+    def get_image(self, obj):
+        return obj.image_url
+
+class ProductSerializer(serializers.ModelSerializer):
+    categories = CategorySerializer(many=True, read_only=True)
+    tags = TagSerializer(many=True, read_only=True)
+    images = ImageSerializer(many=True, read_only=True)
+    image = serializers.SerializerMethodField() 
+
+    class Meta:
+        model = Product
         fields = '__all__'
 
     def get_image(self, obj):

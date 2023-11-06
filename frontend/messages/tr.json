@@ -4,6 +4,7 @@
     "sitedescription": "Bu sitenin varsayilan açiklama metni",
     "posts": "Yazılar",
     "pages": "Sayfalar",
+    "products": "Ürünler",
     "language": "Dil",
     "homepage": "Anasayfa",
     "categories": "Kategoriler",
@@ -24,6 +25,7 @@
   "Navigation": {
     "home": "Anasayfa",
     "pages": "Sayfalar",
+    "products": "Ürünler",
     "posts": "Yazılar"
   }
 }

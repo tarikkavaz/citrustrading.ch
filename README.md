@@ -1,6 +1,6 @@
-# TheBoilerplate Project Guide
+# Citrus Trading Project Guide
 
-This guide provides instructions for setting up and deploying TheBoilerplate project, which is a boilerplate for Next.js and Django projects using Docker.
+This guide provides instructions for setting up and deploying Citrus Trading project.
 
 ---
 
@@ -15,8 +15,8 @@ This guide provides instructions for setting up and deploying TheBoilerplate pro
 
 1. **Clone the Repository**
     ```bash
-    git clone https://github.com/tarikkavaz/TheBoilerplate.git
-    cd TheBoilerplate
+    git clone https://github.com/tarikkavaz/citrustrading.ch.git
+    cd citrustrading.ch
     ```
 
 2. **Setup Frontend Environment Variables**
@@ -99,7 +99,7 @@ This guide provides instructions for setting up and deploying TheBoilerplate pro
 
 1. **Clone the Repository**
     ```bash
-    git clone https://github.com/tarikkavaz/TheBoilerplate.git YOURDOMAINNAME
+    git clone https://github.com/tarikkavaz/citrustrading.ch.git YOURDOMAINNAME
     cd YOURDOMAINNAME
     ```
 

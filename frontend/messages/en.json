@@ -4,6 +4,7 @@
     "sitedescription": "This is the default description for the site",
     "posts": "Posts",
     "pages": "Pages",
+    "products": "Products",
     "language": "Language",
     "homepage": "Homepage",
     "categories": "Categories",
@@ -24,6 +25,7 @@
   "Navigation": {
     "home": "Home",
     "pages": "Pages",
+    "products": "Products",
     "posts": "Posts"
   }
 }

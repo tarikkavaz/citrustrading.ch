@@ -88,6 +88,39 @@ class Post(models.Model):
     def image_urls(self):
         return [image.image.url for image in self.images.all()]
 
+class Product(models.Model):
+    title = models.CharField(max_length=255, verbose_name="Product Title")
+    slug = models.SlugField(max_length=255, unique=True, blank=True, verbose_name="Product URL")
+    langslug = models.CharField(max_length=255, blank=True, verbose_name="Translation Link")
+    pageinfo = models.TextField(blank=True, verbose_name="Product Description")
+    content = RichTextField(verbose_name="Product Content")
+    shoplink = models.CharField(max_length=255, blank=True, verbose_name="Shop Link")
+    image = models.ForeignKey('Image', on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Selected Cover Image", related_name="product_selected_image")
+    images = models.ManyToManyField('Image', blank=True, verbose_name="Select Content Images", related_name="product_images")
+    date_posted = models.DateTimeField(auto_now_add=True, blank=True)
+    categories = models.ManyToManyField(Category, blank=True)
+    lang = models.CharField(max_length=7, choices=settings.LANGUAGES, default='en', blank=True, verbose_name="Language")
+    order = models.PositiveIntegerField(default=0, editable=False, db_index=True)
+
+    class Meta:
+        ordering = ['order']
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title
+
+    @property
+    def image_url(self):
+        return self.image.image.url if self.image else None
+
+    @property
+    def image_urls(self):
+        return [image.image.url for image in self.images.all()]
+
 class Page(models.Model):
     title = models.CharField(max_length=255, verbose_name="Page Title")
     slug = models.SlugField(max_length=255, unique=True, blank=True, verbose_name="Page URL")

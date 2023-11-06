@@ -1,8 +1,8 @@
 from rest_framework import viewsets, generics
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from .models import Category, Tag, Post, Page, Image, HomePage, MenuItem, Social
-from .serializers import CategorySerializer, TagSerializer, PostSerializer, PageSerializer, ImageSerializer, HomePageSerializer, MenuItemSerializer, SocialSerializer
+from .models import Category, Tag, Post, Page, Product, Image, HomePage, MenuItem, Social
+from .serializers import CategorySerializer, TagSerializer, PostSerializer, ProductSerializer, PageSerializer, ImageSerializer, HomePageSerializer, MenuItemSerializer, SocialSerializer
 
 class MenuItemViewSet(viewsets.ModelViewSet):
     queryset = MenuItem.objects.all()
@@ -50,6 +50,28 @@ class PostViewSet(viewsets.ModelViewSet):
         post = self.get_queryset().filter(slug=slug).first()
         if post:
             serializer = self.get_serializer(post)
+            return Response(serializer.data)
+        else:
+            return Response({"detail": "Not found."}, status=404)
+
+class ProductViewSet(viewsets.ModelViewSet):
+    serializer_class = ProductSerializer
+
+    def get_queryset(self):
+        queryset = Product.objects.all()
+        if 'lang' in self.kwargs:
+            queryset = queryset.filter(lang=self.kwargs['lang'])
+        if 'category_slug' in self.kwargs:
+            queryset = queryset.filter(categories__slug=self.kwargs['category_slug'])
+        if 'tag_slug' in self.kwargs:
+            queryset = queryset.filter(tags__slug=self.kwargs['tag_slug'])
+        return queryset
+
+    @action(detail=False, url_path='(?P<slug>[-\w]+)', methods=['get'])
+    def by_slug(self, request, slug=None, *args, **kwargs):
+        product = self.get_queryset().filter(slug=slug).first()
+        if product:
+            serializer = self.get_serializer(product)
             return Response(serializer.data)
         else:
             return Response({"detail": "Not found."}, status=404)

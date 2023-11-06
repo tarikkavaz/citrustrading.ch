@@ -87,31 +87,6 @@ export default async function Posts({ params: { locale } }: HomeProps) {
             ))}
         </div>
         <h1>{homepage.title}</h1>
-        <div className="flex flex-wrap gap-4 p-4 my-16 rounded">
-          <Button>{t("button")}</Button>
-          <Button variant="secondary">
-            {t("button")}
-          </Button>
-          <Button variant="destructive">
-            {t("button")}
-          </Button>
-          <Button variant="outline">
-            {t("button")}
-          </Button>
-          <Button variant="ghost">
-            {t("button")}
-          </Button>
-          <Button variant="link">
-            {t("button")}
-          </Button>
-          <Button>
-            <Mail className="w-4 h-4 mr-2" /> {t("button")}
-          </Button>
-          <Button disabled>
-            <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-            {t("wait")}
-          </Button>
-        </div>
         <div dangerouslySetInnerHTML={{ __html: homepage.content }} />
         <hr className="h-0.5 my-10 bg-accent" />
         <h2 className="mt-16">{t("posts")}</h2>

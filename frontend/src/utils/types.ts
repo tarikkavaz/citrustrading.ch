@@ -125,6 +125,23 @@ export interface Post {
   lang: string;
 }
 
+export interface Product {
+  id: number;
+  categories: Category[];
+  tags: Tag[];
+  images?: ContentImage[];
+  title: string;
+  description: string;
+  slug: string;
+  langslug?: string;
+  shoplink?: string;
+  pageinfo: string;
+  content: string;
+  image: string | null;
+  date_posted: string;
+  lang: string;
+}
+
 export interface GlobalCarouselProps {
   images?: ContentImage[];
   autoplayDelay?: number;
