@@ -59,6 +59,9 @@ export default function LocaleSwitcher() {
       } else if (pathname.includes("/post/") || pathname.includes("/yazi/")) {
         type = "post";
         setType(type);
+      } else if (pathname.includes("/product/") || pathname.includes("/urun/")) {
+        type = "product";
+        setType(type);
       } else {
         type = "";
         setType(type);
@@ -85,31 +88,51 @@ export default function LocaleSwitcher() {
     if (slug) {
       if (pathname.includes("/page/") && langSlug && locale !== nextLocale) {
         router.replace(`/sayfa/${langSlug}`, { locale: nextLocale });
-      } else if (
+      } 
+      else if (
         pathname.includes("/sayfa/") &&
         langSlug &&
         locale !== nextLocale
       ) {
         router.replace(`/page/${langSlug}`, { locale: nextLocale });
-      } else if (
+      } 
+      else if (
         pathname.includes("/post/") &&
         langSlug &&
         locale !== nextLocale
       ) {
         router.replace(`/yazi/${langSlug}`, { locale: nextLocale });
-      } else if (
+      } 
+      else if (
+        pathname.includes("/product/") &&
+        langSlug &&
+        locale !== nextLocale
+      ) {
+        router.replace(`/urun/${langSlug}`, { locale: nextLocale });
+      } 
+      else if (
         pathname.includes("/yazi/") &&
         langSlug &&
         locale !== nextLocale
       ) {
         router.replace(`/post/${langSlug}`, { locale: nextLocale });
-      } else if (
+      } 
+      else if (
+        pathname.includes("/urun/") &&
+        langSlug &&
+        locale !== nextLocale
+      ) {
+        router.replace(`/product/${langSlug}`, { locale: nextLocale });
+      } 
+      else if (
         locale !== nextLocale &&
         !langSlug &&
         (type === "page" ||
           type === "sayfa" ||
           type === "post" ||
-          type === "yazi")
+          type === "yazi") ||
+          type === "product" ||
+          type === "urun"
       ) {
         router.replace("/", { locale: nextLocale });
       } else {
