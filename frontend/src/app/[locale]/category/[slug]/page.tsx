@@ -1,4 +1,4 @@
-import { Category, Post, MetadataProps } from "@/utils/types";
+import { Category, Product, MetadataProps } from "@/utils/types";
 import Container from "@/components/ui/Container";
 import Link from "next/link";
 import Image from 'next/image';
@@ -45,16 +45,16 @@ const getCategories = async (): Promise<Category[]> => {
   return await fetchData(API_URL, endpoint);
 };
 
-const getCategoryPosts = async (
+const getCategoryProducts = async (
   slug: string,
   locale: string
-): Promise<Post[]> => {
+): Promise<Product[]> => {
   const endpoint = `/api/${locale}/categories/${slug}/`;
-  const posts = await fetchData(API_URL, endpoint);
-  const filteredPosts = posts.filter(
-    (post: { lang: string }) => post.lang === locale
+  const products = await fetchData(API_URL, endpoint);
+  const filteredProducts = products.filter(
+    (product: { lang: string }) => product.lang === locale
   );
-  return filteredPosts;
+  return filteredProducts;
 };
 
 export default async function Page({
@@ -65,7 +65,7 @@ export default async function Page({
     slug: string;
   };
 }) {
-  const posts = await getCategoryPosts(slug, locale);
+  const products = await getCategoryProducts(slug, locale);
   const categories = await getCategories();
   const matchedCategory = categories.find((category) => category.slug === slug);
   const title = matchedCategory?.title || "Başlık";
@@ -78,21 +78,21 @@ export default async function Page({
         {t("category")}: <span>{title}</span>
       </h1>
       <div className="grid grid-flow-col grid-cols-3 gap-4">
-          {posts.map((post) => (
+          {products.map((product) => (
               <>
-                <Card key={post.id}>
-                <Link href={`/post/${post.slug}`}>
+                <Card key={product.id}>
+                <Link href={`/product/${product.slug}`}>
                   <CardHeader>
-                    <CardTitle>{post.title}</CardTitle>
-                    <CardDescription>{post.pageinfo}</CardDescription>
+                    <CardTitle>{product.title}</CardTitle>
+                    <CardDescription>{product.pageinfo}</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="relative w-full h-[300px]">
                       <Image
-                        src={post.image ? post.image : "/placeholder.jpg"}
+                        src={product.image ? product.image : "/placeholder.jpg"}
                         priority={true}
                         fill={true}
-                        alt={post.title}
+                        alt={product.title}
                         className=" object-cover"
                       />
                     </div>

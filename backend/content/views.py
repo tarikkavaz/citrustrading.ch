@@ -20,6 +20,14 @@ class CategoryPostsView(generics.ListAPIView):
         category = Category.objects.get(slug=slug)
         return Post.objects.filter(categories=category)
 
+class CategoryProductsView(generics.ListAPIView):
+    serializer_class = ProductSerializer
+
+    def get_queryset(self):
+        slug = self.kwargs['slug']
+        category = Category.objects.get(slug=slug)
+        return Product.objects.filter(categories=category)
+
 class TagPostsView(generics.ListAPIView):
     serializer_class = PostSerializer
 

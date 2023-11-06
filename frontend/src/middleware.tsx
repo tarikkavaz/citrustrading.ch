@@ -42,9 +42,9 @@ export default createMiddleware({
       tr: "/etiket/[slug]",
     },
 
-    "/category": {
-      en: "/category",
-      tr: "/kategori",
+    "/categories": {
+      en: "/categories",
+      tr: "/kategoriler",
     },
     "/category/[slug]": {
       en: "/category/[slug]",
