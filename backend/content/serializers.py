@@ -45,9 +45,19 @@ class MenuItemSerializer(MenuItemChildSerializer):
         return super(MenuItemSerializer, self).to_representation(instance)
 
 class CategorySerializer(serializers.ModelSerializer):
+    image = serializers.SerializerMethodField()
+
     class Meta:
         model = Category
-        fields = ['title', 'lang', 'slug']
+        fields = ['title', 'lang', 'slug', 'langslug', 'image']
+
+    def get_image(self, obj):
+        if obj.image:
+            return obj.image.image.url  # This will return the relative path
+        return None
+
+
+
 
 class TagSerializer(serializers.ModelSerializer):
     class Meta:

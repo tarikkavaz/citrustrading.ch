@@ -34,15 +34,20 @@ class MenuItem(models.Model):
 class Category(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True, blank=True)
+    langslug = models.CharField(max_length=255, blank=True, verbose_name="Translation Link")  # Added langslug field
+    image = models.ForeignKey('Image', on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Selected Image", related_name="category_image")  # Added image field
     lang = models.CharField(max_length=7, choices=settings.LANGUAGES, default='en', blank=True, verbose_name="Language")
 
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
+        if not self.langslug:  # Generate langslug if not provided
+            self.langslug = slugify(self.lang + '-' + self.title)
         super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.title} ({self.lang})"
+
 
 class Tag(models.Model):
     title = models.CharField(max_length=255)

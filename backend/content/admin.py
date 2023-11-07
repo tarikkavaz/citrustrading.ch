@@ -189,14 +189,18 @@ class CategoryAdminForm(forms.ModelForm):
 
 class CategoryAdmin(admin.ModelAdmin):
     form = CategoryAdminForm
-    list_display = ('title', 'lang', 'slug')
+    list_display = ('title', 'lang', 'slug', 'langslug', 'image_display')  # Add 'langslug' and a method to display the image
     list_filter = ('lang',)
 
     fieldsets = (
         ('Category', {
-            'fields': ('lang', 'title', 'slug'),
+            'fields': ('lang', 'title', 'slug', 'langslug', 'image'),  # Add 'langslug' and 'image' fields
         }),
     )
+
+    def image_display(self, obj):
+        return format_html('<img src="{}" height="50" />', obj.image.image.url) if obj.image else '-'
+    image_display.short_description = 'Image Preview'
 
 my_admin_site.register(MenuItem, MenuItemAdmin)
 my_admin_site.register(Category, CategoryAdmin)

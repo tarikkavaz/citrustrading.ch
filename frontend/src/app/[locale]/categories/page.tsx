@@ -2,6 +2,7 @@
 import { Category, MetadataProps } from "@/utils/types";
 import Container from "@/components/ui/Container";
 import Link from "next/link";
+import Image from "next/image";
 import { fetchData, API_URL } from "@/utils/api";
 import { useLocale } from "next-intl";
 import { getTranslator } from "next-intl/server";
@@ -30,9 +31,32 @@ export default async function CategoriesPage({ params: { locale } }: MetadataPro
         <h1>{t("categories")}</h1>
         <div className="grid grid-flow-col grid-cols-3 gap-4">
           {categories.map((category) => (
-            <Link href={`/${locale}/category/${category.slug}`} key={category.slug}>
-              <h2>{category.title}</h2>
-            </Link>
+
+<>
+  
+              <Card key={category.id}>
+                <Link href={`/${locale}/category/${category.slug}`}>
+                
+                    <CardHeader>
+                      <CardTitle>{category.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="relative w-full h-[300px]">
+                        <Image
+                          src={category.image ? category.image : "/placeholder.jpg"}
+                          priority={true}
+                          fill={true}
+                          alt={category.title}
+                          className="object-cover"
+                        />
+                      </div>
+                    </CardContent>
+  
+                </Link>
+              </Card>
+  
+</>
+
           ))}
         </div>
       </Container>

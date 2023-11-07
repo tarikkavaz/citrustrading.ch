@@ -85,9 +85,11 @@ export interface ContentImage {
 }
 
 export interface Category {
+  id: number;
   lang: string;
   title: string;
   slug: string;
+  image: string | null;
 }
 
 export interface Tag {
