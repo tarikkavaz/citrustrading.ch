@@ -5,15 +5,21 @@ import Link from "next/link";
 import { fetchData, API_URL } from "@/utils/api";
 import { useLocale } from "next-intl";
 import { getTranslator } from "next-intl/server";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 
-// Fetch all categories for the given locale
 const getCategories = async (locale: string): Promise<Category[]> => {
   const categoriesEndpoint = `/api/categories/`;
   const allCategories: Category[] = await fetchData(API_URL, categoriesEndpoint);
   return allCategories.filter(category => category.lang === locale);
 };
 
-// Component that renders all categories for a specific locale
+
 export default async function CategoriesPage({ params: { locale } }: MetadataProps) {
   const categories = await getCategories(locale);
   const t = await getTranslator(locale, "Globals");
