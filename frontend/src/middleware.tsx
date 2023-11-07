@@ -31,7 +31,7 @@ export default createMiddleware({
       en: "/tag",
       tr: "/etiket",
     },
-    "/tag/[slug]": {
+    "/tag/[slug]": { 
       en: "/tag/[slug]",
       tr: "/etiket/[slug]",
     },

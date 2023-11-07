@@ -23,11 +23,11 @@ MODEL_ORDER = {
     'group': 2,
     'homepage': 1,
     'menuitem': 2,
-    'page': 5,
-    'products': 3,
-    'image': 6,
-    'category': 7,
-    'tag': 8,
+    'page': 4,
+    'product': 3,
+    'image': 5,
+    'category': 6,
+    'tag': 7,
 }
 
 class CustomAdminSite(AdminSite):

@@ -41,7 +41,7 @@ function Logo({ mobileMenuOpen, setMobileMenuOpen }: MobileMenuOpenProps) {
         className="text-3xl block p-3 space-y-1 leading-none no-underline rounded-md outline-none select-none"
         onClick={handleLogoClick}
       >
-        Logo
+        Citrus Trading
       </Link>
     </>
   );
