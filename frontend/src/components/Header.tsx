@@ -49,6 +49,7 @@ function Logo({ mobileMenuOpen, setMobileMenuOpen }: MobileMenuOpenProps) {
           src={logoSrc}
           width={429}
           height={100}
+          priority
           alt="Citrus Trading"
         />
       </Link>

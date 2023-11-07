@@ -85,6 +85,7 @@ export interface ContentImage {
 }
 
 export interface Category {
+  lang: string;
   title: string;
   slug: string;
 }
