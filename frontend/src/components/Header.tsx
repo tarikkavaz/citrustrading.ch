@@ -1,6 +1,7 @@
 "use client";
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import Container from "@/components/ui/Container";
 import { fetchData, SERVER_IP } from "@/utils/api";
@@ -41,7 +42,12 @@ function Logo({ mobileMenuOpen, setMobileMenuOpen }: MobileMenuOpenProps) {
         className="text-3xl block p-3 space-y-1 leading-none no-underline rounded-md outline-none select-none"
         onClick={handleLogoClick}
       >
-        Citrus Trading
+        <Image
+          src="/images/logo.png"
+          width={429}
+          height={100}
+          alt="Citrus Trading"
+        />
       </Link>
     </>
   );
