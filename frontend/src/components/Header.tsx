@@ -29,14 +29,18 @@ async function fetchNavigationData(locale: string) {
 }
 
 function Logo({ mobileMenuOpen, setMobileMenuOpen }: MobileMenuOpenProps) {
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
   const locale = useLocale();
+  const [logoSrc, setLogoSrc] = useState('/images/logo-light.png'); 
+
+  useEffect(() => {
+    const newLogoSrc = resolvedTheme === 'light' ? '/images/logo-light.png' : '/images/logo-dark.png';
+    setLogoSrc(newLogoSrc);
+  }, [resolvedTheme]);
 
   const handleLogoClick = () => {
     setMobileMenuOpen(false);
   };
-
-  const logoSrc = theme === 'light' ? '/images/logo-light.png' : '/images/logo-dark.png';
 
   return (
     <>
