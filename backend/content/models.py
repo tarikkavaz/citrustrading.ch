@@ -87,7 +87,9 @@ class Product(models.Model):
 
     @property
     def image_url(self):
-        return self.image.image.url if self.image else None
+        if self.image and hasattr(self.image.image, 'url'):
+            return self.image.image.url
+        return None
 
     @property
     def image_urls(self):

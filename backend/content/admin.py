@@ -49,13 +49,11 @@ class BaseImageInline(admin.TabularInline):
     extra = 1
     verbose_name = 'Image'
     verbose_name_plural = 'Images'
-    readonly_fields = ('image_thumbnail',)
+    readonly_fields = ('image_display',)
 
-    def image_thumbnail(self, obj):
-        if obj.image:
-            return format_html('<img src="{}" width="150" />', obj.image.image.url)
-        return '- No Image -'
-    image_thumbnail.short_description = 'Thumbnail'
+    def image_display(self, obj):
+        return format_html('<img src="{}" height="50" />', obj.image.image.url) if obj.image else '-'
+    image_display.short_description = 'Image Preview'
 
 class ImageInlinePage(BaseImageInline):
     model = Page.images.through
@@ -67,24 +65,12 @@ class ImageInlineHomePage(BaseImageInline):
     model = HomePage.images.through
 
 class ImageAdmin(admin.ModelAdmin):
-    list_display = ('alt_text', 'image_thumbnail')
-    form = ProductAdminForm
-    inlines = [ImageInlineProduct]
-    readonly_fields = ('image_thumbnail',)
+    list_display = ('alt_text', 'image_display')
+    readonly_fields = ('image_display',)
 
-    def image_thumbnail(self, obj):
-        if obj.image and hasattr(obj.image.image, 'url'):
-            return format_html('<img src="{}" width="150" />', obj.image.image.url)
-        return '- No Image -'
-    image_thumbnail.short_description = 'Selected Cover Image Thumbnail'
-
-    fieldsets = (
-        ('Product', {
-            'fields': ('lang', 'title', 'slug', 'pageinfo', 'langslug', 'image', 'image_thumbnail', 'content', 'categories', 'tags'),
-        }),
-    )
-    # list_display = ('title', 'lang', 'order')
-    # list_filter = ('lang',)
+    def image_display(self, obj):
+        return format_html('<img src="{}" height="50" />', obj.image.url) if obj.image else '-'
+    image_display.short_description = 'Image Preview'
 
 class ProductAdminForm(forms.ModelForm):
     content = forms.CharField(widget=CKEditorWidget())
@@ -99,21 +85,19 @@ class ProductAdminForm(forms.ModelForm):
 class ProductAdmin(SortableAdminMixin, admin.ModelAdmin):
     form = ProductAdminForm
     inlines = [ImageInlineProduct]
-    readonly_fields = ('image_thumbnail',)
+    readonly_fields = ('image_display',)
     filter_horizontal = ('categories',)
 
-    def image_thumbnail(self, obj):
-        if obj.image and hasattr(obj.image.image, 'url'):
-            return format_html('<img src="{}" width="150" />', obj.image.image.url)
-        return '- No Image -'
-    image_thumbnail.short_description = 'Selected Cover Image Thumbnail'
+    def image_display(self, obj):
+        return format_html('<img src="{}" height="50" />', obj.image.image.url) if obj.image else '-'
+    image_display.short_description = 'Image Preview'
 
     fieldsets = (
         ('Product', {
-            'fields': ('lang', 'title', 'slug', 'pageinfo', 'langslug', 'shoplink', 'image', 'image_thumbnail', 'content', 'categories'),
+            'fields': ('lang', 'title', 'slug', 'pageinfo', 'langslug', 'shoplink', 'image', 'image_display', 'content', 'categories'),
         }),
     )
-    list_display = ('title', 'lang', 'order')
+    list_display = ('title', 'lang', 'slug', 'langslug', 'image_display', 'order')
     list_filter = ('lang',)
 
 class PageAdminForm(forms.ModelForm):
@@ -129,19 +113,18 @@ class PageAdminForm(forms.ModelForm):
 class PageAdmin(SortableAdminMixin, admin.ModelAdmin):
     form = PageAdminForm
     inlines = [ImageInlinePage]
-    readonly_fields = ('image_thumbnail',)
+    readonly_fields = ('image_display',)
 
-    def image_thumbnail(self, obj):
-        if obj.image and hasattr(obj.image.image, 'url'):
-            return format_html('<img src="{}" width="150" />', obj.image.image.url)
-        return '- No Image -'
-    image_thumbnail.short_description = 'Selected Cover Image Thumbnail'
+    def image_display(self, obj):
+        return format_html('<img src="{}" height="50" />', obj.image.image.url) if obj.image else '-'
+    image_display.short_description = 'Image Preview'
+
     fieldsets = (
         ('Page', {
-            'fields': ('lang', 'title', 'slug', 'pageinfo', 'langslug', 'image', 'image_thumbnail', 'content'),
+            'fields': ('lang', 'title', 'slug', 'pageinfo', 'langslug', 'image', 'image_display', 'content'),
         }),
     )
-    list_display = ('title', 'lang', 'order')
+    list_display = ('title', 'lang', 'slug', 'langslug', 'image_display', 'order')
     list_filter = ('lang',)
 
 class HomePageAdmin(admin.ModelAdmin):
