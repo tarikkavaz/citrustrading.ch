@@ -206,7 +206,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 my_admin_site.register(MenuItem, MenuItemAdmin)
 my_admin_site.register(Category, CategoryAdmin)
-my_admin_site.register(Tag)
+# my_admin_site.register(Tag)
 my_admin_site.register(Product, ProductAdmin)
 my_admin_site.register(Page, PageAdmin)
 my_admin_site.register(Image, ImageAdmin)
