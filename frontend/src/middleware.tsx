@@ -8,14 +8,7 @@ export default createMiddleware({
       en: "/home",
       tr: "/anasayfa",
     },
-    "/posts": {
-      en: "/posts",
-      tr: "/yazilar",
-    },
-    "/post/[slug]": {
-      en: "/post/[slug]",
-      tr: "/yazi/[slug]",
-    },
+
     "/products": {
       en: "/products",
       tr: "/urunler",
@@ -24,6 +17,7 @@ export default createMiddleware({
       en: "/product/[slug]",
       tr: "/urun/[slug]",
     },
+    
     "/pages": {
       en: "/pages",
       tr: "/sayfalar",

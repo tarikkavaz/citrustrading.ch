@@ -55,39 +55,6 @@ class Tag(models.Model):
     def __str__(self):
         return self.title
 
-class Post(models.Model):
-    title = models.CharField(max_length=255, verbose_name="Post Title")
-    slug = models.SlugField(max_length=255, unique=True, blank=True, verbose_name="Post URL")
-    langslug = models.CharField(max_length=255, blank=True, verbose_name="Translation Link")
-    pageinfo = models.TextField(blank=True, verbose_name="Page Description")
-    content = RichTextField(verbose_name="Post Content")
-    image = models.ForeignKey('Image', on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Selected Cover Image", related_name="post_selected_image")
-    images = models.ManyToManyField('Image', blank=True, verbose_name="Select Content Images", related_name="post_images")
-    date_posted = models.DateTimeField(auto_now_add=True, blank=True)
-    categories = models.ManyToManyField(Category, blank=True)
-    tags = models.ManyToManyField(Tag, blank=True)
-    lang = models.CharField(max_length=7, choices=settings.LANGUAGES, default='en', blank=True, verbose_name="Language")
-    order = models.PositiveIntegerField(default=0, editable=False, db_index=True)
-
-    class Meta:
-        ordering = ['order']
-
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.title)
-        super().save(*args, **kwargs)
-
-    def __str__(self):
-        return self.title
-
-    @property
-    def image_url(self):
-        return self.image.image.url if self.image else None
-
-    @property
-    def image_urls(self):
-        return [image.image.url for image in self.images.all()]
-
 class Product(models.Model):
     title = models.CharField(max_length=255, verbose_name="Product Title")
     slug = models.SlugField(max_length=255, unique=True, blank=True, verbose_name="Product URL")
@@ -171,7 +138,7 @@ class HomePage(models.Model):
     pageinfo = models.TextField(blank=True, verbose_name="Site Description")
     content = RichTextField()
     images = models.ManyToManyField('Image', blank=True, verbose_name="Select Content Images", related_name="home_images")
-    posts = models.ManyToManyField('Post', blank=True, verbose_name="Select Posts to display on Homepage")
+    products = models.ManyToManyField('Product', blank=True, verbose_name="Select Products to display on Homepage")
     lang = models.CharField(max_length=7, choices=settings.LANGUAGES, default='en', blank=True, verbose_name="Language")
 
     def __str__(self):

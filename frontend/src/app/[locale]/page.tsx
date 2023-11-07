@@ -27,8 +27,8 @@ import {
 const getHomepage = async (): Promise<Homepage[]> => {
   const locale = useLocale();
   const endpoint = `/api/${locale}/homepage/`;
-  const posts = await fetchData(API_URL, endpoint);
-  return posts;
+  const products = await fetchData(API_URL, endpoint);
+  return products;
 };
 
 export async function generateMetadata(
@@ -36,16 +36,16 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const t = await getTranslator(params.locale, "Globals");
-  const posts = await getHomepage();
-  const firstPost = posts[0];
+  const products = await getHomepage();
+  const firstProduct = products[0];
 
   const firstImageUrl =
-    firstPost.images && firstPost.images[0]
-      ? firstPost.images[0].image
+    firstProduct.images && firstProduct.images[0]
+      ? firstProduct.images[0].image
       : DEFAULT_OG_IMAGE_URL;
 
-  const description = `${firstPost.pageinfo} - ${t("sitedescription")}`;
-  const title = `${firstPost.title} | ${t("sitename")}`;
+  const description = `${firstProduct.pageinfo} - ${t("sitedescription")}`;
+  const title = `${firstProduct.title} | ${t("sitename")}`;
 
   return {
     title: title,
@@ -58,9 +58,9 @@ export async function generateMetadata(
   };
 }
 
-export default async function Posts({ params: { locale } }: HomeProps) {
-  const posts = await getHomepage();
-  const homepage = posts[0];
+export default async function Products({ params: { locale } }: HomeProps) {
+  const products = await getHomepage();
+  const homepage = products[0];
   const t = await getTranslator(locale, "Globals");
   return (
     <>
@@ -89,25 +89,25 @@ export default async function Posts({ params: { locale } }: HomeProps) {
         <h1>{homepage.title}</h1>
         <div dangerouslySetInnerHTML={{ __html: homepage.content }} />
         <hr className="h-0.5 my-10 bg-accent" />
-        <h2 className="mt-16">{t("posts")}</h2>
+        <h2 className="mt-16">{t("products")}</h2>
       </Container>
       <Container>
         <div className="grid grid-cols-3 gap-4">
-          {homepage.posts &&
-            homepage.posts.map((post) => (
-              <Card key={post.id}>
-                <Link href={`/post/${post.slug}`}>
+          {homepage.products &&
+            homepage.products.map((product) => (
+              <Card key={product.id}>
+                <Link href={`/product/${product.slug}`}>
                   <CardHeader>
-                    <CardTitle>{post.title}</CardTitle>
-                    <CardDescription>{post.pageinfo}</CardDescription>
+                    <CardTitle>{product.title}</CardTitle>
+                    <CardDescription>{product.pageinfo}</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="relative w-full h-[300px]">
                       <Image
-                        src={post.image ? post.image : "/placeholder.jpg"}
+                        src={product.image ? product.image : "/placeholder.jpg"}
                         priority={true}
                         fill={true}
-                        alt={post.title}
+                        alt={product.title}
                         className=" object-cover"
                       />
                     </div>

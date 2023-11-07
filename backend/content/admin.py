@@ -4,12 +4,12 @@ from django.utils.safestring import mark_safe
 from django.utils.html import format_html
 from django.contrib.auth.admin import UserAdmin, GroupAdmin
 from django.contrib.auth.models import User, Group
-from .models import Category, Tag, Post, Product, Page, Image, HomePage, MenuItem, Social
+from .models import Category, Tag, Product, Page, Image, HomePage, MenuItem, Social
 from ckeditor.widgets import CKEditorWidget
 from django import forms
 from django.contrib.admin import AdminSite
 from adminsortable2.admin import SortableAdminMixin, SortableInlineAdminMixin
-from .forms import PageAdminForm, PostAdminForm
+from .forms import PageAdminForm, ProductAdminForm
 from .widgets import ImageThumbnailSelectWidget, ImageThumbnailWidget
 
 # Define a custom order for apps and models
@@ -24,7 +24,6 @@ MODEL_ORDER = {
     'homepage': 1,
     'menuitem': 2,
     'page': 5,
-    'post': 4,
     'products': 3,
     'image': 6,
     'category': 7,
@@ -61,9 +60,6 @@ class BaseImageInline(admin.TabularInline):
 class ImageInlinePage(BaseImageInline):
     model = Page.images.through
 
-class ImageInlinePost(BaseImageInline):
-    model = Post.images.through
-
 class ImageInlineProduct(BaseImageInline):
     model = Product.images.through
 
@@ -72,20 +68,8 @@ class ImageInlineHomePage(BaseImageInline):
 
 class ImageAdmin(admin.ModelAdmin):
     list_display = ('alt_text', 'image_thumbnail')
-
-class PostAdminForm(forms.ModelForm):
-    content = forms.CharField(widget=CKEditorWidget())
-    images = forms.ModelChoiceField(queryset=Image.objects.all(),
-                                widget=ImageThumbnailWidget,
-                                required=False)
-    
-    class Meta:
-        model = Post
-        fields = '__all__'
-
-class PostAdmin(SortableAdminMixin, admin.ModelAdmin):
-    form = PostAdminForm
-    inlines = [ImageInlinePost]
+    form = ProductAdminForm
+    inlines = [ImageInlineProduct]
     readonly_fields = ('image_thumbnail',)
 
     def image_thumbnail(self, obj):
@@ -95,12 +79,12 @@ class PostAdmin(SortableAdminMixin, admin.ModelAdmin):
     image_thumbnail.short_description = 'Selected Cover Image Thumbnail'
 
     fieldsets = (
-        ('Post', {
+        ('Product', {
             'fields': ('lang', 'title', 'slug', 'pageinfo', 'langslug', 'image', 'image_thumbnail', 'content', 'categories', 'tags'),
         }),
     )
-    list_display = ('title', 'lang', 'order')
-    list_filter = ('lang',)
+    # list_display = ('title', 'lang', 'order')
+    # list_filter = ('lang',)
 
 class ProductAdminForm(forms.ModelForm):
     content = forms.CharField(widget=CKEditorWidget())
@@ -124,7 +108,7 @@ class ProductAdmin(SortableAdminMixin, admin.ModelAdmin):
     image_thumbnail.short_description = 'Selected Cover Image Thumbnail'
 
     fieldsets = (
-        ('Post', {
+        ('Product', {
             'fields': ('lang', 'title', 'slug', 'pageinfo', 'langslug', 'shoplink', 'image', 'image_thumbnail', 'content', 'categories'),
         }),
     )
@@ -163,7 +147,7 @@ class HomePageAdmin(admin.ModelAdmin):
     inlines = [ImageInlineHomePage]
     fieldsets = (
         ('HomePage', {
-            'fields': ('lang', 'title', 'pageinfo', 'content', 'posts'),
+            'fields': ('lang', 'title', 'pageinfo', 'content', 'products'),
         }),
     )
     list_display = ('title', 'lang')
@@ -200,7 +184,6 @@ class SocialAdmin(SortableAdminMixin, admin.ModelAdmin):
 my_admin_site.register(MenuItem, MenuItemAdmin)
 my_admin_site.register(Category)
 my_admin_site.register(Tag)
-my_admin_site.register(Post, PostAdmin)
 my_admin_site.register(Product, ProductAdmin)
 my_admin_site.register(Page, PageAdmin)
 my_admin_site.register(Image, ImageAdmin)

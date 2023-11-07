@@ -75,7 +75,7 @@ export interface Homepage {
   pageinfo: string;
   content: string;
   lang: string;
-  posts?: Post[];
+  products?: Product[];
 }
 
 export interface ContentImage {

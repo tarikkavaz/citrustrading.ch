@@ -1,6 +1,6 @@
 from rest_framework import serializers, generics
 from urllib.parse import urlparse
-from .models import Category, Tag, Post, Product, Page, Image, HomePage, MenuItem, Social
+from .models import Category, Tag, Product, Page, Image, HomePage, MenuItem, Social
 
 class FilteredEmptyDictListSerializer(serializers.ListSerializer):
     def to_representation(self, data):
@@ -66,19 +66,6 @@ class ImageSerializer(serializers.ModelSerializer):
             representation['image'] = instance.image.url
         return representation
 
-class PostSerializer(serializers.ModelSerializer):
-    categories = CategorySerializer(many=True, read_only=True)
-    tags = TagSerializer(many=True, read_only=True)
-    images = ImageSerializer(many=True, read_only=True)
-    image = serializers.SerializerMethodField() 
-
-    class Meta:
-        model = Post
-        fields = '__all__'
-
-    def get_image(self, obj):
-        return obj.image_url
-
 class ProductSerializer(serializers.ModelSerializer):
     categories = CategorySerializer(many=True, read_only=True)
     tags = TagSerializer(many=True, read_only=True)
@@ -106,27 +93,27 @@ class PageSerializer(serializers.ModelSerializer):
         return obj.image_url
 
 class HomePageSerializer(serializers.ModelSerializer):
-    posts = PostSerializer(many=True, read_only=True)
+    products = ProductSerializer(many=True, read_only=True)
     images = ImageSerializer(many=True, read_only=True) 
     class Meta:
         model = HomePage
-        fields = ['id', 'images', 'title', 'pageinfo', 'content', 'lang', 'posts']
+        fields = ['id', 'images', 'title', 'pageinfo', 'content', 'lang', 'products']
 
-class CategoryPostsView(generics.ListAPIView):
-    serializer_class = PostSerializer
+class CategoryProductsView(generics.ListAPIView):
+    serializer_class = ProductSerializer
 
     def get_queryset(self):
         slug = self.kwargs['slug']
         category = Category.objects.get(slug=slug)
-        return Post.objects.filter(categories=category)
+        return Product.objects.filter(categories=category)
 
-class TagPostsView(generics.ListAPIView):
-    serializer_class = PostSerializer
+class TagProductsView(generics.ListAPIView):
+    serializer_class = ProductSerializer
 
     def get_queryset(self):
         slug = self.kwargs['slug']
         tag = Tag.objects.get(slug=slug)
-        return Post.objects.filter(tags=tag)
+        return Product.objects.filter(tags=tag)
 
 class SocialSerializer(serializers.ModelSerializer):
     class Meta:
