@@ -14,6 +14,7 @@ import ThemeSwitcher from "@/components/ThemeSwitcher";
 import LocaleSwitcher from "@/components/LocaleSwitcher";
 
 import Navigation from "@/components/Navigation";
+import { useTheme } from "next-themes";
 
 /* fetchNavigationData */
 async function fetchNavigationData(locale: string) {
@@ -31,10 +32,16 @@ async function fetchNavigationData(locale: string) {
 
 /* Logo */
 function Logo({ mobileMenuOpen, setMobileMenuOpen }: MobileMenuOpenProps) {
+  const { theme } = useTheme(); // Added line to use the theme hook
   const locale = useLocale();
+
   const handleLogoClick = () => {
     setMobileMenuOpen(false);
   };
+
+  // Determine the logo based on the theme
+  const logoSrc = theme === 'dark' ? '/images/logo-dark.png' : '/images/logo-light.png';
+
   return (
     <>
       <Link
@@ -43,7 +50,7 @@ function Logo({ mobileMenuOpen, setMobileMenuOpen }: MobileMenuOpenProps) {
         onClick={handleLogoClick}
       >
         <Image
-          src="/images/logo.png"
+          src={logoSrc} // Updated the src attribute
           width={429}
           height={100}
           alt="Citrus Trading"
