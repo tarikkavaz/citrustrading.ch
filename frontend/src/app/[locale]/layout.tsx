@@ -32,7 +32,7 @@ export async function getMetadata(locale: string): Promise<Metadata> {
     },
     openGraph: {
       url: process.env.NEXT_PUBLIC_LOCAL!,
-      images: "/og-image.jpg",
+      images: "/images/og-image.jpg",
       title: {
         template: `%s | ${t("sitename")}`,
         default: t("sitename"),

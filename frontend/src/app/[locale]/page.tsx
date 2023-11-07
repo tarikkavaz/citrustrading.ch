@@ -104,7 +104,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
                   <CardContent>
                     <div className="relative w-full h-[300px]">
                       <Image
-                        src={product.image ? product.image : "/placeholder.jpg"}
+                        src={product.image ? product.image : "/images/placeholder.jpg"}
                         priority={true}
                         fill={true}
                         alt={product.title}

@@ -89,7 +89,7 @@ export default async function Page({
                   <CardContent>
                     <div className="relative w-full h-[300px]">
                       <Image
-                        src={post.image ? post.image : "/placeholder.jpg"}
+                        src={post.image ? post.image : "/images/placeholder.jpg"}
                         priority={true}
                         fill={true}
                         alt={post.title}
