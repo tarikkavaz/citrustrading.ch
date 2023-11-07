@@ -144,6 +144,7 @@ class PageAdmin(SortableAdminMixin, admin.ModelAdmin):
     list_filter = ('lang',)
 
 class HomePageAdmin(admin.ModelAdmin):
+    filter_horizontal = ('products',)
     inlines = [ImageInlineHomePage]
     fieldsets = (
         ('HomePage', {
