@@ -52,8 +52,8 @@ export default function Footer() {
         {/* <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32"> */}
         <div className="xl:grid xl:grid-cols-3 xl:gap-8 ">
           <div className="space-y-8">
-            {/* <p className=" text-3xl font-medium ">{t("sitename")}</p>
-            <p className="text-sm leading-6">{t("sitedescription")}</p> */}
+            <p className=" text-3xl font-medium ">{t("sitename")}</p>
+            <p className="text-sm leading-6">{t("sitedescription")}</p>
             <div className="flex space-x-6">
               {navigation.social.map((item) => (
                 <a

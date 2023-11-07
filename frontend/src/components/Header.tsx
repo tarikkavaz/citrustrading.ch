@@ -16,7 +16,6 @@ import LocaleSwitcher from "@/components/LocaleSwitcher";
 import Navigation from "@/components/Navigation";
 import { useTheme } from "next-themes";
 
-/* fetchNavigationData */
 async function fetchNavigationData(locale: string) {
   try {
     const endpoint = `/api/menuitems/`;
@@ -28,19 +27,16 @@ async function fetchNavigationData(locale: string) {
     return null;
   }
 }
-/* end fetchNavigationData */
 
-/* Logo */
 function Logo({ mobileMenuOpen, setMobileMenuOpen }: MobileMenuOpenProps) {
-  const { theme } = useTheme(); // Added line to use the theme hook
+  const { theme } = useTheme();
   const locale = useLocale();
 
   const handleLogoClick = () => {
     setMobileMenuOpen(false);
   };
 
-  // Determine the logo based on the theme
-  const logoSrc = theme === 'dark' ? '/images/logo-dark.png' : '/images/logo-light.png';
+  const logoSrc = theme === 'light' ? '/images/logo-light.png' : '/images/logo-dark.png';
 
   return (
     <>
@@ -50,7 +46,7 @@ function Logo({ mobileMenuOpen, setMobileMenuOpen }: MobileMenuOpenProps) {
         onClick={handleLogoClick}
       >
         <Image
-          src={logoSrc} // Updated the src attribute
+          src={logoSrc}
           width={429}
           height={100}
           alt="Citrus Trading"
@@ -60,7 +56,6 @@ function Logo({ mobileMenuOpen, setMobileMenuOpen }: MobileMenuOpenProps) {
   );
 }
 
-/* end Logo */
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
