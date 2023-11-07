@@ -100,6 +100,7 @@ class ProductAdmin(SortableAdminMixin, admin.ModelAdmin):
     form = ProductAdminForm
     inlines = [ImageInlineProduct]
     readonly_fields = ('image_thumbnail',)
+    filter_horizontal = ('categories',)
 
     def image_thumbnail(self, obj):
         if obj.image and hasattr(obj.image.image, 'url'):
