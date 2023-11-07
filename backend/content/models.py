@@ -6,6 +6,7 @@ from django.utils.translation import gettext_lazy as _
 from ckeditor.fields import RichTextField
 from django.utils.html import format_html
 from django.core.validators import URLValidator
+from django.core.exceptions import ValidationError
 
 class MenuItem(models.Model):
     title = models.CharField(max_length=200)
@@ -164,10 +165,8 @@ class Social(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.pk and Social.objects.exists():
-            # if you'll not check for self.pk 
-            # then error will also raised in update of exists model
-            raise ValidationError('There is can be only one Social instance')
-        super(Social, self).save(*args, **kwargs)
+            raise ValidationError('There can be only one Social instance')
+        return super().save(*args, **kwargs)
 
     def delete(self, *args, **kwargs):
         raise ValidationError("Social instance can't be deleted")

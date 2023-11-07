@@ -11,6 +11,8 @@ from django.contrib.admin import AdminSite
 from adminsortable2.admin import SortableAdminMixin, SortableInlineAdminMixin
 from .forms import PageAdminForm, ProductAdminForm
 from .widgets import ImageThumbnailSelectWidget, ImageThumbnailWidget
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 # Define a custom order for apps and models
 APP_ORDER = {
@@ -162,9 +164,25 @@ class MenuItemAdmin(SortableAdminMixin, admin.ModelAdmin):
             return obj.link[4:]
         return obj.link
 
-class SocialAdmin(SortableAdminMixin, admin.ModelAdmin):
-    list_display = ('order',)
-    fields = ('facebook', 'twitter', 'instagram', 'threads', 'youtube', 'order')
+class SocialAdmin(admin.ModelAdmin):
+    
+    fields = ('facebook', 'twitter', 'instagram', 'threads', 'youtube')
+
+    def add_view(self, *args, **kwargs):
+        # Redirect to the change page of the singleton instance
+        instance = Social.load()
+        change_url = reverse('admin:%s_%s_change' % (instance._meta.app_label, instance._meta.model_name), args=[instance.pk])
+        return HttpResponseRedirect(change_url)
+
+    def change_view(self, request, object_id, form_url='', extra_context=None):
+        # Ensure that the user is editing the singleton instance
+        instance = Social.load()
+        if str(instance.pk) != object_id:
+            change_url = reverse('admin:%s_%s_change' % (instance._meta.app_label, instance._meta.model_name), args=[instance.pk])
+            return HttpResponseRedirect(change_url)
+        return super().change_view(request, object_id, form_url, extra_context)
+
+
 
 class CategoryAdminForm(forms.ModelForm):
     class Meta:
