@@ -53,11 +53,8 @@ class CategorySerializer(serializers.ModelSerializer):
 
     def get_image(self, obj):
         if obj.image:
-            return obj.image.image.url  # This will return the relative path
+            return obj.image.image.url
         return None
-
-
-
 
 class TagSerializer(serializers.ModelSerializer):
     class Meta:

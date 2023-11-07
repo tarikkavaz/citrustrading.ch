@@ -9,6 +9,7 @@ import { Metadata, ResolvingMetadata } from "next";
 import { DEFAULT_OG_IMAGE_URL } from "@/lib/config";
 import { GlobalCarousel } from "@/components/animation/GlobalCarousel";
 import { badgeVariants } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button";
 
 export async function generateMetadata(
   { params }: MetadataProps,
@@ -66,8 +67,18 @@ export default async function Page({
         )}
 
         <h1 className="mt-12">{product.title}</h1>
-
+        {product.shoplink && (
+          <h2 className="mt-12">
+            <Link href={product.shoplink || '#'}>
+              <Button>
+                {t("buy")}
+              </Button>
+            </Link>
+          </h2>
+        )}
         <div dangerouslySetInnerHTML={{ __html: product.content }} />
+
+        
 
         {product.images && product.images.length > 0 && (
         <div className="mt-8">

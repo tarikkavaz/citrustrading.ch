@@ -137,7 +137,7 @@ export interface Product {
   description: string;
   slug: string;
   langslug?: string;
-  shoplink?: string;
+  shoplink?: URL;
   pageinfo: string;
   content: string;
   image: string | null;

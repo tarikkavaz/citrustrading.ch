@@ -48,7 +48,6 @@ class Category(models.Model):
     def __str__(self):
         return f"{self.title} ({self.lang})"
 
-
 class Tag(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True, blank=True)
