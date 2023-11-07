@@ -47,7 +47,7 @@ class MenuItemSerializer(MenuItemChildSerializer):
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = ['title', 'slug']
+        fields = ['title', 'lang', 'slug']
 
 class TagSerializer(serializers.ModelSerializer):
     class Meta:

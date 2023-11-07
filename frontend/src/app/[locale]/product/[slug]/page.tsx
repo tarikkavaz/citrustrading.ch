@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { useLocale } from "next-intl";
 import { fetchData, API_URL } from "@/utils/api";
-import { formatDate } from "@/utils/date";
 import { getTranslator } from "next-intl/server";
 import { Metadata, ResolvingMetadata } from "next";
 import { DEFAULT_OG_IMAGE_URL } from "@/lib/config";

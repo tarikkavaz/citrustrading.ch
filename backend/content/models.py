@@ -34,6 +34,7 @@ class MenuItem(models.Model):
 class Category(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True, blank=True)
+    lang = models.CharField(max_length=7, choices=settings.LANGUAGES, default='en', blank=True, verbose_name="Language")
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -41,7 +42,7 @@ class Category(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.title
+        return f"{self.title} ({self.lang})"
 
 class Tag(models.Model):
     title = models.CharField(max_length=255)

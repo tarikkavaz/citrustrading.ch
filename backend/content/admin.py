@@ -181,8 +181,24 @@ class SocialAdmin(SortableAdminMixin, admin.ModelAdmin):
     list_display = ('order',)
     fields = ('facebook', 'twitter', 'instagram', 'threads', 'youtube', 'order')
 
+class CategoryAdminForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = '__all__'
+
+class CategoryAdmin(admin.ModelAdmin):
+    form = CategoryAdminForm
+    list_display = ('title', 'lang', 'slug')
+    list_filter = ('lang',)
+
+    fieldsets = (
+        ('Category', {
+            'fields': ('lang', 'title', 'slug'),
+        }),
+    )
+
 my_admin_site.register(MenuItem, MenuItemAdmin)
-my_admin_site.register(Category)
+my_admin_site.register(Category, CategoryAdmin)
 my_admin_site.register(Tag)
 my_admin_site.register(Product, ProductAdmin)
 my_admin_site.register(Page, PageAdmin)
