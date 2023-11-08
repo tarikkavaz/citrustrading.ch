@@ -158,6 +158,7 @@ class Social(models.Model):
     instagram = models.CharField(max_length=255, blank=True, validators=[URLValidator()])
     threads = models.CharField(max_length=255, blank=True, validators=[URLValidator()])
     youtube = models.CharField(max_length=255, blank=True, validators=[URLValidator()])
+    linkedin = models.CharField(max_length=255, blank=True, validators=[URLValidator()])
     order = models.PositiveIntegerField(default=0, db_index=True)
 
     class Meta:
