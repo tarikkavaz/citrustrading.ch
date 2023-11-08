@@ -20,7 +20,6 @@ const getCategories = async (locale: string): Promise<Category[]> => {
   return allCategories.filter(category => category.lang === locale);
 };
 
-
 export default async function CategoriesPage({ params: { locale } }: MetadataProps) {
   const categories = await getCategories(locale);
   const t = await getTranslator(locale, "Globals");
@@ -28,12 +27,11 @@ export default async function CategoriesPage({ params: { locale } }: MetadataPro
   return (
     <>
       <Container className="p-10 mt-16">
-        <h1>{t("categories")}</h1>
+        {/* <h1>{t("categories")}</h1> */}
+        <h1>{t("products")}</h1>
         <div className="grid grid-flow-col grid-cols-3 gap-4">
           {categories.map((category) => (
-
-<>
-  
+            <>
               <Card key={category.id}>
                 <Link href={`/${locale}/category/${category.slug}`}>
                 
@@ -54,9 +52,7 @@ export default async function CategoriesPage({ params: { locale } }: MetadataPro
   
                 </Link>
               </Card>
-  
-</>
-
+            </>
           ))}
         </div>
       </Container>

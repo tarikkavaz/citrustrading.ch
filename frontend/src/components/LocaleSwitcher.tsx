@@ -1,9 +1,9 @@
 "use client";
 
 import * as React from "react";
-import { Fragment, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { fetchData, SERVER_IP } from "@/utils/api";
-import { Moon, Sun, Globe } from "lucide-react";
+import { Globe } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { usePathname, useRouter } from "next-intl/client";
@@ -13,16 +13,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
-/* fetchNavigationData */
+
 async function fetchNavigationData(locale: string) {
   try {
     const endpoint = `/api/menuitems/`;
@@ -34,7 +25,6 @@ async function fetchNavigationData(locale: string) {
     return null;
   }
 }
-/* end fetchNavigationData */
 
 export default function LocaleSwitcher() {
   const t = useTranslations("Globals");
@@ -61,6 +51,9 @@ export default function LocaleSwitcher() {
         setType(type);
       } else if (pathname.includes("/product/") || pathname.includes("/urun/")) {
         type = "product";
+        setType(type);
+      } else if (pathname.includes("/category/") || pathname.includes("/kategori/")) {
+        type = "category";
         setType(type);
       } else {
         type = "";
@@ -95,44 +88,65 @@ export default function LocaleSwitcher() {
         locale !== nextLocale
       ) {
         router.replace(`/page/${langSlug}`, { locale: nextLocale });
-      } 
+      }
+
       else if (
         pathname.includes("/post/") &&
         langSlug &&
         locale !== nextLocale
       ) {
         router.replace(`/yazi/${langSlug}`, { locale: nextLocale });
-      } 
-      else if (
-        pathname.includes("/product/") &&
-        langSlug &&
-        locale !== nextLocale
-      ) {
-        router.replace(`/urun/${langSlug}`, { locale: nextLocale });
-      } 
+      }
       else if (
         pathname.includes("/yazi/") &&
         langSlug &&
         locale !== nextLocale
       ) {
         router.replace(`/post/${langSlug}`, { locale: nextLocale });
-      } 
+      }
+
+      else if (
+        pathname.includes("/product/") &&
+        langSlug &&
+        locale !== nextLocale
+      ) {
+        router.replace(`/urun/${langSlug}`, { locale: nextLocale });
+      }
       else if (
         pathname.includes("/urun/") &&
         langSlug &&
         locale !== nextLocale
       ) {
         router.replace(`/product/${langSlug}`, { locale: nextLocale });
+      }
+
+      else if (
+        pathname.includes("/category/") &&
+        langSlug &&
+        locale !== nextLocale
+      ) {
+        router.replace(`/kategori/${langSlug}`, { locale: nextLocale });
+      }
+      else if (
+        pathname.includes("/kategori/") &&
+        langSlug &&
+        locale !== nextLocale
+      ) {
+        router.replace(`/category/${langSlug}`, { locale: nextLocale });
       } 
+
       else if (
         locale !== nextLocale &&
         !langSlug &&
         (type === "page" ||
           type === "sayfa" ||
           type === "post" ||
-          type === "yazi") ||
+          type === "yazi" ||
           type === "product" ||
-          type === "urun"
+          type === "urun" ||
+          type === "category" ||
+          type === "kategori" 
+          )
       ) {
         router.replace("/", { locale: nextLocale });
       } else {

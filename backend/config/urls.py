@@ -40,7 +40,7 @@ urlpatterns = [
     path('api/<str:lang>/page/<str:slug>/', PageViewSet.as_view({'get': 'by_slug'}), name='page-detail'),
     
     path('api/<str:lang>/categories/', CategoryViewSet.as_view({'get': 'list'}), name='categories-list'),
-    path('api/<str:lang>/category/<str:slug>/', CategoryViewSet.as_view({'get': 'by_slug'}), name='category-detail'),
+    path('api/<str:lang>/category/<str:slug>/', CategoryViewSet.as_view({'get': 'list'}), name='category-detail'),
     
     path('api/<str:lang>/tags/<str:slug>/', TagProductsView.as_view(), name='tag-products'),
     
