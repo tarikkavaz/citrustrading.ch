@@ -27,7 +27,7 @@ import {
 const getHomepage = async (): Promise<Homepage[]> => {
   const locale = useLocale();
   const endpoint = `/api/${locale}/homepage/`;
-  const products = await fetchData(SERVER_IP, endpoint);
+  const products = await fetchData(API_URL, endpoint);
   return products;
 };
 
