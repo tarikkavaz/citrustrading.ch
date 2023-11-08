@@ -31,6 +31,7 @@ docker-compose exec backend python manage.py dumpdata --exclude auth.permission 
 Go to the folder where the docker-compose.prod.yml file is located and run the following command:
 
 ```bash
+cd citrustrading.ch &&
 docker-compose down --remove-orphans &&
 git pull &&
 docker system prune -a -f &&
@@ -39,3 +40,4 @@ docker-compose exec backend python manage.py migrate &&
 docker-compose exec backend python manage.py loaddata /backend/datadump.json &&
 docker-compose exec backend python manage.py collectstatic
 ```
+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
