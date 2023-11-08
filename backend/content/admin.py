@@ -166,7 +166,7 @@ class MenuItemAdmin(SortableAdminMixin, admin.ModelAdmin):
 
 class SocialAdmin(admin.ModelAdmin):
     
-    fields = ('facebook', 'twitter', 'linkedin', 'instagram', 'threads', 'youtube')
+    fields = ('facebook', 'twitter', 'linkedin', 'instagram', 'youtube')
 
     def add_view(self, *args, **kwargs):
         # Redirect to the change page of the singleton instance
