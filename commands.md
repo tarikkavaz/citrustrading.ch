@@ -33,11 +33,17 @@ Go to the folder where the docker-compose.prod.yml file is located and run the f
 ```bash
 cd citrustrading.ch &&
 docker-compose down --remove-orphans &&
-git pull &&
 docker system prune -a -f &&
 docker-compose -f docker-compose.prod.yml up --build -d &&
 docker-compose exec backend python manage.py migrate &&
 docker-compose exec backend python manage.py loaddata /backend/datadump.json &&
-docker-compose exec backend python manage.py collectstatic
+docker-compose exec backend python manage.py collectstatic --no-input
 ```
+
+
+docker-compose logs -f
 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
+
+
+apt install cmdtest 
+apt install docker-compose
