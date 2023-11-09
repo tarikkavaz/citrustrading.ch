@@ -45,5 +45,12 @@ docker-compose logs -f
 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
 
 
-apt install cmdtest 
+```bash
 apt install docker-compose
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt update
+sudo apt install yarn
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+nvm install 18.12.0
+```
