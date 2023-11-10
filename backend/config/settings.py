@@ -8,7 +8,6 @@ import os
 CLIENT_BASE_URL = os.environ.get('CLIENT_BASE_URL', '68.183.5.78')
 API_PORT = os.environ.get('API_PORT', '8000')
 CLIENT_PORT = os.environ.get('CLIENT_PORT', '3000')
-DOMAIN = os.environ.get('DOMAIN', '68.183.5.78')
 
 # Paths
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,8 +21,10 @@ ALLOWED_HOSTS = [
     '0.0.0.0', 
     '0.0.0.0:8000', 
     '68.183.5.78', 
-    '68.183.5.78:3000', 
     '68.183.5.78:8000', 
+    CLIENT_BASE_URL, 
+    f"{CLIENT_BASE_URL}:{API_PORT}",
+    f"{CLIENT_BASE_URL}:{CLIENT_PORT}",
 ]
 SECURE_CROSS_ORIGIN_OPENER_POLICY = None
 
@@ -43,8 +44,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -108,36 +109,12 @@ CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOWED_ORIGINS = [
     f"http://0.0.0.0:{API_PORT}",
     f"http://0.0.0.0:{CLIENT_PORT}",
-    f"http://{CLIENT_BASE_URL}:{API_PORT}",
-    f"http://{CLIENT_BASE_URL}:{CLIENT_PORT}",
-    f"https://{CLIENT_BASE_URL}:{API_PORT}",
-    f"https://{CLIENT_BASE_URL}:{CLIENT_PORT}",
-    f"http://{DOMAIN}",
-    f"https://{DOMAIN}",
-    f"http://www.{DOMAIN}",
-    f"https://www.{DOMAIN}",
-    'https://newtablab.com',
-    'https://www.newtablab.com',
-    'http://68.183.5.78', 
-    'http://68.183.5.78:3000', 
-    'http://68.183.5.78:8000', 
-]
-CSRF_TRUSTED_ORIGINS = [
     f"http://0.0.0.0:{API_PORT}",
     f"http://0.0.0.0:{CLIENT_PORT}",
     f"http://{CLIENT_BASE_URL}:{API_PORT}",
     f"http://{CLIENT_BASE_URL}:{CLIENT_PORT}",
     f"https://{CLIENT_BASE_URL}:{API_PORT}",
     f"https://{CLIENT_BASE_URL}:{CLIENT_PORT}",
-    f"http://{DOMAIN}",
-    f"https://{DOMAIN}",
-    f"http://www.{DOMAIN}",
-    f"https://www.{DOMAIN}",
-    'https://newtablab.com',
-    'https://www.newtablab.com',
-    'http://68.183.5.78', 
-    'http://68.183.5.78:3000', 
-    'http://68.183.5.78:8000', 
 ]
 APPEND_SLASH = True
 
@@ -158,10 +135,3 @@ CKEDITOR_CONFIGS = {
 }
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-SESSION_COOKIE_SAMESITE = 'None'
-CSRF_COOKIE_SAMESITE = 'None'
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-CSRF_COOKIE_DOMAIN = '.newtablab.com'  # Allow subdomains
-CSRF_COOKIE_PATH = '/'
