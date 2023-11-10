@@ -49,13 +49,15 @@ function Logo({ mobileMenuOpen, setMobileMenuOpen }: MobileMenuOpenProps) {
         className="text-3xl block p-3 space-y-1 leading-none no-underline rounded-md outline-none select-none"
         onClick={handleLogoClick}
       >
-        <Image
-          src={logoSrc}
-          width={429}
-          height={100}
-          priority
-          alt="Citrus Trading"
-        />
+        <div className="relative h-[35px] w-[150px] md:h-[100px] md:w-[450px]">
+          <Image
+            src={logoSrc}
+            priority={true}
+            fill={true}
+            alt="Citrus Trading"
+            className=" object-cover"
+            />
+        </div>
       </Link>
     </>
   );

@@ -78,7 +78,7 @@ export default async function LocaleLayout({
           >
             <NextIntlClientProvider locale={locale} messages={messages}>
               <Header />
-              <main className="flex-1 mt-36 mb-20">{children}</main>
+              <main className="flex-1 md:mt-36 mb-20">{children}</main>
               <Footer />
             </NextIntlClientProvider>
           </ThemeProvider>
