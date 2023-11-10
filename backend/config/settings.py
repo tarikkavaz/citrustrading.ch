@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 import os
 
 # Environment variables
-CLIENT_BASE_URL = os.environ.get('CLIENT_BASE_URL', '68.183.5.78')
+CLIENT_BASE_URL = os.environ.get('CLIENT_BASE_URL', '0.0.0.0')
 API_PORT = os.environ.get('API_PORT', '8000')
 CLIENT_PORT = os.environ.get('CLIENT_PORT', '3000')
 
