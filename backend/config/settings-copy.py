@@ -14,7 +14,7 @@ DEBUG = True if ENVIRONMENT == 'local' else False
 if DEBUG:
     ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'backend', 'frontend']
 else:
-    ALLOWED_HOSTS = ['68.183.5.78']
+    ALLOWED_HOSTS = ['citrustrading.ch', 'www.citrustrading.ch']
 
 # Dynamic CORS_ALLOWED_ORIGINS
 CORS_ALLOWED_ORIGINS = [
