@@ -64,6 +64,8 @@ export default async function LocaleLayout({
     <>
       <html lang={locale} suppressHydrationWarning>
         <head />
+        <link rel="icon" href="/icons/favicon.png" sizes="any" />
+        <link rel="shortcut icon" href="/icons/favicon.png" sizes="any" />
         <body
           className={clsx(
             inter.className,
