@@ -64,12 +64,6 @@ export default async function Products({ params: { locale } }: HomeProps) {
   const t = await getTranslator(locale, "Globals");
   return (
     <>
-      <Container size="fluid">
-      <GlobalCarousel 
-          images={homepage.images || []} 
-          className="h-[200px] md:h-[300px] lg:h-[450px] bg-accent" 
-        />
-      </Container>
       <Container className="pt-10 px-10 mt-16" id="content">
         <div className="grid grid-cols-3 gap-4 mt-8">
           {homepage.images &&
@@ -116,6 +110,12 @@ export default async function Products({ params: { locale } }: HomeProps) {
               </Card>
             ))}
           </div>
+      </Container>
+      <Container size="fluid">
+      <GlobalCarousel 
+          images={homepage.images || []} 
+          className="h-[200px] md:h-[300px] lg:h-[450px] bg-accent" 
+        />
       </Container>
     </>
   );
