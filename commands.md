@@ -53,7 +53,8 @@ docker-compose exec backend python manage.py collectstatic --no-input
 
 ```bash
 docker-compose down &&
-docker-compose -f docker-compose.prod.yml up -d
+git pull &&
+docker-compose -f docker-compose.prod.yml up --build -d
 ```
 
 
