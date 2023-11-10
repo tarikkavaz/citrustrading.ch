@@ -64,8 +64,8 @@ export default async function Products({ params: { locale } }: HomeProps) {
   const t = await getTranslator(locale, "Globals");
   return (
     <>
-      <Container className="pt-10 px-10 mt-16" id="content">
-        <div className="grid grid-cols-3 gap-4 mt-8">
+      <Container className="px-10 mt-16" id="content">
+        <div className="grid md:grid-cols-3 gap-4 mt-8">
           {homepage.images &&
             homepage.images.map((image: ContentImage) => (
               <picture key={image.id}>
@@ -86,7 +86,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
         <h2 className="mt-16">{t("products")}</h2>
       </Container>
       <Container>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid md:grid-cols-3 gap-4">
           {homepage.products &&
             homepage.products.map((product) => (
               <Card key={product.id}>
@@ -111,7 +111,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
             ))}
           </div>
       </Container>
-      <Container size="fluid">
+      <Container size="fluid" className="hidden">
       <GlobalCarousel 
           images={homepage.images || []} 
           className="h-[200px] md:h-[300px] lg:h-[450px] bg-accent" 
