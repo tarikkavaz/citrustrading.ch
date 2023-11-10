@@ -22,14 +22,8 @@ ALLOWED_HOSTS = [
     '0.0.0.0', 
     '0.0.0.0:8000', 
     '68.183.5.78', 
+    '68.183.5.78:3000', 
     '68.183.5.78:8000', 
-    'newtablab.com', 
-    'www.newtablab.com', 
-    CLIENT_BASE_URL, 
-    f"{CLIENT_BASE_URL}:{API_PORT}",
-    f"{CLIENT_BASE_URL}:{CLIENT_PORT}",
-    f"{DOMAIN}",
-    f"www.{DOMAIN}",
 ]
 SECURE_CROSS_ORIGIN_OPENER_POLICY = None
 
@@ -124,6 +118,9 @@ CORS_ALLOWED_ORIGINS = [
     f"https://www.{DOMAIN}",
     'https://newtablab.com',
     'https://www.newtablab.com',
+    'http://68.183.5.78', 
+    'http://68.183.5.78:3000', 
+    'http://68.183.5.78:8000', 
 ]
 CSRF_TRUSTED_ORIGINS = [
     f"http://0.0.0.0:{API_PORT}",
@@ -138,6 +135,9 @@ CSRF_TRUSTED_ORIGINS = [
     f"https://www.{DOMAIN}",
     'https://newtablab.com',
     'https://www.newtablab.com',
+    'http://68.183.5.78', 
+    'http://68.183.5.78:3000', 
+    'http://68.183.5.78:8000', 
 ]
 APPEND_SLASH = True
 
