@@ -4,24 +4,28 @@ from django.utils.translation import gettext_lazy as _
 
 # Environment variables
 ENVIRONMENT = os.getenv('ENVIRONMENT', default='local')
+CLIENT_BASE_URL = os.environ.get('CLIENT_BASE_URL', '0.0.0.0')
+API_PORT = os.environ.get('API_PORT', '8000')
+CLIENT_PORT = os.environ.get('CLIENT_PORT', '3000')
 
-# Common settings
+# Paths
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Security
 SECRET_KEY = 'django-insecure-et^72^ib$yz@ggxs#e!enovydb$(^xw(%&@a^8#l--_=l5lfat'
 DEBUG = True if ENVIRONMENT == 'local' else False
-
-# Dynamic ALLOWED_HOSTS
-if DEBUG:
-    ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'backend', 'frontend']
-else:
-    ALLOWED_HOSTS = ['citrustrading.ch', 'www.citrustrading.ch', '68.183.5.78']
-
-# Dynamic CORS_ALLOWED_ORIGINS
-CORS_ALLOWED_ORIGINS = [
-    f"http://{host}:{port}" for host in ALLOWED_HOSTS for port in ['8000', '3000']
-] + [
-    f"https://{host}" for host in ALLOWED_HOSTS
+ALLOWED_HOSTS = [
+    'frontend', 
+    'backend', 
+    '0.0.0.0', 
+    '0.0.0.0:8000', 
+    '68.183.5.78', 
+    '68.183.5.78:8000', 
+    CLIENT_BASE_URL, 
+    f"{CLIENT_BASE_URL}:{API_PORT}",
+    f"{CLIENT_BASE_URL}:{CLIENT_PORT}",
 ]
+SECURE_CROSS_ORIGIN_OPENER_POLICY = None
 
 # Application definition
 INSTALLED_APPS = [
@@ -41,8 +45,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -103,8 +107,17 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # REST FRAMEWORK and CORS
 CORS_ALLOW_ALL_ORIGINS = False
-CORS_ALLOWED_ORIGINS = CORS_ALLOWED_ORIGINS
-CSRF_TRUSTED_ORIGINS = CORS_ALLOWED_ORIGINS
+CORS_ALLOWED_ORIGINS = [
+    f"http://0.0.0.0:{API_PORT}",
+    f"http://0.0.0.0:{CLIENT_PORT}",
+    f"http://0.0.0.0:{API_PORT}",
+    f"http://0.0.0.0:{CLIENT_PORT}",
+    f"http://{CLIENT_BASE_URL}:{API_PORT}",
+    f"http://{CLIENT_BASE_URL}:{CLIENT_PORT}",
+    f"https://{CLIENT_BASE_URL}:{API_PORT}",
+    f"https://{CLIENT_BASE_URL}:{CLIENT_PORT}",
+]
+APPEND_SLASH = True
 
 # CKEDITOR
 CKEDITOR_UPLOAD_PATH = 'uploads/ckeditor/'
