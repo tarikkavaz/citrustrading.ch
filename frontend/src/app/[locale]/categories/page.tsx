@@ -4,16 +4,13 @@ import Container from "@/components/ui/Container";
 import Link from "next/link";
 import Image from "next/image";
 import { fetchData, API_URL } from "@/utils/api";
-import { useLocale } from "next-intl";
 import { getTranslator } from "next-intl/server";
 import { DEFAULT_OG_IMAGE_URL } from '@/lib/config';
 import {
   Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+  CardContent, CardHeader,
+  CardTitle
+} from "@/components/ui/card";
 
 const getCategories = async (locale: string): Promise<Category[]> => {
   const categoriesEndpoint = `/api/categories/`;

@@ -5,6 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { fetchData, API_URL } from "@/utils/api";
 import { getTranslator } from "next-intl/server";
+import { Metadata, ResolvingMetadata } from "next";
+import { DEFAULT_OG_IMAGE_URL } from "@/lib/config";
 import {
   Card,
   CardContent,
@@ -29,6 +31,41 @@ const getProductsByCategory = async (locale: string, categorySlug: string): Prom
   );
   return filteredProducts;
 };
+
+export async function generateMetadata(
+  { params }: MetadataProps,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const t = await getTranslator(params.locale, "Globals");
+  const category = await getCategoryBySlug(params.locale, params.slug);
+
+  if (!category) {
+    // Handle the case where category is undefined
+    // For example, return default metadata
+    return {
+      title: t("defaultTitle"),
+      description: t("defaultDescription"),
+      openGraph: {
+        title: t("defaultTitle"),
+        description: t("defaultDescription"),
+        images: [{ url: DEFAULT_OG_IMAGE_URL }]
+      }
+    };
+  }
+
+  const imageUrl = category.image ? category.image : DEFAULT_OG_IMAGE_URL;
+  const description = `${category.title} - ${t("sitedescription")}`;
+
+  return {
+    title: `${category.title} | ${t("sitename")}`,
+    description: description,
+    openGraph: {
+      title: `${category.title} | ${t("sitename")}`,
+      description: description,
+      images: [{ url: imageUrl }]
+    }
+  };
+}
 
 // The main component for the category page
 export default async function CategoryPage({
