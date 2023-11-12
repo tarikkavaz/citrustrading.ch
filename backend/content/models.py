@@ -8,6 +8,17 @@ from django.utils.html import format_html
 from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
 
+class Image(models.Model):
+    image = models.ImageField(upload_to='images/')
+    alt_text = models.CharField(max_length=255, blank=True)
+
+    def __str__(self):
+        return self.alt_text
+
+    def image_thumbnail(self):
+        return format_html('<img src="{}" height="50" />', self.image.url)
+    image_thumbnail.short_description = 'Thumbnail'
+
 class MenuItem(models.Model):
     title = models.CharField(max_length=200)
     link = models.CharField(max_length=500, blank=True, null=True)
@@ -32,25 +43,6 @@ class MenuItem(models.Model):
             self.link = reverse('page-detail', kwargs={'lang': self.page.lang, 'slug': self.page.slug})
         super().save(*args, **kwargs)
 
-class Category(models.Model):
-    title = models.CharField(max_length=255)
-    slug = models.SlugField(max_length=255, unique=True, blank=True)
-    categoryinfo = models.TextField(blank=True, verbose_name="Category Description")
-    content = RichTextField(blank=True, verbose_name="Product Content")
-    langslug = models.CharField(max_length=255, blank=True, verbose_name="Translation Link")  # Added langslug field
-    image = models.ForeignKey('Image', on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Selected Image", related_name="category_image")  # Added image field
-    lang = models.CharField(max_length=7, choices=settings.LANGUAGES, default='en', blank=True, verbose_name="Language")
-
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.title)
-        if not self.langslug:  # Generate langslug if not provided
-            self.langslug = slugify(self.lang + '-' + self.title)
-        super().save(*args, **kwargs)
-
-    def __str__(self):
-        return f"{self.title} ({self.lang})"
-
 class Tag(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True, blank=True)
@@ -62,6 +54,37 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.title
+
+class Category(models.Model):
+    title = models.CharField(max_length=255)
+    slug = models.SlugField(max_length=255, unique=True, blank=True)
+    categoryinfo = models.TextField(blank=True, verbose_name="Category Description")
+    content = RichTextField(blank=True, verbose_name="Product Content")
+    langslug = models.CharField(max_length=255, blank=True, verbose_name="Translation Link")
+    image = models.ForeignKey('Image', on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Selected Image", related_name="category_image")
+    lang = models.CharField(max_length=7, choices=settings.LANGUAGES, default='en', blank=True, verbose_name="Language")
+    order = models.PositiveIntegerField(default=0, editable=False, db_index=True)
+
+    class Meta:
+        ordering = ['order']
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title
+
+    @property
+    def image_url(self):
+        if self.image and hasattr(self.image.image, 'url'):
+            return self.image.image.url
+        return None
+
+    @property
+    def image_urls(self):
+        return [image.image.url for image in self.images.all()]
 
 class Product(models.Model):
     title = models.CharField(max_length=255, verbose_name="Product Title")
@@ -101,7 +124,7 @@ class Product(models.Model):
 class Page(models.Model):
     title = models.CharField(max_length=255, verbose_name="Page Title")
     slug = models.SlugField(max_length=255, unique=True, blank=True, verbose_name="Page URL")
-    langslug =models.CharField(max_length=255, blank=True, verbose_name="Translation Link")
+    langslug = models.CharField(max_length=255, blank=True, verbose_name="Translation Link")
     # menu = models.BooleanField(default=True, verbose_name="Add to Menu")
     pageinfo = models.TextField(blank=True, verbose_name="Page Description")
     content = RichTextField(verbose_name="Page Content")
@@ -131,17 +154,6 @@ class Page(models.Model):
     @property
     def image_urls(self):
         return [image.image.url for image in self.images.all()]
-
-class Image(models.Model):
-    image = models.ImageField(upload_to='images/')
-    alt_text = models.CharField(max_length=255, blank=True)
-
-    def __str__(self):
-        return self.alt_text
-
-    def image_thumbnail(self):
-        return format_html('<img src="{}" height="50" />', self.image.url)
-    image_thumbnail.short_description = 'Thumbnail'
 
 class HomePage(models.Model):
     title = models.CharField(max_length=255, verbose_name="Site Title")

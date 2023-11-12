@@ -99,7 +99,33 @@ class ProductAdmin(SortableAdminMixin, admin.ModelAdmin):
             'fields': ('lang', 'title', 'slug', 'pageinfo', 'shoplink', 'image', 'image_display', 'content', 'categories'),
         }),
     )
-    list_display = ('title', 'lang', 'slug', 'image_display', 'order')
+    list_display = ('title', 'lang', 'image_display', 'order')
+    list_filter = ('lang',)
+
+class CategoryAdminForm(forms.ModelForm):
+    content = forms.CharField(widget=CKEditorWidget())
+    images = forms.ModelChoiceField(queryset=Image.objects.all(),
+                                widget=ImageThumbnailWidget,
+                                required=False)
+    
+    class Meta:
+        model = Category
+        fields = '__all__'
+
+class CategoryAdmin(SortableAdminMixin, admin.ModelAdmin):
+    form = CategoryAdminForm
+    readonly_fields = ('image_display',)
+
+    def image_display(self, obj):
+        return format_html('<img src="{}" height="50" />', obj.image.image.url) if obj.image else '-'
+    image_display.short_description = 'Image Preview'
+
+    fieldsets = (
+        ('Category', {
+            'fields': ('lang', 'title', 'slug', 'categoryinfo', 'content', 'image'),
+        }),
+    )
+    list_display = ('title', 'lang', 'image_display', 'order')
     list_filter = ('lang',)
 
 class PageAdminForm(forms.ModelForm):
@@ -123,10 +149,10 @@ class PageAdmin(SortableAdminMixin, admin.ModelAdmin):
 
     fieldsets = (
         ('Page', {
-            'fields': ('lang', 'title', 'slug', 'pageinfo', 'langslug', 'image', 'image_display', 'content'),
+            'fields': ('lang', 'title', 'slug', 'pageinfo', 'image', 'image_display', 'content'),
         }),
     )
-    list_display = ('title', 'lang', 'slug', 'langslug', 'image_display', 'order')
+    list_display = ('title', 'lang', 'image_display', 'order')
     list_filter = ('lang',)
 
 class HomePageAdmin(admin.ModelAdmin):
@@ -182,27 +208,6 @@ class SocialAdmin(admin.ModelAdmin):
             return HttpResponseRedirect(change_url)
         return super().change_view(request, object_id, form_url, extra_context)
 
-
-
-class CategoryAdminForm(forms.ModelForm):
-    class Meta:
-        model = Category
-        fields = '__all__'
-
-class CategoryAdmin(admin.ModelAdmin):
-    form = CategoryAdminForm
-    list_display = ('title', 'lang', 'slug', 'image_display')
-    list_filter = ('lang',)
-
-    fieldsets = (
-        ('Category', {
-            'fields': ('lang', 'title', 'slug', 'categoryinfo', 'content', 'image'),
-        }),
-    )
-
-    def image_display(self, obj):
-        return format_html('<img src="{}" height="50" />', obj.image.image.url) if obj.image else '-'
-    image_display.short_description = 'Image Preview'
 
 my_admin_site.register(MenuItem, MenuItemAdmin)
 my_admin_site.register(Category, CategoryAdmin)
