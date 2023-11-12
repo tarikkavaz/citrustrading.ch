@@ -1,6 +1,5 @@
 # Citrus Trading Project Guide
 
-This guide provides instructions for setting up and deploying Citrus Trading project.
 
 ---
 
