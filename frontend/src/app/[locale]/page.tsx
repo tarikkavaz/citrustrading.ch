@@ -91,7 +91,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
       </Container>
       <Container>
         <hr className="h-0.5 my-3 bg-accent" />
-        <h2>{t("products")}</h2>
+        <h2>{t("featuredproducts")}</h2>
         <div className="grid md:grid-cols-3 gap-4">
           {homepage.products &&
             homepage.products.map((product) => (
