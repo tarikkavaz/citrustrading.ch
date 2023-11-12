@@ -96,10 +96,10 @@ class ProductAdmin(SortableAdminMixin, admin.ModelAdmin):
 
     fieldsets = (
         ('Product', {
-            'fields': ('lang', 'title', 'slug', 'pageinfo', 'langslug', 'shoplink', 'image', 'image_display', 'content', 'categories'),
+            'fields': ('lang', 'title', 'slug', 'pageinfo', 'shoplink', 'image', 'image_display', 'content', 'categories'),
         }),
     )
-    list_display = ('title', 'lang', 'slug', 'langslug', 'image_display', 'order')
+    list_display = ('title', 'lang', 'slug', 'image_display', 'order')
     list_filter = ('lang',)
 
 class PageAdminForm(forms.ModelForm):
@@ -191,12 +191,12 @@ class CategoryAdminForm(forms.ModelForm):
 
 class CategoryAdmin(admin.ModelAdmin):
     form = CategoryAdminForm
-    list_display = ('title', 'lang', 'slug', 'langslug', 'image_display')
+    list_display = ('title', 'lang', 'slug', 'image_display')
     list_filter = ('lang',)
 
     fieldsets = (
         ('Category', {
-            'fields': ('lang', 'title', 'slug', 'langslug', 'categoryinfo', 'content', 'image'),
+            'fields': ('lang', 'title', 'slug', 'categoryinfo', 'content', 'image'),
         }),
     )
 
