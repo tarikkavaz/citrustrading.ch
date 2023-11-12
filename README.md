@@ -135,7 +135,13 @@ Connect to the server via SSH and run the following commands:
 
 ## Deploy from Local Machine to Digitalocean Droplet
 
-First, ensure that your script is executable by running the following command:
+Set up your `frontend/.env` file and SSH configurations correctly before running these commands.
+```properties
+SERVER_PATH=/root/yourdomainname.com
+SSH_ALIAS=yoursshalias
+```
+
+Ensure that your script is executable by running the following command:
 
 ```bash
 chmod +x deploy.sh
@@ -186,5 +192,3 @@ To **load data** (e.g., from a dump):
 ```bash
 ./deploy.sh loaddata
 ```
-
-Remember to set up your `.env` file and SSH configurations correctly before running these commands.
