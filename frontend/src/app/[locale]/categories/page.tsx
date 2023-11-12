@@ -1,4 +1,3 @@
-// Import necessary components and types
 import { Category, MetadataProps } from "@/utils/types";
 import Container from "@/components/ui/Container";
 import Link from "next/link";

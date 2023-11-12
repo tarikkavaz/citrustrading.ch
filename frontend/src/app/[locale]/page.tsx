@@ -3,6 +3,7 @@ import {
   MetadataProps,
   HomeProps,
   ContentImage,
+  Category
 } from "@/utils/types";
 import Container from "@/components/ui/Container";
 import { GlobalCarousel } from "@/components/animation/GlobalCarousel";
@@ -26,6 +27,12 @@ const getHomepage = async (): Promise<Homepage[]> => {
   const endpoint = `/api/${locale}/homepage/`;
   const products = await fetchData(API_URL, endpoint);
   return products;
+};
+
+const getCategories = async (locale: string): Promise<Category[]> => {
+  const categoriesEndpoint = `/api/categories/`;
+  const allCategories: Category[] = await fetchData(API_URL, categoriesEndpoint);
+  return allCategories.filter(category => category.lang === locale);
 };
 
 export async function generateMetadata(
@@ -57,8 +64,10 @@ export async function generateMetadata(
 
 export default async function Products({ params: { locale } }: HomeProps) {
   const products = await getHomepage();
+  const categories = await getCategories(locale);
   const homepage = products[0];
   const t = await getTranslator(locale, "Globals");
+
   return (
     <>
       <Container className="px-10 mt-16" id="content">
@@ -79,10 +88,10 @@ export default async function Products({ params: { locale } }: HomeProps) {
         </div>
         <h1>{homepage.title}</h1>
         <div dangerouslySetInnerHTML={{ __html: homepage.content }} />
-        <hr className="h-0.5 my-3 bg-accent" />
-        <h2>{t("products")}</h2>
       </Container>
       <Container>
+        <hr className="h-0.5 my-3 bg-accent" />
+        <h2>{t("products")}</h2>
         <div className="grid md:grid-cols-3 gap-4">
           {homepage.products &&
             homepage.products.map((product) => (
@@ -107,6 +116,32 @@ export default async function Products({ params: { locale } }: HomeProps) {
               </Card>
             ))}
           </div>
+      </Container>
+      <Container>
+        <hr className="h-0.5 my-3 bg-accent" />
+        <h2>{t("categories")}</h2>
+        <div className="grid md:grid-cols-3 gap-4">
+          {categories.map((category) => (
+            <Card key={category.id}>
+              <Link href={`/${locale}/category/${category.slug}`}>
+                <CardHeader>
+                  <CardTitle>{category.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="relative w-full h-[300px]">
+                    <Image
+                      src={category.image ? category.image : "/placeholder.jpg"}
+                      priority={true}
+                      fill={true}
+                      alt={category.title}
+                      className="object-cover"
+                    />
+                  </div>
+                </CardContent>
+              </Link>
+            </Card>
+          ))}
+        </div>
       </Container>
       <Container size="fluid" className="hidden">
       <GlobalCarousel 
