@@ -44,7 +44,7 @@ export default async function CategoryPage({
       <Container className="p-10 mt-16">
         {/* Use category title if available, otherwise fallback to slug */}
         <h1>{t("category")}: {category?.title || slug}</h1>
-        <div className="grid grid-flow-col grid-cols-3 gap-4">
+        <div className="grid md:grid-cols-3 gap-4 mt-8">
           {products.map((product) => (
             <Card key={product.id}>
               <Link href={`/product/${product.slug}`}>

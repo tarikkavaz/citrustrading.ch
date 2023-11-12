@@ -46,7 +46,7 @@ export default async function Products({ params: { locale } }: MetadataProps) {
     <>
       <Container className="p-10 mt-16">
         <h1>{t("products")}</h1>
-        <div className="grid grid-flow-col grid-cols-3 gap-4">
+        <div className="grid md:grid-cols-3 gap-4 mt-8">
           {products.map((product) => (
               <>
                 <Card key={product.id}>

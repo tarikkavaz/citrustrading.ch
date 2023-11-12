@@ -29,7 +29,7 @@ export default async function CategoriesPage({ params: { locale } }: MetadataPro
       <Container className="p-10 mt-16">
         {/* <h1>{t("categories")}</h1> */}
         <h1>{t("products")}</h1>
-        <div className="grid grid-flow-col grid-cols-3 gap-4">
+        <div className="grid md:grid-cols-3 gap-4 mt-8">
           {categories.map((category) => (
             <>
               <Card key={category.id}>
