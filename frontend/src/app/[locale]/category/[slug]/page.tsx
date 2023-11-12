@@ -81,6 +81,10 @@ export default async function CategoryPage({
       <Container className="p-10 mt-16">
         {/* Use category title if available, otherwise fallback to slug */}
         <h1>{t("category")}: {category?.title || slug}</h1>
+        <div>
+          <h2>{category?.categoryinfo}</h2>
+          <div dangerouslySetInnerHTML={{ __html: category?.content || '' }} className="mt-4" />
+        </div>
         <div className="grid md:grid-cols-3 gap-4 mt-8">
           {products.map((product) => (
             <Card key={product.id}>

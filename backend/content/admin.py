@@ -191,12 +191,12 @@ class CategoryAdminForm(forms.ModelForm):
 
 class CategoryAdmin(admin.ModelAdmin):
     form = CategoryAdminForm
-    list_display = ('title', 'lang', 'slug', 'langslug', 'image_display')  # Add 'langslug' and a method to display the image
+    list_display = ('title', 'lang', 'slug', 'langslug', 'image_display')
     list_filter = ('lang',)
 
     fieldsets = (
         ('Category', {
-            'fields': ('lang', 'title', 'slug', 'langslug', 'image'),  # Add 'langslug' and 'image' fields
+            'fields': ('lang', 'title', 'slug', 'langslug', 'categoryinfo', 'content', 'image'),
         }),
     )
 

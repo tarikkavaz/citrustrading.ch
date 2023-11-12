@@ -90,6 +90,8 @@ export interface Category {
   title: string;
   slug: string;
   image: string | null;
+  content?: string;
+  categoryinfo?: string;
 }
 
 export interface Tag {

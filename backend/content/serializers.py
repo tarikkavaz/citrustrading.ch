@@ -49,7 +49,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Category
-        fields = ['title', 'lang', 'slug', 'langslug', 'image']
+        fields = ['title', 'lang', 'slug', 'langslug', 'categoryinfo', 'content', 'image']
 
     def get_image(self, obj):
         if obj.image:

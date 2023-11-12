@@ -35,6 +35,8 @@ class MenuItem(models.Model):
 class Category(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True, blank=True)
+    categoryinfo = models.TextField(blank=True, verbose_name="Category Description")
+    content = RichTextField(blank=True, verbose_name="Product Content")
     langslug = models.CharField(max_length=255, blank=True, verbose_name="Translation Link")  # Added langslug field
     image = models.ForeignKey('Image', on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Selected Image", related_name="category_image")  # Added image field
     lang = models.CharField(max_length=7, choices=settings.LANGUAGES, default='en', blank=True, verbose_name="Language")

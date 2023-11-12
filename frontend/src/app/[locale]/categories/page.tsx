@@ -7,7 +7,7 @@ import { getTranslator } from "next-intl/server";
 import { DEFAULT_OG_IMAGE_URL } from '@/lib/config';
 import {
   Card,
-  CardContent, CardHeader,
+  CardContent, CardHeader, CardDescription,
   CardTitle
 } from "@/components/ui/card";
 
@@ -53,16 +53,24 @@ export default async function CategoriesPage({ params: { locale } }: MetadataPro
                     <CardHeader>
                       <CardTitle>{category.title}</CardTitle>
                     </CardHeader>
+                    <CardDescription>
+                      <CardContent>
+                      {category.categoryinfo}
+                      </CardContent>
+                    </CardDescription>
                     <CardContent>
-                      <div className="relative w-full h-[300px]">
-                        <Image
-                          src={category.image ? category.image : "/placeholder.jpg"}
-                          priority={true}
-                          fill={true}
-                          alt={category.title}
-                          className="object-cover"
-                        />
-                      </div>
+                      <>
+                        <div className="relative w-full h-[300px]">
+                          <Image
+                            src={category.image ? category.image : "/placeholder.jpg"}
+                            priority={true}
+                            fill={true}
+                            alt={category.title}
+                            className="object-cover"
+                          />
+                        </div>
+                        <div dangerouslySetInnerHTML={{ __html: category.content || '' }} className="mt-4" />
+                      </>
                     </CardContent>
   
                 </Link>
