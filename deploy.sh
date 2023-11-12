@@ -31,6 +31,15 @@ run_on_remote() {
     ssh -t "$SSH_ALIAS" "$@" # -t flag forces TTY allocation
 }
 
+# Function to pull from remote
+pull_repo() {
+    printf "Pulling changes from the repo\n"
+    full_width_line '-'
+    run_on_remote "cd $SERVER_PATH && git pull"
+    full_width_line '-'
+    printf "Changes pulled.\n"
+}
+
 # Function to update and rebuild the frontend
 update_frontend() {
     printf "Updating Frontend on remote...\n"
@@ -87,6 +96,9 @@ prune_docker() {
 
 # Check command line argument
 case "$1" in
+    pull)
+        pull_repo
+        ;;
     frontend)
         update_frontend
         ;;
@@ -106,6 +118,6 @@ case "$1" in
         prune_docker
         ;;
     *)
-        printf "Usage: $0 {frontend|backend|all|loaddata|dumpdata|prune}\n"
+        printf "Usage: $0 {frontend|pull|backend|all|loaddata|dumpdata|prune}\n"
         exit 1
 esac

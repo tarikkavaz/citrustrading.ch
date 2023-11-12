@@ -143,6 +143,12 @@ chmod +x deploy.sh
 
 
 
+To **Pull Changes** perform a git pull on the server, use the following command:
+
+```bash
+./deploy.sh pull
+```
+
 To **update the frontend** of your application, use the following command:
 
 ```bash
