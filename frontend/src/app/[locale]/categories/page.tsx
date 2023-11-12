@@ -52,12 +52,8 @@ export default async function CategoriesPage({ params: { locale } }: MetadataPro
                 
                     <CardHeader>
                       <CardTitle>{category.title}</CardTitle>
+                      <CardDescription>{category.categoryinfo}</CardDescription>
                     </CardHeader>
-                    <CardDescription>
-                      <CardContent>
-                      {category.categoryinfo}
-                      </CardContent>
-                    </CardDescription>
                     <CardContent>
                       <>
                         <div className="relative w-full h-[300px]">

@@ -126,6 +126,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
               <Link href={`/${locale}/category/${category.slug}`}>
                 <CardHeader>
                   <CardTitle>{category.title}</CardTitle>
+                  <CardDescription>{category.categoryinfo}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="relative w-full h-[300px]">
