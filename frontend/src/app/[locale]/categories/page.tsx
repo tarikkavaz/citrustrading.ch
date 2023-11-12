@@ -6,6 +6,7 @@ import Image from "next/image";
 import { fetchData, API_URL } from "@/utils/api";
 import { useLocale } from "next-intl";
 import { getTranslator } from "next-intl/server";
+import { DEFAULT_OG_IMAGE_URL } from '@/lib/config';
 import {
   Card,
   CardContent,
@@ -19,6 +20,24 @@ const getCategories = async (locale: string): Promise<Category[]> => {
   const allCategories: Category[] = await fetchData(API_URL, categoriesEndpoint);
   return allCategories.filter(category => category.lang === locale);
 };
+
+export async function generateMetadata({ params: { locale } }: MetadataProps) {
+  const t = await getTranslator(locale, "Globals");
+
+  const description = `${t("products")} - ${t("sitedescription")}`;
+  const pageTitle = `${t("products")} | ${t("sitename")}`;
+
+  return {
+    title: pageTitle,
+    description: description,
+    openGraph: {
+      title: pageTitle,
+      description: description,
+      images: [{ url: DEFAULT_OG_IMAGE_URL }],
+    },
+  };
+}
+
 
 export default async function CategoriesPage({ params: { locale } }: MetadataProps) {
   const categories = await getCategories(locale);

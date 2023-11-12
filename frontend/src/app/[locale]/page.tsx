@@ -11,9 +11,6 @@ import Image from "next/image";
 import { fetchData, API_URL, SERVER_IP } from "@/utils/api";
 import { useLocale } from "next-intl";
 import { getTranslator } from "next-intl/server";
-import { Button } from "@/components/ui/button";
-import { Mail } from "lucide-react";
-import { Loader2 } from "lucide-react";
 import { DEFAULT_OG_IMAGE_URL } from "@/lib/config";
 import { Metadata, ResolvingMetadata } from "next";
 import {
@@ -82,8 +79,8 @@ export default async function Products({ params: { locale } }: HomeProps) {
         </div>
         <h1>{homepage.title}</h1>
         <div dangerouslySetInnerHTML={{ __html: homepage.content }} />
-        <hr className="h-0.5 my-10 bg-accent" />
-        <h2 className="mt-16">{t("products")}</h2>
+        <hr className="h-0.5 my-3 bg-accent" />
+        <h2>{t("products")}</h2>
       </Container>
       <Container>
         <div className="grid md:grid-cols-3 gap-4">
