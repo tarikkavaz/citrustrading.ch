@@ -21,22 +21,9 @@ This guide provides instructions for setting up and deploying Citrus Trading pro
 
 2. **Setup Frontend Environment Variables**
     ```bash
-    cp frontend/.env-sample frontend/.env
+    cp frontend/.env-sample-local frontend/.env
     ```
-    On the deployment server, it's crucial to update the variables with your respective values within the specified file.
 
-    ```
-    API_BASE_URL=YourServerIP
-    API_PORT=8000
-    CLIENT_BASE_URL=YourServerIP
-    CLIENT_PORT=3000
-    DOMAIN=YOURDOMAINNAME.com
-    SERVER_PATH=/home/deployer/sites/YOURDOMAINNAME.com app path 
-    SSH_ALIAS=YOURDOMAINNAME
-    ```
-    
-    
-    
 3. **Install Frontend Dependencies and Build**
     ```bash
     (cd frontend && yarn)
@@ -87,35 +74,56 @@ This guide provides instructions for setting up and deploying Citrus Trading pro
 
 ---
 
-## Deployment Setup
+## Productoion Setup on Digitalocean Droplet
 
 ### Prerequisites
 
-- Ubuntu 20.04+ server
-- SSH access to the server
+- Docker Droplet installed from Digitalocean Marketplace (Ubuntu 20.04)
+    Select a minimum Plan of __2 GB / 1 CPU 50 GB SSD Disk 2 TB transfer__
 - Domain name pointing to the server
 
 ### Steps
 
-1. **Clone the Repository**
+Connect to the server via SSH and run the following commands:
+
+1. **Install Docker Compose**
+    ```bash
+    apt install docker-compose
+    ```
+
+2. **Install nvm and set Node version to 18.12.0**
+    ```bash
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+    nvm install 18.12.0
+    ```
+
+3. **Install Yarn**
+    ```bash
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+    sudo apt update
+    sudo apt install yarn
+    ```
+
+4. **Clone the Repository**
     ```bash
     git clone https://github.com/tarikkavaz/citrustrading.ch.git YOURDOMAINNAME
     cd YOURDOMAINNAME
     ```
 
-2. **Setup Frontend Environment Variables**
+5. **Setup Frontend Environment Variables**
     ```bash
     cp frontend/.env-sample-server frontend/.env
     ```
     Ensure that the values are correctly set.
 
-2. **Setup Nginx file**
+6. **Setup Nginx file**
     ```bash
     cp nginx.conf-sample nginx.conf
     ```
     Ensure that the values `YOURDOMAINNAME` are correctly set.
 
-4. **Run the Docker**
+7. **Run the Docker**
    
     ```bash
     docker-compose -f docker-compose.prod.yml up --build -d &&
@@ -123,35 +131,54 @@ This guide provides instructions for setting up and deploying Citrus Trading pro
     docker-compose exec backend python manage.py loaddata datadump.json &&
     docker-compose exec backend python manage.py collectstatic
     ```
+---
 
-5. **Run the Deploy Script**
+## Deploy from Local Machine to Digitalocean Droplet
 
-    First, ensure that your script is executable by running the following command:
+First, ensure that your script is executable by running the following command:
 
-    ```bash
-    chmod +x deploy.sh
-    ```
+```bash
+chmod +x deploy.sh
+```
 
-    Now, you can **deploy** your application using the following command:
 
-    ```bash
-    ./deploy.sh deploy
-    ```
 
-    If you wish to **prune** unused Docker objects during the deployment, you can use the following command instead:
+To **update the frontend** of your application, use the following command:
 
-    ```bash
-    ./deploy.sh prune
-    ```
+```bash
+./deploy.sh frontend
+```
 
-    For other management tasks, you can use the script with different parameters as follows:
+To **update the backend**, use this command:
 
-    To **dumpdata** data:
-      ```bash
-      ./deploy.sh dump
-      ```
+```bash
+./deploy.sh backend
+```
 
-    To **load** data:
-      ```bash
-      ./deploy.sh load
-      ```
+If you need to **update both frontend and backend**, use:
+
+```bash
+./deploy.sh all
+```
+
+To **prune** unused Docker objects, you can use:
+
+```bash
+./deploy.sh prune
+```
+
+
+
+For data management tasks, the script supports the following commands:
+
+To **dump data**:
+```bash
+./deploy.sh dumpdata
+```
+
+To **load data** (e.g., from a dump):
+```bash
+./deploy.sh loaddata
+```
+
+Remember to set up your `.env` file and SSH configurations correctly before running these commands.
