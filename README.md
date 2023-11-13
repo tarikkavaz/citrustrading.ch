@@ -1,5 +1,6 @@
-# Citrus Trading Project Guide
+# Full-Stack Web Development with Django, Next.js, and Docker
 
+This Guide provides a comprehensive set of instructions for setting up, developing, and deploying a web application using a combination of technologies including Docker, Django, and Next.js. This guide is tailored for deployment on a DigitalOcean Droplet, ensuring a smooth transition from local development to a live production environment. It covers initial setup, development configurations,
 
 ---
 
