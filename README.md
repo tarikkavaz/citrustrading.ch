@@ -134,7 +134,7 @@ Connect to the server via SSH and run the following commands:
 
 ## Deploy from Local Machine to Digitalocean Droplet
 
-Set up your `frontend/.env` file and SSH configurations correctly before running these commands.
+Set up your `frontend/.env` file and SSH configurations correctly before running these commands. Note that `IMAGEVOLUMEPREFIX` is usually your folder name without symbols.
 ```properties
 SERVER_PATH=/root/yourdomainname.com
 SSH_ALIAS=yoursshalias
