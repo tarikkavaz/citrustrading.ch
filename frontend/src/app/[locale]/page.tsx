@@ -14,13 +14,7 @@ import { useLocale } from "next-intl";
 import { getTranslator } from "next-intl/server";
 import { DEFAULT_OG_IMAGE_URL } from "@/lib/config";
 import { Metadata, ResolvingMetadata } from "next";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+
 
 const getHomepage = async (): Promise<Homepage[]> => {
   const locale = useLocale();
@@ -95,25 +89,26 @@ export default async function Products({ params: { locale } }: HomeProps) {
         <div className="grid md:grid-cols-2 gap-4">
           {homepage.products &&
             homepage.products.map((product) => (
-              <Card key={product.id}>
+              <div key={product.id}>
                 <Link href={`/product/${product.slug}`}>
-                  <CardHeader>
-                    <CardTitle>{product.title}</CardTitle>
-                    <CardDescription>{product.pageinfo}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
+                  <div>
+                    <div>{product.title}</div>
+                    <div>{product.pageinfo}</div>
+                  </div>
+                  <div>
                     <div className="relative w-full h-[300px]">
                       <Image
                         src={product.image ? product.image : "/images/placeholder.jpg"}
                         priority={true}
                         fill={true}
+                        sizes="100%"
                         alt={product.title}
                         className=" object-cover"
                       />
                     </div>
-                  </CardContent>
+                  </div>
                 </Link>
-              </Card>
+              </div>
             ))}
           </div>
       </Container>
@@ -122,25 +117,26 @@ export default async function Products({ params: { locale } }: HomeProps) {
         <h2>{t("categories")}</h2>
         <div className="grid md:grid-cols-3 gap-4">
           {categories.map((category) => (
-            <Card key={category.id}>
+            <div key={category.id}>
               <Link href={`/${locale}/category/${category.slug}`}>
-                <CardHeader>
-                  <CardTitle>{category.title}</CardTitle>
-                  <CardDescription>{category.categoryinfo}</CardDescription>
-                </CardHeader>
-                <CardContent>
+                <div>
+                  <div>{category.title}</div>
+                  <div>{category.categoryinfo}</div>
+                </div>
+                <div>
                   <div className="relative w-full h-[300px]">
                     <Image
                       src={category.image ? category.image : "/images/placeholder.jpg"}
                       priority={true}
                       fill={true}
+                      sizes="100%"
                       alt={category.title}
                       className="object-cover"
                     />
                   </div>
-                </CardContent>
+                </div>
               </Link>
-            </Card>
+            </div>
           ))}
         </div>
       </Container>

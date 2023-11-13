@@ -6,13 +6,6 @@ import { fetchData, API_URL } from "@/utils/api";  // Imported API_URL
 import { useLocale } from "next-intl";
 import { getTranslator } from "next-intl/server";
 import { DEFAULT_OG_IMAGE_URL } from '@/lib/config';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
 
 const getPages = async (): Promise<Page[]> => {
   const locale = useLocale();
@@ -49,13 +42,13 @@ export default async function Pages({ params: { locale } }: MetadataProps) {
         <div className="grid md:grid-cols-3 gap-4 mt-8">
           {pages.map((page) => (
               <>
-                <Card key={page.id}>
+                <div key={page.id}>
                 <Link href={`/page/${page.slug}`}>
-                  <CardHeader>
-                    <CardTitle>{page.title}</CardTitle>
-                    <CardDescription>{page.pageinfo}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
+                  <div>
+                    <div>{page.title}</div>
+                    <div>{page.pageinfo}</div>
+                  </div>
+                  <div>
                   {page.image && (
                     <div className="relative w-full h-[300px]">
                       <Image
@@ -67,9 +60,9 @@ export default async function Pages({ params: { locale } }: MetadataProps) {
                       />
                     </div>
                   )}
-                  </CardContent>
+                  </div>
                   </Link>
-                </Card>
+                </div>
               </>
           ))}
         </div>

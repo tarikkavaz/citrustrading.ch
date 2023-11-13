@@ -5,11 +5,6 @@ import Image from "next/image";
 import { fetchData, API_URL } from "@/utils/api";
 import { getTranslator } from "next-intl/server";
 import { DEFAULT_OG_IMAGE_URL } from '@/lib/config';
-import {
-  Card,
-  CardContent, CardHeader, CardDescription,
-  CardTitle
-} from "@/components/ui/card";
 
 const getCategories = async (locale: string): Promise<Category[]> => {
   const categoriesEndpoint = `/api/categories/`;
@@ -47,14 +42,14 @@ export default async function CategoriesPage({ params: { locale } }: MetadataPro
         <div className="grid md:grid-cols-3 gap-4 mt-8">
           {categories.map((category) => (
             <>
-              <Card key={category.id}>
+              <div key={category.id}>
                 <Link href={`/${locale}/category/${category.slug}`}>
                 
-                    <CardHeader>
-                      <CardTitle>{category.title}</CardTitle>
-                      <CardDescription>{category.categoryinfo}</CardDescription>
-                    </CardHeader>
-                    <CardContent>
+                    <div>
+                      <div>{category.title}</div>
+                      <div>{category.categoryinfo}</div>
+                    </div>
+                    <div>
                       <>
                         <div className="relative w-full h-[300px]">
                           <Image
@@ -67,10 +62,10 @@ export default async function CategoriesPage({ params: { locale } }: MetadataPro
                         </div>
                         <div dangerouslySetInnerHTML={{ __html: category.content || '' }} className="mt-4" />
                       </>
-                    </CardContent>
+                    </div>
   
                 </Link>
-              </Card>
+              </div>
             </>
           ))}
         </div>

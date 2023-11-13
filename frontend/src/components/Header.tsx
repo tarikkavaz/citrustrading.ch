@@ -54,6 +54,7 @@ function Logo({ mobileMenuOpen, setMobileMenuOpen }: MobileMenuOpenProps) {
             src={logoSrc}
             priority={true}
             fill={true}
+            sizes="100%"
             alt="Citrus Trading"
             className=" object-cover"
             />

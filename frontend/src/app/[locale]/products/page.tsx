@@ -6,13 +6,6 @@ import { fetchData, API_URL } from "@/utils/api";  // Imported API_URL
 import { useLocale } from "next-intl";
 import { getTranslator } from "next-intl/server";
 import { DEFAULT_OG_IMAGE_URL } from '@/lib/config';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
 
 const getProducts = async (): Promise<Product[]> => {
   const locale = useLocale();
@@ -49,13 +42,13 @@ export default async function Products({ params: { locale } }: MetadataProps) {
         <div className="grid md:grid-cols-3 gap-4 mt-8">
           {products.map((product) => (
               <>
-                <Card key={product.id}>
+                <div key={product.id}>
                 <Link href={`/product/${product.slug}`}>
-                  <CardHeader>
-                    <CardTitle>{product.title}</CardTitle>
-                    <CardDescription>{product.pageinfo}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
+                  <div>
+                    <div>{product.title}</div>
+                    <div>{product.pageinfo}</div>
+                  </div>
+                  <div>
                     <div className="relative w-full h-[300px]">
                       <Image
                         src={product.image ? product.image : "/placeholder.jpg"}
@@ -65,9 +58,9 @@ export default async function Products({ params: { locale } }: MetadataProps) {
                         className=" object-cover"
                       />
                     </div>
-                  </CardContent>
+                  </div>
                   </Link>
-                </Card>
+                </div>
               </>
           ))}
         </div>

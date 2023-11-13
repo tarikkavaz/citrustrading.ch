@@ -7,13 +7,7 @@ import { fetchData, API_URL } from "@/utils/api";
 import { getTranslator } from "next-intl/server";
 import { Metadata, ResolvingMetadata } from "next";
 import { DEFAULT_OG_IMAGE_URL } from "@/lib/config";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+
 
 // Helper function to fetch the category by slug
 const getCategoryBySlug = async (locale: string, slug: string): Promise<Category | undefined> => {
@@ -87,27 +81,28 @@ export default async function CategoryPage({
         </div>
         <div className="grid md:grid-cols-3 gap-4 mt-8">
           {products.map((product) => (
-            <Card key={product.id}>
+            <div key={product.id}>
               <Link href={`/product/${product.slug}`}>
               
-                  <CardHeader>
-                    <CardTitle>{product.title}</CardTitle>
-                    <CardDescription>{product.pageinfo}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
+                  <div>
+                    <div>{product.title}</div>
+                    <div>{product.pageinfo}</div>
+                  </div>
+                  <div>
                     <div className="relative w-full h-[300px]">
                       <Image
                         src={product.image ? product.image : "/placeholder.jpg"}
                         priority={true}
                         fill={true}
+                        sizes="100%"
                         alt={product.title}
                         className="object-cover"
                       />
                     </div>
-                  </CardContent>
+                  </div>
 
               </Link>
-            </Card>
+            </div>
           ))}
         </div>
       </Container>
