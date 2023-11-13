@@ -83,35 +83,37 @@ export default async function Products({ params: { locale } }: HomeProps) {
         <h1>{homepage.title}</h1>
         <div dangerouslySetInnerHTML={{ __html: homepage.content }} />
       </Container>
+      {homepage.products && homepage.products.length > 0 && (
       <Container>
         <hr className="h-0.5 my-3 bg-accent" />
         <h2>{t("featuredproducts")}</h2>
         <div className="grid md:grid-cols-2 gap-4">
-          {homepage.products &&
-            homepage.products.map((product) => (
-              <div key={product.id}>
-                <Link href={`/product/${product.slug}`}>
-                  <div>
-                    <div>{product.title}</div>
-                    <div>{product.pageinfo}</div>
+          {homepage.products.map((product) => (
+            <div key={product.id}>
+              <Link href={`/product/${product.slug}`}>
+                <div>
+                  <div>{product.title}</div>
+                  <div>{product.pageinfo}</div>
+                </div>
+                <div>
+                  <div className="relative w-full h-[300px]">
+                    <Image
+                      src={product.image ? product.image : "/images/placeholder.jpg"}
+                      priority={true}
+                      fill={true}
+                      sizes="100%"
+                      alt={product.title}
+                      className="object-cover"
+                    />
                   </div>
-                  <div>
-                    <div className="relative w-full h-[300px]">
-                      <Image
-                        src={product.image ? product.image : "/images/placeholder.jpg"}
-                        priority={true}
-                        fill={true}
-                        sizes="100%"
-                        alt={product.title}
-                        className=" object-cover"
-                      />
-                    </div>
-                  </div>
-                </Link>
-              </div>
-            ))}
-          </div>
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
       </Container>
+    )}
+
       <Container>
         <hr className="h-0.5 my-3 bg-accent mt-12 " />
         <h2>{t("categories")}</h2>
