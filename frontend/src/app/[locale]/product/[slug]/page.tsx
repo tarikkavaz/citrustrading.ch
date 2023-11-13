@@ -55,7 +55,7 @@ export default async function Page({
     <>
       <Container className="p-10 mt-16" id="content">
         {product.image && (
-          <div className="my-10 relative w-full h-[500px]">
+          <div className="my-10 relative w-full h-[500px]" key={product.title}>
             <Image
               src={product.image}
               priority={true}
@@ -68,7 +68,7 @@ export default async function Page({
 
         <h1 className="mt-12">{product.title}</h1>
         {product.shoplink && (
-          <h2 className="mt-12">
+          <h2 className="mt-12" key={product.title}>
             <Link href={product.shoplink || '#'}>
               <Button>
                 {t("buy")}
