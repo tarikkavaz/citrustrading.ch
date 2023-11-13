@@ -40,6 +40,17 @@ pull_repo() {
     printf "Changes pulled.\n"
 }
 
+# Function to add, commit, and push changes to the repository
+push_changes() {
+    printf "Adding, committing, and pushing changes to the repo\n"
+    full_width_line '-'
+    git add .
+    git commit -m "pushed from server"
+    git push
+    full_width_line '-'
+    printf "Changes pushed to the repository.\n"
+}
+
 # Function to update and rebuild the frontend
 update_frontend() {
     printf "Updating Frontend on remote...\n"
@@ -99,6 +110,9 @@ case "$1" in
     pull)
         pull_repo
         ;;
+    push)
+        push_changes
+        ;;
     frontend)
         update_frontend
         ;;
@@ -118,6 +132,6 @@ case "$1" in
         prune_docker
         ;;
     *)
-        printf "Usage: $0 {frontend|pull|backend|all|loaddata|dumpdata|prune}\n"
+        printf "Usage: $0 {frontend|pull|push|backend|all|loaddata|dumpdata|prune}\n"
         exit 1
 esac
