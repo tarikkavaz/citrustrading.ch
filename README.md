@@ -138,6 +138,7 @@ Set up your `frontend/.env` file and SSH configurations correctly before running
 ```properties
 SERVER_PATH=/root/yourdomainname.com
 SSH_ALIAS=yoursshalias
+IMAGEVOLUMEPREFIX=yourdomainnamecom
 ```
 
 Ensure that your script is executable by running the following command:
@@ -178,7 +179,7 @@ To **prune** unused Docker objects, you can use:
 ./deploy.sh prune
 ```
 
-
+### Data Management
 
 For data management tasks, the script supports the following commands:
 
@@ -190,4 +191,23 @@ To **dump data**:
 To **load data** (e.g., from a dump):
 ```bash
 ./deploy.sh loaddata
+```
+
+### Image Volume Management
+
+To manage images stored in a Docker volume, use the following commands. 
+
+To **create a tar file** of all files from the `images` volume on the remote server:
+```bash
+./deploy.sh create-tar
+```
+
+To **download the tar file** to the local root of the project:
+```bash
+./deploy.sh download-tar 
+```
+
+To **extract files from the tar file** to the `local` images volume:
+```bash
+./deploy.sh extract-tar
 ```

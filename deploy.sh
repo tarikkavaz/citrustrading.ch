@@ -25,6 +25,7 @@ fi
 # SSH details and server path from environment variables
 SSH_ALIAS=$SSH_ALIAS
 SERVER_PATH=$SERVER_PATH
+IMAGEVOLUMEPREFIX=$IMAGEVOLUMEPREFIX
 
 # Function to run commands on the remote server
 run_on_remote() {
@@ -105,54 +106,33 @@ prune_docker() {
     printf "Docker system pruned.\n"
 }
 
-# Function to create a tar file from the images volume
+# Function to create a tar file with all files from the volume images
 create_images_tar() {
-    local backend_service_name=$1
-
-    if [ -z "$backend_service_name" ]; then
-        printf "No backend service name provided. Exiting.\n"
-        exit 1
-    fi
-
     printf "Creating tar file from images volume on remote...\n"
     full_width_line '-'
-    run_on_remote "cd $SERVER_PATH && docker run --rm --volumes-from \$(docker-compose ps -q $backend_service_name) -v \$(pwd):/backup ubuntu tar cvf /backup/images.tar /backend/media/images"
+    run_on_remote "cd $SERVER_PATH && docker run --rm -v ${IMAGEVOLUMEPREFIX}_images:/images -v $(pwd):/backup ubuntu tar cvf /backup/images.tar /images"
     full_width_line '-'
     printf "Tar file created.\n"
 }
 
 # Function to download the tar file to local
 download_images_tar() {
-    local ssh_alias=$1
-    local server_path=$2
-
-    if [ -z "$ssh_alias" ] || [ -z "$server_path" ]; then
-        printf "SSH alias or server path not provided. Exiting.\n"
-        exit 1
-    fi
-
     printf "Downloading images tar file to local...\n"
     full_width_line '-'
-    scp "$ssh_alias:$server_path/images.tar" .
+    scp "$SSH_ALIAS:$SERVER_PATH/images.tar" .
     full_width_line '-'
     printf "Tar file downloaded.\n"
 }
 
 # Function to extract the tar file to local images volume
 extract_images_tar() {
-    local volume_name=$1
-
-    if [ -z "$volume_name" ]; then
-        printf "No volume name provided. Exiting.\n"
-        exit 1
-    fi
-
     printf "Extracting images from tar file to local volume...\n"
     full_width_line '-'
-    tar xvf images.tar -C ./$volume_name
+    tar xvf images.tar -C ./${IMAGEVOLUMEPREFIX}_images
     full_width_line '-'
     printf "Images extracted to local volume.\n"
 }
+
 
 # Check command line argument
 case "$1" in
@@ -181,15 +161,15 @@ case "$1" in
         prune_docker
         ;;
     create-tar)
-        create_images_tar "$2"
+        create_images_tar
         ;;
     download-tar)
-        download_images_tar "$2" "$3"
+        download_images_tar
         ;;
     extract-tar)
-        extract_images_tar "$2"
+        extract_images_tar
         ;;
     *)
-        printf "Usage: $0 {frontend|pull|push|backend|all|loaddata|dumpdata|prune|create-tar [backend_service_name]|download-tar [ssh_alias] [server_path]|extract-tar [volume_name]}\n"
+        printf "Usage: $0 {frontend|pull|push|backend|all|loaddata|dumpdata|prune|create-tar|download-tar|extract-tar}\n"
         exit 1
 esac
