@@ -135,20 +135,30 @@ Connect to the server via SSH and run the following commands:
 
 ## Deploy from Local Machine to Digitalocean Droplet
 
-Set up your `frontend/.env` file and SSH configurations correctly before running these commands. Note that `IMAGEVOLUMEPREFIX` is usually your folder name without symbols.
+### Setup for Deploy Script
+
+Before using the deploy script, set up your `frontend/.env` file and SSH configurations:
+
+**Edit `.env` File:**
+Make sure your `frontend/.env` file has these lines:
 ```properties
 SERVER_PATH=/root/yourdomainname.com
 SSH_ALIAS=yoursshalias
-IMAGEVOLUMEPREFIX=yourdomainnamecom
+IMAGEVOLUMEPREFIX=yourprojectname
 ```
+Replace `yourdomainname.com`, `yoursshalias`, and `yourprojectname` with your actual server path, SSH alias, and project name.
+
+**Find Your Image Volume Name:**
+If unsure about `IMAGEVOLUMEPREFIX`, run `docker volume ls` in the terminal.
+Use the name before `_images` from the volume list.
+
 
 Ensure that your script is executable by running the following command:
-
 ```bash
 chmod +x deploy.sh
 ```
 
-
+### Application Deployment and Maintenance Commands
 
 To **Pull Changes** perform a git pull on the server, use the following command:
 
