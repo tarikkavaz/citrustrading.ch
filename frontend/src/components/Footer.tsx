@@ -37,18 +37,11 @@ export default function Footer() {
   const year = date.getFullYear();
   return (
     <footer
-      className="bg-background text-foreground relative "
+      className="bg-background text-foreground relative border-b border-[hsl(var(--border))]"
       aria-labelledby="footer-heading"
     >
-      <div className="overflow-hidden absolute z-10 w-full h-full">
-        <div className="animate-bg-light w-full h-[2000px] absolute top-0 left-0 opacity-5 bg-left"></div>
-        <div className="animate-bg-light w-full h-[2000px] absolute top-0 right-0 opacity-50 bg-right"></div>
-      </div>
-      <h2 id="footer-heading" className="sr-only">
-        Footer
-      </h2>
 
-      <Container size="default" className="pb-16 pt-16 relative z-20">
+      <Container size="fluid" className="pb-16 pt-16 relative z-20 px-10">
         {/* <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32"> */}
         <div className="xl:grid xl:grid-cols-3 xl:gap-8 ">
           <div className="space-y-8">
