@@ -116,7 +116,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
                   </div>
                 </div>
               </Link>
-              <img src="{product.image ? product.image : '/images/placeholder.jpg'}" alt="" />
+              <img src={product.image ? product.image : '/images/placeholder.jpg'} alt="" />
             </div>
           ))}
         </div>
@@ -144,7 +144,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
                       alt={category.title}
                       className="object-cover"
                     />
-                    <img src="{category.image ? category.image : '/images/placeholder.jpg'}" alt="" />
+                    <img src={category.image ? category.image : '/images/placeholder.jpg'} alt="" />
                   </div>
                 </div>
               </Link>

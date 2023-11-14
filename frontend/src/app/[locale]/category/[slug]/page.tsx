@@ -98,7 +98,7 @@ export default async function CategoryPage({
                         alt={product.title}
                         className="object-cover"
                       />
-                      <img src="{product.image ? product.image : '/images/placeholder.jpg'}" alt="" />
+                      <img src={product.image ? product.image : '/images/placeholder.jpg'} alt="" />
                     </div>
                   </div>
 
