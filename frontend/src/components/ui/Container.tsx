@@ -15,10 +15,10 @@ const Container: React.FC<ContainerProps> = ({
   ...others
 }: ContainerProps) => {
   const sizes = {
-    md: 'max-w-screen-md mx-auto px-4',
-    lg: 'max-w-screen-lg mx-auto px-4',
-    default: 'max-w-screen-xl mx-auto px-4',
-    fluid: 'w-full mx-auto px-4',
+    md: 'max-w-screen-md mx-auto',
+    lg: 'max-w-screen-lg mx-auto',
+    default: 'max-w-screen-xl mx-auto',
+    fluid: 'w-full mx-auto',
   }
   return React.createElement(
     as,

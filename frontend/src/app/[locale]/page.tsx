@@ -64,7 +64,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
 
   return (
     <>
-      <Container className="px-10 mt-16" id="content">
+      <Container className="mt-16" id="content">
       {homepage.images && homepage.images.length > 0 && (
       <Container size="fluid" className="">
         <GlobalCarousel 
