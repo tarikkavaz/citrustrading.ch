@@ -89,6 +89,7 @@ export default async function Page({
                         alt={post.title}
                         className=" object-cover"
                       />
+                      <img src="{post.image ? post.image : '/images/placeholder.jpg'}" alt="" />
                     </div>
                   </div>
                   </Link>

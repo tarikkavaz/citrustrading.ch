@@ -43,6 +43,7 @@ export const GlobalCarousel: FC<GlobalCarouselProps> = ({
                 alt={image.alt_text}
                 className="w-full h-full object-cover object-center"
               />
+              <img src="{image.image}" alt="" />
             </picture>
           </SwiperSlide>
         ))}

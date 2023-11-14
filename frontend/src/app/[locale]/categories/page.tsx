@@ -59,6 +59,7 @@ export default async function CategoriesPage({ params: { locale } }: MetadataPro
                             alt={category.title}
                             className="object-cover"
                           />
+                          <img src="{category.image ? category.image : '/images/placeholder.jpg'}" alt="" />
                         </div>
                         <div dangerouslySetInnerHTML={{ __html: category.content || '' }} className="mt-4" />
                       </>

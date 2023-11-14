@@ -144,6 +144,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
                       alt={category.title}
                       className="object-cover"
                     />
+                    <img src="{category.image ? category.image : '/images/placeholder.jpg'}" alt="" />
                   </div>
                 </div>
               </Link>

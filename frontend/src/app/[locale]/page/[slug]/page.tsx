@@ -57,6 +57,7 @@ export default async function Page({
             alt={page.title}
             className="object-cover"
           />
+          <img src="{page.image}" alt="" />
         </div>
       )}
 
@@ -75,6 +76,7 @@ export default async function Page({
                   height={300}
                   alt={img.alt_text}
                 />
+                <img src="{img.image}" alt="" />
               </picture>
             </picture>
           ))}
