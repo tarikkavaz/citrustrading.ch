@@ -222,3 +222,7 @@ To **extract files from the tar file** to the `local` images volume:
 ```bash
 ./deploy.sh extract-tar
 ```
+
+
+
+RESET
