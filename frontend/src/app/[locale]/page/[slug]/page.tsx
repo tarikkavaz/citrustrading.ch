@@ -1,5 +1,6 @@
 import { Page, ContentImage, MetadataProps } from "@/utils/types";
 import Container from "@/components/ui/Container";
+import Bubbles from "@/components/Bubbles";
 import Image from "next/image";
 import { fetchData, API_URL } from "@/utils/api"; // Imported API_URL
 import { useLocale } from "next-intl";
@@ -47,40 +48,43 @@ export default async function Page({
   const t = await getTranslator(locale, "Globals");
 
   return (
-    <Container className="py-10" id="content">
-      {page.image && (
-        <div className="my-10 relative w-full h-[500px]">
-          <Image
-            src={page.image}
-            priority={true}
-            fill={true}
-            alt={page.title}
-            className="object-cover"
-          />
-          <img src={page.image} className="hidden" />
-        </div>
-      )}
-
-      <h1>{page.title}</h1>
-
-      <div dangerouslySetInnerHTML={{ __html: page.content }} />
-
-      <div className="grid grid-cols-4 gap-4 mt-8">
-        {page.images &&
-          page.images.map((img: ContentImage) => (
-            <picture key={img.id}>
-              <picture>
-                <Image
-                  src={img.image}
-                  width={500}
-                  height={300}
-                  alt={img.alt_text}
-                />
-                <img src={img.image} className="hidden" />
+    <>
+      <Bubbles />
+      <Container className="py-10" id="content">
+        {page.image && (
+          <div className="my-10 relative w-full h-[500px]">
+            <Image
+              src={page.image}
+              priority={true}
+              fill={true}
+              alt={page.title}
+              className="object-cover"
+            />
+            <img src={page.image} className="hidden" />
+          </div>
+        )}
+  
+        <h1>{page.title}</h1>
+  
+        <div dangerouslySetInnerHTML={{ __html: page.content }} />
+  
+        <div className="grid grid-cols-4 gap-4 mt-8">
+          {page.images &&
+            page.images.map((img: ContentImage) => (
+              <picture key={img.id}>
+                <picture>
+                  <Image
+                    src={img.image}
+                    width={500}
+                    height={300}
+                    alt={img.alt_text}
+                  />
+                  <img src={img.image} className="hidden" />
+                </picture>
               </picture>
-            </picture>
-          ))}
-      </div>
-    </Container>
+            ))}
+        </div>
+      </Container>
+    </>
   );
 }

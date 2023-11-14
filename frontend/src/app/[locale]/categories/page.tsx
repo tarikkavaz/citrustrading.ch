@@ -2,6 +2,7 @@ import { Category, MetadataProps } from "@/utils/types";
 import Container from "@/components/ui/Container";
 import Link from "next/link";
 import Image from "next/image";
+import ProductsList from "@/components/ProductsList";
 import { fetchData, API_URL } from "@/utils/api";
 import { getTranslator } from "next-intl/server";
 import { DEFAULT_OG_IMAGE_URL } from '@/lib/config';
@@ -36,9 +37,9 @@ export default async function CategoriesPage({ params: { locale } }: MetadataPro
 
   return (
     <>
+      <ProductsList/>
       <Container className="p-10 mt-16">
-        {/* <h1>{t("categories")}</h1> */}
-        <h1>{t("products")}</h1>
+        <h1>{t("categories")}</h1>
         <div className="grid md:grid-cols-3 gap-4 mt-8">
           {categories.map((category) => (
             <>

@@ -9,6 +9,7 @@ import Container from "@/components/ui/Container";
 import { GlobalCarousel } from "@/components/animation/GlobalCarousel";
 import Link from "next/link";
 import Image from "next/image";
+import Hero from "@/components/Hero";
 import { fetchData, API_URL, SERVER_IP } from "@/utils/api";
 import { useLocale } from "next-intl";
 import { getTranslator } from "next-intl/server";
@@ -64,6 +65,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
 
   return (
     <>
+    <Hero />
       <Container className="mt-16" id="content">
       {homepage.images && homepage.images.length > 0 && (
       <Container size="fluid" className="">
@@ -73,7 +75,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
         />
       </Container>
       )}
-        {/* <div className="grid md:grid-cols-3 gap-4 mt-8">
+        <div className="grid md:grid-cols-3 gap-4 mt-8">
           {homepage.images &&
             homepage.images.map((image: ContentImage) => (
               <picture key={image.id}>
@@ -87,7 +89,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
                 />
               </picture>
             ))}
-        </div> */}
+        </div>
         <h1>{homepage.title}</h1>
         <h2>{homepage.pageinfo}</h2>
         <div dangerouslySetInnerHTML={{ __html: homepage.content }} />

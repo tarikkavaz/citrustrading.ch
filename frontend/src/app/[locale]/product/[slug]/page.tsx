@@ -2,6 +2,7 @@ import { Product, ContentImage, MetadataProps } from "@/utils/types";
 import Container from "@/components/ui/Container";
 import Link from "next/link";
 import Image from "next/image";
+import Infoblock from "@/components/Infoblock";
 import { useLocale } from "next-intl";
 import { fetchData, API_URL } from "@/utils/api";
 import { getTranslator } from "next-intl/server";
@@ -53,6 +54,7 @@ export default async function Page({
 
   return (
     <>
+      <Infoblock />
       <Container className="p-10 mt-16" id="content">
         {product.image && (
           <div className="my-10 relative w-full h-[500px]" key={product.title}>

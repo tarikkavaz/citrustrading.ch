@@ -2,7 +2,8 @@ import { Product, MetadataProps } from "@/utils/types";
 import Container from "@/components/ui/Container";
 import Link from "next/link";
 import Image from 'next/image';
-import { fetchData, API_URL } from "@/utils/api";  // Imported API_URL
+import ProductsList from "@/components/ProductsList";
+import { fetchData, API_URL } from "@/utils/api";
 import { useLocale } from "next-intl";
 import { getTranslator } from "next-intl/server";
 import { DEFAULT_OG_IMAGE_URL } from '@/lib/config';
@@ -37,6 +38,7 @@ export default async function Products({ params: { locale } }: MetadataProps) {
   const t = await getTranslator(locale, "Globals");
   return (
     <>
+    <ProductsList/>
       <Container className="p-10 mt-16">
         <h1>{t("products")}</h1>
         <div className="grid md:grid-cols-3 gap-4 mt-8">
