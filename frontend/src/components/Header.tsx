@@ -113,12 +113,11 @@ export default function Header() {
       <Container
         as="header"
         size="fluid"
-        className={`bg-background/[.8] text-foreground w-full h-50 fixed z-50 px-10 flex items-center justify-between backdrop-blur-md backdrop-opacity-100 ${
+        className={`bg-background/[.8] text-foreground w-full h-50 fixed z-50 md:px-10 px-2 flex items-center justify-between backdrop-blur-md backdrop-opacity-100 ${
           isScrolled
             ? "scrolled border-b border-[hsl(var(--border))]"
             : "border-b-0 border-transparent"
         }`}
-        // style={{ background: "var(--popover-foreground)" }}
       >
         <div>
           <Logo

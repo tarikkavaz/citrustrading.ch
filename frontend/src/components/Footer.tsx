@@ -40,9 +40,7 @@ export default function Footer() {
       className="bg-background text-foreground relative border-t border-[hsl(var(--border))]"
       aria-labelledby="footer-heading"
     >
-
-      <Container size="fluid" className="pb-16 pt-16 relative z-20 px-10">
-        {/* <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32"> */}
+      <Container size="fluid" className="pb-16 pt-16 relative z-20 md:px-10 px-2">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8 ">
           <div className="space-y-8">
             <p className=" text-3xl font-medium ">{t("sitename")}</p>
@@ -60,7 +58,6 @@ export default function Footer() {
               ))}
             </div>
           </div>
-
         </div>
         <div className="mt-4 pt-8">
           <p className="text-xs leading-5 ">
