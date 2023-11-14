@@ -84,7 +84,7 @@ export default async function CategoryPage({
             <div key={product.id}>
               <Link href={`/product/${product.slug}`}>
                   <div>
-                    <div>{product.title}</div>
+                    <h3>{product.title}</h3>
                   </div>
                   <div>
                     <div className="relative w-full h-[300px]">
@@ -99,7 +99,7 @@ export default async function CategoryPage({
                       <img src={product.image ? product.image : '/images/placeholder.jpg'} className="hidden" />
                     </div>
                   </div>
-                  <div>{product.pageinfo}</div>
+                  <h4>{product.pageinfo}</h4>
               </Link>
             </div>
           ))}

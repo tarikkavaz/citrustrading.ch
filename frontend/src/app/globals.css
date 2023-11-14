@@ -11,19 +11,19 @@ html {
 
 /* headings */
 h1 {
-  @apply mt-6 mb-12 text-5xl tracking-tight;
+  @apply my-6 text-5xl tracking-tight;
   color: hsl(var(--secondary-foreground));
 }
 h2 {
-  @apply mb-3 text-2xl tracking-tight;
+  @apply my-4 text-2xl tracking-tight;
   color: hsl(var(--secondary-foreground));
 }
 h3 {
-  @apply mb-3 text-xl tracking-tight;
+  @apply my-3 text-xl tracking-tight;
   color: hsl(var(--secondary-foreground));
 }
 h4 {
-  @apply mb-3 text-lg tracking-tight;
+  @apply my-2 text-lg tracking-tight;
   color: hsl(var(--secondary-foreground));
 }
 

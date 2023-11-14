@@ -76,7 +76,7 @@ export default async function Page({
                 <div key={post.id}>
                 <Link href={`/post/${post.slug}`}>
                   <div>
-                    <div>{post.title}</div>
+                    <h3>{post.title}</h3>
                   </div>
                   <div>
                     <div className="relative w-full h-[300px]">
@@ -91,7 +91,7 @@ export default async function Page({
                       <img src={post.image ? post.image : '/images/placeholder.jpg'} className="hidden" />
                     </div>
                   </div>
-                  <div>{post.pageinfo}</div>
+                  <h4>{post.pageinfo}</h4>
                   </Link>
                 </div>
               </>

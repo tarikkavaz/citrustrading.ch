@@ -89,6 +89,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
             ))}
         </div> */}
         <h1>{homepage.title}</h1>
+        <h2>{homepage.pageinfo}</h2>
         <div dangerouslySetInnerHTML={{ __html: homepage.content }} />
       </Container>
       {homepage.products && homepage.products.length > 0 && (
@@ -100,8 +101,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
             <div key={product.id}>
               <Link href={`/product/${product.slug}`}>
                 <div>
-                  <div>{product.title}</div>
-                  
+                  <h3>{product.title}</h3>
                 </div>
                 <div>
                   <div className="relative w-full h-[300px]">
@@ -115,7 +115,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
                     />
                   </div>
                 </div>
-                <div>{product.pageinfo}</div>
+                <h4 className="min-h-[3.5rem]">{product.pageinfo}</h4>
               </Link>
               <img src={product.image ? product.image : '/images/placeholder.jpg'} className="hidden" />
             </div>
@@ -132,7 +132,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
             <div key={category.id}>
               <Link href={`/${locale}/category/${category.slug}`}>
                 <div>
-                  <div>{category.title}</div>
+                  <h3>{category.title}</h3>
                 </div>
                 <div>
                   <div className="relative w-full h-[300px]">
@@ -147,7 +147,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
                     <img src={category.image ? category.image : '/images/placeholder.jpg'} className="hidden" />
                   </div>
                 </div>
-                <div>{category.categoryinfo}</div>
+                <h4 className="min-h-[3.5rem]">{category.categoryinfo}</h4>
               </Link>
             </div>
           ))}
