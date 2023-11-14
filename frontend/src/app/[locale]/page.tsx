@@ -133,7 +133,6 @@ export default async function Products({ params: { locale } }: HomeProps) {
               <Link href={`/${locale}/category/${category.slug}`}>
                 <div>
                   <div>{category.title}</div>
-                  <div>{category.categoryinfo}</div>
                 </div>
                 <div>
                   <div className="relative w-full h-[300px]">
@@ -148,6 +147,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
                     <img src={category.image ? category.image : '/images/placeholder.jpg'} className="hidden" />
                   </div>
                 </div>
+                <div>{category.categoryinfo}</div>
               </Link>
             </div>
           ))}

@@ -46,7 +46,6 @@ export default async function Pages({ params: { locale } }: MetadataProps) {
                 <Link href={`/page/${page.slug}`}>
                   <div>
                     <div>{page.title}</div>
-                    <div>{page.pageinfo}</div>
                   </div>
                   <div>
                   {page.image && (
@@ -62,6 +61,7 @@ export default async function Pages({ params: { locale } }: MetadataProps) {
                     </div>
                   )}
                   </div>
+                  <div>{page.pageinfo}</div>
                   </Link>
                 </div>
               </>

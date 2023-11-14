@@ -44,10 +44,8 @@ export default async function CategoriesPage({ params: { locale } }: MetadataPro
             <>
               <div key={category.id}>
                 <Link href={`/${locale}/category/${category.slug}`}>
-                
                     <div>
                       <div>{category.title}</div>
-                      <div>{category.categoryinfo}</div>
                     </div>
                     <div>
                       <>
@@ -64,7 +62,7 @@ export default async function CategoriesPage({ params: { locale } }: MetadataPro
                         <div dangerouslySetInnerHTML={{ __html: category.content || '' }} className="mt-4" />
                       </>
                     </div>
-  
+                    <div>{category.categoryinfo}</div>
                 </Link>
               </div>
             </>

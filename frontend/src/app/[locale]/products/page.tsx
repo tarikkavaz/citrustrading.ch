@@ -46,7 +46,6 @@ export default async function Products({ params: { locale } }: MetadataProps) {
                 <Link href={`/product/${product.slug}`}>
                   <div>
                     <div>{product.title}</div>
-                    <div>{product.pageinfo}</div>
                   </div>
                   <div>
                     <div className="relative w-full h-[300px]">
@@ -60,6 +59,7 @@ export default async function Products({ params: { locale } }: MetadataProps) {
                       <img src={product.image ? product.image : '/images/placeholder.jpg'} className="hidden" />
                     </div>
                   </div>
+                  <div>{product.pageinfo}</div>
                   </Link>
                 </div>
               </>
