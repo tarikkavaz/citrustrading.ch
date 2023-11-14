@@ -58,7 +58,7 @@ export default async function Pages({ params: { locale } }: MetadataProps) {
                         alt={page.title}
                         className=" object-cover"
                       />
-                      <img src={page.image} alt="" />
+                      <img src={page.image} className="hidden" />
                     </div>
                   )}
                   </div>

@@ -63,7 +63,7 @@ export default async function Page({
               alt={product.title}
               className=" object-cover"
             />
-            <img src={product.image} alt="" />
+            <img src={product.image} className="hidden" />
           </div>
         )}
 
@@ -101,7 +101,7 @@ export default async function Page({
                   height={300}
                   alt={img.alt_text}
                 />
-                <img src={img.image} alt="" />
+                <img src={img.image} className="hidden" />
               </picture>
             ))}
         </div>
