@@ -230,4 +230,25 @@ To **extract files from the tar file** to the `local` images volume:
 
 
 
-RESET
+## Some Commands
+
+### Destroy docker
+
+```
+docker stop $(docker ps -aq)
+docker rm $(docker ps -aq)
+docker rmi $(docker images -q)
+docker volume rm $(docker volume ls -q)
+docker network prune -f
+```
+
+
+
+### Build and Create Admin User
+
+```
+docker-compose -f docker-compose.prod.yml up --build -d &&                               
+docker-compose exec backend python manage.py migrate &&
+docker-compose exec backend python manage.py collectstatic && 
+docker-compose exec backend python manage.py createsuperuser
+```
