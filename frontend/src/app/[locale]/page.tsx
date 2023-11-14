@@ -2,14 +2,12 @@ import {
   Homepage,
   MetadataProps,
   HomeProps,
-  ContentImage,
   Category
 } from "@/utils/types";
 import Container from "@/components/ui/Container";
 import { GlobalCarousel } from "@/components/animation/GlobalCarousel";
 import Link from "next/link";
 import Image from "next/image";
-import Hero from "@/components/Hero";
 import { fetchData, API_URL, SERVER_IP } from "@/utils/api";
 import { useLocale } from "next-intl";
 import { getTranslator } from "next-intl/server";
@@ -65,94 +63,111 @@ export default async function Products({ params: { locale } }: HomeProps) {
 
   return (
     <>
-    <Hero />
-      <Container className="mt-16" id="content">
-      {homepage.images && homepage.images.length > 0 && (
-      <Container size="fluid" className="">
-        <GlobalCarousel 
-          images={homepage.images || []} 
-          className="h-[200px] md:h-[300px] lg:h-[450px] bg-accent" 
-        />
-      </Container>
-      )}
-        <div className="grid md:grid-cols-3 gap-4 mt-8">
-          {homepage.images &&
-            homepage.images.map((image: ContentImage) => (
-              <picture key={image.id}>
-                <Image
-                  src={image.image}
-                  priority={true}
-                  width={500}
-                  height={300}
-                  alt={image.alt_text}
-                  className="bg-accent"
-                />
-              </picture>
-            ))}
+      <div className="bg-white">
+        <div className="relative">
+          <div className="mx-auto max-w-7xl">
+            <div className="relative z-10 pt-14 lg:w-full lg:max-w-2xl">
+              <svg
+                className="absolute inset-y-0 right-8 hidden h-full w-80 translate-x-1/2 transform fill-white lg:block"
+                viewBox="0 0 100 100"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <polygon points="0,0 90,0 50,100 0,100" />
+              </svg>
+              <div className="relative px-6 py-32 sm:py-40 lg:px-8 lg:py-56 lg:pr-0">
+                <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
+                  <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+                  {homepage.title} <br className="hidden lg:inline" />
+                  </h1>
+                  <p className="mt-6 text-lg leading-8 text-gray-600">
+                    {homepage.pageinfo}
+                  </p>
+                  <div>
+                    <div dangerouslySetInnerHTML={{ __html: homepage.content }}  className="mt-6 text-lg leading-8 text-gray-600" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="bg-gray-50 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+            {homepage.images && homepage.images.length > 0 && (
+              <GlobalCarousel 
+                images={homepage.images || []} 
+                className="aspect-[3/2] object-cover lg:aspect-auto lg:h-full lg:w-full" 
+              />
+            )}
+          </div>
         </div>
-        <h1>{homepage.title}</h1>
-        <h2>{homepage.pageinfo}</h2>
-        <div dangerouslySetInnerHTML={{ __html: homepage.content }} />
-      </Container>
+      </div>
+
       {homepage.products && homepage.products.length > 0 && (
       <Container>
-        <hr className="h-0.5 my-3 bg-accent" />
-        <h2>{t("featuredproducts")}</h2>
-        <div className="grid md:grid-cols-2 gap-4">
-          {homepage.products.map((product) => (
-            <div key={product.id}>
-              <Link href={`/product/${product.slug}`}>
-                <div>
-                  <h3>{product.title}</h3>
-                </div>
-                <div>
-                  <div className="relative w-full h-[300px]">
+        <div className="bg-white">
+          <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-16 lg:max-w-7xl lg:px-8">
+          <h2 className="text-2xl">{t("featuredproducts")}</h2>
+            <div className="mt-6 grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 md:grid-cols-4 md:gap-y-0 lg:gap-x-8">
+            {homepage.products.map((product) => (
+              <div key={product.id} className="group relative">
+                <div className="h-56 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">
+                  <div className="h-full w-full object-cover object-center">
                     <Image
-                      src={product.image ? product.image : "/images/placeholder.jpg"}
-                      priority={true}
-                      fill={true}
-                      sizes="100%"
-                      alt={product.title}
-                      className="object-cover"
+                    src={product.image ? product.image : "/images/placeholder.jpg"}
+                    className="h-full w-full object-cover object-center"
+                    alt={product.title}
+                    sizes="100%"
+                    width={500}
+                    height={400}
                     />
                   </div>
                 </div>
-                <h4 className="min-h-[3.5rem]">{product.pageinfo}</h4>
-              </Link>
-              <img src={product.image ? product.image : '/images/placeholder.jpg'} className="hidden" />
+                <h3 className="mt-4 text-gray-700 text-xl">
+                  <Link href={`/product/${product.slug}`}>
+                    <span className="absolute inset-0" />
+                    {product.title}
+                  </Link>
+                </h3>
+                <h4 className="min-h-[3.5rem] text-sm">{product.pageinfo}</h4>
+                <img src={product.image ? product.image : '/images/placeholder.jpg'} className="hidden" />
+              </div>
+            ))}
             </div>
-          ))}
+          </div>
         </div>
       </Container>
-    )}
+      )}
 
       <Container>
-        <hr className="h-0.5 my-3 bg-accent mt-12 " />
-        <h2>{t("categories")}</h2>
-        <div className="grid md:grid-cols-3 gap-4">
-          {categories.map((category) => (
-            <div key={category.id}>
-              <Link href={`/${locale}/category/${category.slug}`}>
-                <div>
-                  <h3>{category.title}</h3>
-                </div>
-                <div>
-                  <div className="relative w-full h-[300px]">
-                    <Image
+        <div className="bg-white">
+        <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-16 lg:max-w-7xl lg:px-8">
+        <h2 className="text-2xl">{t("categories")}</h2>
+            <div className="mt-6 grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 md:grid-cols-4 md:gap-y-0 lg:gap-x-8">
+              {categories.map((category) => (
+                <div key={category.id} className="group relative">
+                  <div className="h-56 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">
+                    <div className="h-full w-full object-cover object-center">
+                      <Image
                       src={category.image ? category.image : "/images/placeholder.jpg"}
-                      priority={true}
-                      fill={true}
-                      sizes="100%"
+                      className="h-full w-full object-cover object-center"
                       alt={category.title}
-                      className="object-cover"
-                    />
-                    <img src={category.image ? category.image : '/images/placeholder.jpg'} className="hidden" />
+                      sizes="100%"
+                      width={500}
+                      height={400}
+                      />
+                    </div>
                   </div>
+                  <h3 className="mt-4 text-gray-700 text-xl">
+                    <Link href={`/${locale}/category/${category.slug}`}>
+                      <span className="absolute inset-0" />
+                      {category.title}
+                    </Link>
+                  </h3>
+                  <h4 className="min-h-[3.5rem] text-sm">{category.categoryinfo}</h4>
+                  <img src={category.image ? category.image : '/images/placeholder.jpg'} className="hidden" />
                 </div>
-                <h4 className="min-h-[3.5rem]">{category.categoryinfo}</h4>
-              </Link>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </Container>
     </>

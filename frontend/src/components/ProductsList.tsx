@@ -42,8 +42,6 @@ export default function Products() {
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-        
-
         <div className="mt-6 grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 md:grid-cols-4 md:gap-y-0 lg:gap-x-8">
           {products.map((product) => (
             <div key={product.id} className="group relative">
@@ -62,13 +60,6 @@ export default function Products() {
               </h3>
             </div>
           ))}
-        </div>
-
-        <div className="mt-8 text-sm md:hidden">
-          <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
-            Shop the collection
-            <span aria-hidden="true"> &rarr;</span>
-          </a>
         </div>
       </div>
     </div>

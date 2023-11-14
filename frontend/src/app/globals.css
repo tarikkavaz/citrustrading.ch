@@ -10,7 +10,7 @@ html {
 }
 
 /* headings */
-h1 {
+/* h1 {
   @apply my-6 text-5xl tracking-tight;
   color: hsl(var(--secondary-foreground));
 }
@@ -25,7 +25,7 @@ h3 {
 h4 {
   @apply my-2 text-lg tracking-tight;
   color: hsl(var(--secondary-foreground));
-}
+} */
 
 /* text */
 #content p, #content ul {
