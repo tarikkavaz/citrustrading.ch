@@ -45,7 +45,7 @@ This Guide provides a comprehensive set of instructions for setting up, developi
     docker-compose exec backend python manage.py loaddata datadump.json
     ```
 
-7. **Create Django Superuser (Optional)**
+7. **Create Django Superuser**
     ```bash
     docker-compose exec backend python manage.py createsuperuser
     ```
@@ -70,7 +70,6 @@ This Guide provides a comprehensive set of instructions for setting up, developi
     - Open [http://0.0.0.0:3000](http://0.0.0.0:3000) for the site. 
     - Open [http://0.0.0.0:8000/api](http://0.0.0.0:8000/api) for the API. 
     - Open [http://0.0.0.0:8000/admin](http://0.0.0.0:8000/admin) for the Django Admin Panel. 
-    ( u:`admin` p:`boilerplate123` ) 
 
 ---
 
@@ -93,15 +92,19 @@ Connect to the server via SSH and run the following commands:
 
 2. **Install nvm and set Node version to 18.12.0**
     ```bash
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash &&
+    echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.zshrc &&
+    echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> ~/.zshrc &&
+    echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"' >> ~/.zshrc &&
+    source ~/.zshrc &&
     nvm install 18.12.0
     ```
 
 3. **Install Yarn**
     ```bash
-    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-    echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-    sudo apt update
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - &&
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list &&
+    sudo apt update &&
     sudo apt install yarn
     ```
 
@@ -129,8 +132,10 @@ Connect to the server via SSH and run the following commands:
     docker-compose -f docker-compose.prod.yml up --build -d &&
     docker-compose exec backend python manage.py migrate &&
     docker-compose exec backend python manage.py loaddata datadump.json &&
-    docker-compose exec backend python manage.py collectstatic
+    docker-compose exec backend python manage.py collectstatic &&
+    docker-compose exec backend python manage.py createsuperuser
     ```
+    ( u:`admin` p:`boilerplate123` ) 
 ---
 
 ## Deploy from Local Machine to Digitalocean Droplet
