@@ -65,7 +65,15 @@ export default async function Products({ params: { locale } }: HomeProps) {
   return (
     <>
       <Container className="px-10 mt-16" id="content">
-        <div className="grid md:grid-cols-3 gap-4 mt-8">
+      {homepage.images && homepage.images.length > 0 && (
+      <Container size="fluid" className="">
+        <GlobalCarousel 
+          images={homepage.images || []} 
+          className="h-[200px] md:h-[300px] lg:h-[450px] bg-accent" 
+        />
+      </Container>
+      )}
+        {/* <div className="grid md:grid-cols-3 gap-4 mt-8">
           {homepage.images &&
             homepage.images.map((image: ContentImage) => (
               <picture key={image.id}>
@@ -79,7 +87,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
                 />
               </picture>
             ))}
-        </div>
+        </div> */}
         <h1>{homepage.title}</h1>
         <div dangerouslySetInnerHTML={{ __html: homepage.content }} />
       </Container>
@@ -141,12 +149,6 @@ export default async function Products({ params: { locale } }: HomeProps) {
             </div>
           ))}
         </div>
-      </Container>
-      <Container size="fluid" className="hidden">
-      <GlobalCarousel 
-          images={homepage.images || []} 
-          className="h-[200px] md:h-[300px] lg:h-[450px] bg-accent" 
-        />
       </Container>
     </>
   );
