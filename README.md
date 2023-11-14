@@ -110,8 +110,8 @@ Connect to the server via SSH and run the following commands:
 
 4. **Clone the Repository**
     ```bash
-    git clone https://github.com/tarikkavaz/citrustrading.ch.git YOURDOMAINNAME
-    cd YOURDOMAINNAME
+    git clone https://github.com/tarikkavaz/citrustrading.ch.git citrustrading.ch
+    cd citrustrading.ch
     ```
 
 5. **Setup Frontend Environment Variables**
@@ -226,29 +226,4 @@ To **download the tar file** to the local root of the project:
 To **extract files from the tar file** to the `local` images volume:
 ```bash
 ./deploy.sh extract-tar
-```
-
-
-
-## Some Commands
-
-### Destroy docker
-
-```
-docker stop $(docker ps -aq)
-docker rm $(docker ps -aq)
-docker rmi $(docker images -q)
-docker volume rm $(docker volume ls -q)
-docker network prune -f
-```
-
-
-
-### Build and Create Admin User
-
-```
-docker-compose -f docker-compose.prod.yml up --build -d &&                               
-docker-compose exec backend python manage.py migrate &&
-docker-compose exec backend python manage.py collectstatic && 
-docker-compose exec backend python manage.py createsuperuser
 ```
