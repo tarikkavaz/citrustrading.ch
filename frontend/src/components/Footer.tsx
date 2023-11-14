@@ -37,7 +37,7 @@ export default function Footer() {
   const year = date.getFullYear();
   return (
     <footer
-      className="bg-background text-foreground relative border-b border-[hsl(var(--border))]"
+      className="bg-background text-foreground relative border-t border-[hsl(var(--border))]"
       aria-labelledby="footer-heading"
     >
 
