@@ -105,7 +105,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
       <Container>
         <div className="bg-white">
           <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-16 lg:max-w-7xl lg:px-8">
-          <h2 className="text-2xl">{t("featuredproducts")}</h2>
+          <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">{t("featuredproducts")}</h2>
             <div className="mt-6 grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 md:grid-cols-4 md:gap-y-0 lg:gap-x-8">
             {homepage.products.map((product) => (
               <div key={product.id} className="group relative">
@@ -140,7 +140,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
       <Container>
         <div className="bg-white">
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-16 lg:max-w-7xl lg:px-8">
-        <h2 className="text-2xl">{t("categories")}</h2>
+        <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">{t("categories")}</h2>
             <div className="mt-6 grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 md:grid-cols-4 md:gap-y-0 lg:gap-x-8">
               {categories.map((category) => (
                 <div key={category.id} className="group relative">
