@@ -36,40 +36,34 @@ export default async function CategoriesPage({ params: { locale } }: MetadataPro
   const t = await getTranslator(locale, "Globals");
 
   return (
-    <>
-      <ProductsList/>
-      <Container className="p-10 mt-16">
-        <h1>{t("categories")}</h1>
-        <div className="grid md:grid-cols-3 gap-4 mt-8">
-          {categories.map((category) => (
-            <>
-              <div key={category.id}>
-                <Link href={`/${locale}/category/${category.slug}`}>
-                    <div>
-                      <h2>{category.title}</h2>
-                    </div>
-                    <div>
-                      <>
-                        <div className="relative w-full h-[300px]">
-                          <Image
-                            src={category.image ? category.image : "/placeholder.jpg"}
-                            priority={true}
-                            fill={true}
-                            alt={category.title}
-                            className="object-cover"
-                          />
-                          <img src={category.image ? category.image : '/images/placeholder.jpg'} className="hidden" />
-                        </div>
-                        <h3 className="min-h-[3.5rem]">{category.categoryinfo}</h3>
-                        <div dangerouslySetInnerHTML={{ __html: category.content || '' }} className="mt-4" />
-                      </>
-                    </div>
-                </Link>
-              </div>
-            </>
-          ))}
+    <Container className="mt-16">
+      <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">{t("categories")}</h1>
+      <div className="grid md:grid-cols-3 gap-4 mt-8">
+        {categories.map((category) => (
+          <div key={category.id} className="group relative">
+          <div className="h-56 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">
+            <div className="h-full w-full object-cover object-center">
+              <Image
+              src={category.image ? category.image : "/images/placeholder.jpg"}
+              className="h-full w-full object-cover object-center"
+              alt={category.title}
+              sizes="100%"
+              width={500}
+              height={400}
+              />
+            </div>
+          </div>
+          <h3 className="mt-4 text-gray-700 text-xl">
+            <Link href={`/category/${category.slug}`}>
+              <span className="absolute inset-0" />
+              {category.title}
+            </Link>
+          </h3>
+          <h4 className="min-h-[3.5rem] text-sm">{category.categoryinfo}</h4>
+          <img src={category.image ? category.image : '/images/placeholder.jpg'} className="hidden" />
         </div>
-      </Container>
-    </>
+        ))}
+      </div>
+    </Container>
   );
 }
