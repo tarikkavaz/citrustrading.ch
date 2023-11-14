@@ -116,6 +116,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
                   </div>
                 </div>
               </Link>
+              <img src="{product.image ? product.image : '/images/placeholder.jpg'}" alt="" />
             </div>
           ))}
         </div>
