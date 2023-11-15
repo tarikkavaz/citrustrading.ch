@@ -118,7 +118,7 @@ export default async function Page({
       <Container className="">
         {page.image && (
           <div className="my-10 relative w-full h-[500px]">
-            <img src={page.image} className="object-cover md:rounded-3xl" />
+            <img src={page.image} className="object-cover md:rounded-3xl w-full" />
           </div>
         )}
       </Container>

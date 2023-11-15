@@ -98,7 +98,7 @@ export default async function CategoryPage({
       <Container size="fluid" className="mt-6 bg-gradient-to-b from-[hsl(var(--citrus-lemon))]/20 to-[hsl(var(--citrus-orange))]/20 dark:from-[hsl(var(--citrus-lemon))]/10 dark:to-[hsl(var(--citrus-orange))]/10">
         <Container className="py-10">
           <h2 className="text-3xl font-bold tracking-tight dark:text-[hsl(var(--citrus-orange))] ">{t("products")}</h2>
-          <div className="grid md:grid-cols-3 gap-4 mt-8">
+          <div className="grid md:grid-cols-4 gap-10 mt-8">
             {products.map((product) => (
               <div key={product.id} className="group relative rounded-md bg-[hsl(var(--citrus-lemon))]/30 hover:bg-[hsl(var(--citrus-lemon))]/40 border hover:border-[hsl(var(--citrus-lemon))]">
               <div className="h-56 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">

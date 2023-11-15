@@ -39,7 +39,7 @@ export default async function CategoriesPage({ params: { locale } }: MetadataPro
     <Container size="fluid" className="mt-16 bg-gradient-to-b from-[hsl(var(--citrus-lemon))]/20 to-[hsl(var(--citrus-orange))]/20 dark:from-[hsl(var(--citrus-lemon))]/10 dark:to-[hsl(var(--citrus-orange))]/10">
       <Container className="py-10">
         <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">{t("categories")}</h1>
-        <div className="grid md:grid-cols-3 gap-4 mt-8">
+        <div className="grid md:grid-cols-4 gap-10 mt-8">
           {categories.map((category) => (
             <div key={category.id} className="group relative rounded-md bg-white/60 hover:bg-[hsl(var(--citrus-lemon))]/40 border hover:border-[hsl(var(--citrus-lemon))]">
             <div className="h-56 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">
