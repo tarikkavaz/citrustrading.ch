@@ -95,7 +95,7 @@ export default async function CategoryPage({
           </div>
         </div>
       </Container>
-      <Container size="fluid" className="mt-6 bg-gradient-to-b from-[hsl(var(--citrus-lemon))]/20 to-[hsl(var(--citrus-orange))]/20">
+      <Container size="fluid" className="mt-6 bg-gradient-to-b from-[hsl(var(--citrus-lemon))]/20 to-[hsl(var(--citrus-orange))]/20 dark:from-[hsl(var(--citrus-lemon))]/10 dark:to-[hsl(var(--citrus-orange))]/10">
         <Container className="py-10">
           <h2 className="text-3xl font-bold tracking-tight dark:text-[hsl(var(--citrus-orange))] ">{t("products")}</h2>
           <div className="grid md:grid-cols-3 gap-4 mt-8">

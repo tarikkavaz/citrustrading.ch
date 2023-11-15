@@ -23,12 +23,13 @@ APP_ORDER = {
 MODEL_ORDER = {
     'user': 1,
     'group': 2,
+
     'homepage': 1,
     'menuitem': 2,
-    'page': 4,
-    'product': 3,
-    'image': 5,
-    'category': 6,
+    'page': 3,
+    'product': 4,
+    'category': 5,
+    'image': 6,
     'tag': 7,
 }
 
