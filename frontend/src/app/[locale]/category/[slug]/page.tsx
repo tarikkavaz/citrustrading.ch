@@ -72,77 +72,69 @@ export default async function CategoryPage({
 
   return (
     <>
-      <div className="bg-white">
+      <Container className="bg-white">
         <div className="relative isolate overflow-hidden bg-gradient-to-b from-indigo-100/20 pt-14">
           <div
             className="absolute inset-y-0 right-1/2 -z-10 -mr-96 w-[200%] origin-top-right skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:-mr-80 lg:-mr-96"
             aria-hidden="true"
           />
-          <div className="mx-auto max-w-7xl px-6 py-32 sm:py-40 lg:px-8">
+          <div className="mx-auto max-w-7xl px-6 py-6 lg:px-8">
             <div className="mx-auto max-w-2xl lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-6 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8">
               <h1 className="max-w-2xl text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl lg:col-span-2 xl:col-auto">
-                We’re changing the way people connect.
+              {t("category")}: <span className="text-gray-500">{category?.title || slug}</span>
               </h1>
               <div className="mt-6 max-w-xl lg:mt-0 xl:col-end-1 xl:row-start-1">
                 <p className="text-lg leading-8 text-gray-600">
-                  Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet
-                  fugiat veniam occaecat fugiat aliqua. Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-                  lorem cupidatat commodo.
+                {category?.categoryinfo}
                 </p>
-                <div className="mt-10 flex items-center gap-x-6">
-                  <a
-                    href="#"
-                    className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                  >
-                    Get started
-                  </a>
-                  <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-                    Learn more <span aria-hidden="true">→</span>
-                  </a>
-                </div>
+                <div dangerouslySetInnerHTML={{ __html: category?.content || '' }} className="mt-4" />
               </div>
-              <img
-                src="https://images.unsplash.com/photo-1567532900872-f4e906cbf06a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1280&q=80"
-                alt=""
-                className="mt-10 aspect-[6/5] w-full max-w-lg rounded-2xl object-cover sm:mt-16 lg:mt-0 lg:max-w-none xl:row-span-2 xl:row-end-2 xl:mt-36"
-              />
+              {category?.image && (
+                <div className="my-10 relative mt-10 aspect-[6/5] w-full max-w-lg object-cover sm:mt-16 lg:mt-0 lg:max-w-none xl:row-span-2 xl:row-end-2 " key={category?.title}>
+                  <Image
+                    src={category?.image}
+                    priority={true}
+                    fill={true}
+                    alt={category?.title}
+                    className="rounded-2xl object-cover"
+                  />
+                  <img src={category?.image} className="hidden" />
+                </div>
+              )}
+
             </div>
           </div>
-          <div className="absolute inset-x-0 bottom-0 -z-10 h-24 bg-gradient-to-t from-white sm:h-32" />
         </div>
-      </div>
-      <Container className="p-10 mt-16">
-        <h1>{t("category")}: {category?.title || slug}</h1>
-        <div>
-          <h2>{category?.categoryinfo}</h2>
-          <div dangerouslySetInnerHTML={{ __html: category?.content || '' }} className="mt-4" />
-        </div>
+      </Container>
+      <Container className="mt-6">
         <div className="grid md:grid-cols-3 gap-4 mt-8">
           {products.map((product) => (
-            <div key={product.id}>
-              <Link href={`/product/${product.slug}`}>
-                  <div>
-                    <h3>{product.title}</h3>
-                  </div>
-                  <div>
-                    <div className="relative w-full h-[300px]">
-                      <Image
-                        src={product.image ? product.image : "/placeholder.jpg"}
-                        priority={true}
-                        fill={true}
-                        sizes="100%"
-                        alt={product.title}
-                        className="object-cover"
-                      />
-                      <img src={product.image ? product.image : '/images/placeholder.jpg'} className="hidden" />
-                    </div>
-                  </div>
-                  <h4>{product.pageinfo}</h4>
-              </Link>
+            <div key={product.id} className="group relative">
+            <div className="h-56 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">
+              <div className="h-full w-full object-cover object-center">
+                <Image
+                src={product.image ? product.image : "/images/placeholder.jpg"}
+                className="h-full w-full object-cover object-center"
+                alt={product.title}
+                sizes="100%"
+                width={500}
+                height={400}
+                />
+              </div>
             </div>
+            <h3 className="mt-4 text-gray-700 text-xl">
+              <Link href={`/product/${product.slug}`}>
+                <span className="absolute inset-0" />
+                {product.title}
+              </Link>
+            </h3>
+            <h4 className="min-h-[3.5rem] text-sm">{product.pageinfo}</h4>
+            <img src={product.image ? product.image : '/images/placeholder.jpg'} className="hidden" />
+          </div>
           ))}
         </div>
       </Container>
+
     </>
   );
 }
