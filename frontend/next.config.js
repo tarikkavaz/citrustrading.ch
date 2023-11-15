@@ -1,10 +1,4 @@
-const dotenv = require('dotenv');
-dotenv.config();
-
 const withNextIntl = require('next-intl/plugin')('./i18n.ts');
-
-const { CLIENT_BASE_URL } = process.env;
-
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -13,11 +7,11 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    domains: [CLIENT_BASE_URL],
+    domains: ['orangekaos.com'],
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: CLIENT_BASE_URL,
+        hostname: 'orangekaos.com',
         pathname: '/media/images/**',
       },
     ],
