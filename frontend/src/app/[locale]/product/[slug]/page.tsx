@@ -80,8 +80,8 @@ export default async function Page({
               </div>
             </div>
             {product.image && (
-              <div className="my-10 relative mt-10 aspect-[6/5] w-full max-w-lg object-cover sm:mt-16 lg:mt-0 lg:max-w-none xl:row-span-2 xl:row-end-2 " key={product.title}>
-                <img src={product.image} className="object-cover rounded-2xl" />
+              <div className="my-10 relative mt-10 w-full max-w-lg sm:mt-16 lg:mt-0 lg:max-w-none xl:row-span-2 xl:row-end-2 " key={product.title}>
+                <img src={product.image} className="object-cover w-full rounded-2xl" />
               </div>
             )}
           </div>
