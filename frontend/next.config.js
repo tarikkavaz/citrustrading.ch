@@ -13,12 +13,11 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    domains: [CLIENT_BASE_URL], 
+    domains: [CLIENT_BASE_URL],
     remotePatterns: [
       {
-        protocol: 'http',
+        protocol: 'https',
         hostname: CLIENT_BASE_URL,
-        port: ' ',
         pathname: '/media/images/**',
       },
     ],
