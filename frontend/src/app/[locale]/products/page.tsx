@@ -37,11 +37,11 @@ export default async function Products({ params: { locale } }: MetadataProps) {
   const t = await getTranslator(locale, "Globals");
   return (
     <Container className="mt-16">
-    <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">{t("products")}</h1>
+    <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">{t("products")}</h1>
       <div className="grid md:grid-cols-3 gap-4 mt-8">
         {products.map((product) => (
-          <div key={product.id} className="group relative">
-          <div className="h-56 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">
+          <div key={product.id} className="group relative rounded-md bg-[hsl(var(--citrus-lemon))]/30 hover:bg-[hsl(var(--citrus-lemon))]/40 border hover:border-[hsl(var(--citrus-lemon))]">
+          <div className="h-56 w-full overflow-hidden rounded-md lg:h-72 xl:h-80">
             <div className="h-full w-full object-cover object-center">
               <Image
               src={product.image ? product.image : "/images/placeholder.jpg"}
@@ -53,13 +53,15 @@ export default async function Products({ params: { locale } }: MetadataProps) {
               />
             </div>
           </div>
-          <h3 className="mt-4 text-gray-700 text-xl">
-            <Link href={`/product/${product.slug}`}>
-              <span className="absolute inset-0" />
-              {product.title}
-            </Link>
-          </h3>
-          <h4 className="min-h-[3.5rem] text-sm">{product.pageinfo}</h4>
+          <div className="p-3">
+            <h3 className="mt-4 text-xl">
+              <Link href={`/product/${product.slug}`}>
+                <span className="absolute inset-0" />
+                {product.title}
+              </Link>
+            </h3>
+            <h4 className="min-h-[3.5rem] text-sm">{product.pageinfo}</h4>
+          </div>
           <img src={product.image ? product.image : '/images/placeholder.jpg'} className="hidden" />
         </div>
         ))}

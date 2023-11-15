@@ -37,10 +37,10 @@ export default async function CategoriesPage({ params: { locale } }: MetadataPro
 
   return (
     <Container className="mt-16">
-      <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">{t("categories")}</h1>
+      <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">{t("categories")}</h1>
       <div className="grid md:grid-cols-3 gap-4 mt-8">
         {categories.map((category) => (
-          <div key={category.id} className="group relative">
+          <div key={category.id} className="group relative rounded-md bg-[hsl(var(--citrus-lemon))]/30 hover:bg-[hsl(var(--citrus-lemon))]/40 border hover:border-[hsl(var(--citrus-lemon))]">
           <div className="h-56 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">
             <div className="h-full w-full object-cover object-center">
               <Image
@@ -53,13 +53,15 @@ export default async function CategoriesPage({ params: { locale } }: MetadataPro
               />
             </div>
           </div>
-          <h3 className="mt-4 text-gray-700 text-xl">
-            <Link href={`/category/${category.slug}`}>
-              <span className="absolute inset-0" />
-              {category.title}
-            </Link>
-          </h3>
-          <h4 className="min-h-[3.5rem] text-sm">{category.categoryinfo}</h4>
+          <div className="p-3">
+            <h3 className="mt-4  text-xl">
+              <Link href={`/category/${category.slug}`}>
+                <span className="absolute inset-0" />
+                {category.title}
+              </Link>
+            </h3>
+            <h4 className="min-h-[3.5rem] text-sm">{category.categoryinfo}</h4>
+          </div>
           <img src={category.image ? category.image : '/images/placeholder.jpg'} className="hidden" />
         </div>
         ))}

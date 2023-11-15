@@ -63,12 +63,12 @@ export default async function Products({ params: { locale } }: HomeProps) {
 
   return (
     <>
-      <div className="bg-white">
+      <div className="">
         <div className="relative">
           <div className="mx-auto max-w-7xl">
             <div className="relative z-10 pt-14 lg:w-full lg:max-w-2xl">
               <svg
-                className="absolute inset-y-0 right-8 hidden h-full w-80 translate-x-1/2 transform fill-white lg:block"
+                className="absolute inset-y-0 right-8 hidden h-full w-80 translate-x-1/2 transform fill-white dark:fill-black lg:block"
                 viewBox="0 0 100 100"
                 preserveAspectRatio="none"
                 aria-hidden="true"
@@ -77,14 +77,14 @@ export default async function Products({ params: { locale } }: HomeProps) {
               </svg>
               <div className="relative px-6 py-32 sm:py-40 lg:px-8 lg:py-56 lg:pr-0">
                 <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
-                  <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+                  <h1 className="text-4xl font-bold tracking-tight sm:text-6xl dark:text-[hsl(var(--citrus-lemon))]">
                   {homepage.title} <br className="hidden lg:inline" />
                   </h1>
-                  <p className="mt-6 text-lg leading-8 text-gray-600">
+                  <p className="mt-6 text-lg leading-8 text-[hsl(var(--citrus-orange))]">
                     {homepage.pageinfo}
                   </p>
                   <div>
-                    <div dangerouslySetInnerHTML={{ __html: homepage.content }}  className="mt-6 text-lg leading-8 text-gray-600" />
+                    <div dangerouslySetInnerHTML={{ __html: homepage.content }}  className="mt-6 text-lg leading-8" />
                   </div>
                 </div>
               </div>
@@ -100,73 +100,75 @@ export default async function Products({ params: { locale } }: HomeProps) {
           </div>
         </div>
       </div>
+      <hr />
 
       {homepage.products && homepage.products.length > 0 && (
       <Container>
-        <div className="bg-white">
-          <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-16 lg:max-w-7xl lg:px-8">
-          <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">{t("featuredproducts")}</h2>
-            <div className="mt-6 grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 md:grid-cols-4 md:gap-y-0 lg:gap-x-8">
-            {homepage.products.map((product) => (
-              <div key={product.id} className="group relative">
-                <div className="h-56 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">
-                  <div className="h-full w-full object-cover object-center">
-                    <Image
-                    src={product.image ? product.image : "/images/placeholder.jpg"}
-                    className="h-full w-full object-cover object-center"
-                    alt={product.title}
-                    sizes="100%"
-                    width={500}
-                    height={400}
-                    />
-                  </div>
+        <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-16 lg:max-w-7xl lg:px-8">
+        <h2 className="text-3xl font-bold tracking-tight dark:text-[hsl(var(--citrus-orange))]">{t("featuredproducts")}</h2>
+          <div className="mt-6 grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 md:grid-cols-4 md:gap-y-0 lg:gap-x-8">
+          {homepage.products.map((product) => (
+            <div key={product.id} className="group relative rounded-md bg-[hsl(var(--citrus-lemon))]/30 hover:bg-[hsl(var(--citrus-lemon))]/40 border hover:border-[hsl(var(--citrus-lemon))]">
+              <div className="h-56 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">
+                <div className="h-full w-full object-cover object-center">
+                  <Image
+                  src={product.image ? product.image : "/images/placeholder.jpg"}
+                  className="h-full w-full object-cover object-center"
+                  alt={product.title}
+                  sizes="100%"
+                  width={500}
+                  height={400}
+                  />
                 </div>
-                <h3 className="mt-4 text-gray-700 text-xl">
+              </div>
+              <div className="p-3">
+                <h3 className="mt-4 text-xl">
                   <Link href={`/product/${product.slug}`}>
                     <span className="absolute inset-0" />
                     {product.title}
                   </Link>
                 </h3>
                 <h4 className="min-h-[3.5rem] text-sm">{product.pageinfo}</h4>
-                <img src={product.image ? product.image : '/images/placeholder.jpg'} className="hidden" />
               </div>
-            ))}
+              <img src={product.image ? product.image : '/images/placeholder.jpg'} className="hidden" />
             </div>
+          ))}
           </div>
         </div>
       </Container>
       )}
+      <hr />
 
       <Container>
-        <div className="bg-white">
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-16 lg:max-w-7xl lg:px-8">
-        <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">{t("categories")}</h2>
-            <div className="mt-6 grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 md:grid-cols-4 md:gap-y-0 lg:gap-x-8">
-              {categories.map((category) => (
-                <div key={category.id} className="group relative">
-                  <div className="h-56 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">
-                    <div className="h-full w-full object-cover object-center">
-                      <Image
-                      src={category.image ? category.image : "/images/placeholder.jpg"}
-                      className="h-full w-full object-cover object-center"
-                      alt={category.title}
-                      sizes="100%"
-                      width={500}
-                      height={400}
-                      />
-                    </div>
+        <h2 className="text-3xl font-bold tracking-tight dark:text-[hsl(var(--citrus-lemon))]">{t("categories")}</h2>
+          <div className="mt-6 grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 md:grid-cols-4 md:gap-y-0 lg:gap-x-8">
+            {categories.map((category) => (
+              <div key={category.id} className="group relative rounded-md bg-[hsl(var(--citrus-lemon))]/30 hover:bg-[hsl(var(--citrus-lemon))]/40 border hover:border-[hsl(var(--citrus-lemon))]">
+                <div className="h-56 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">
+                  <div className="h-full w-full object-cover object-center">
+                    <Image
+                    src={category.image ? category.image : "/images/placeholder.jpg"}
+                    className="h-full w-full object-cover object-center"
+                    alt={category.title}
+                    sizes="100%"
+                    width={500}
+                    height={400}
+                    />
                   </div>
-                  <h3 className="mt-4 text-gray-700 text-xl">
+                </div>
+                <div className="p-3">
+                  <h3 className="mt-4 text-xl">
                     <Link href={`/${locale}/category/${category.slug}`}>
                       <span className="absolute inset-0" />
                       {category.title}
                     </Link>
                   </h3>
                   <h4 className="min-h-[3.5rem] text-sm">{category.categoryinfo}</h4>
-                  <img src={category.image ? category.image : '/images/placeholder.jpg'} className="hidden" />
                 </div>
-              ))}
-            </div>
+                <img src={category.image ? category.image : '/images/placeholder.jpg'} className="hidden" />
+              </div>
+            ))}
           </div>
         </div>
       </Container>

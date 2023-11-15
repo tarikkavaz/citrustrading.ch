@@ -72,19 +72,15 @@ export default async function CategoryPage({
 
   return (
     <>
-      <Container className="bg-white">
-        <div className="relative isolate overflow-hidden bg-gradient-to-b from-indigo-100/20 pt-14">
-          <div
-            className="absolute inset-y-0 right-1/2 -z-10 -mr-96 w-[200%] origin-top-right skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:-mr-80 lg:-mr-96"
-            aria-hidden="true"
-          />
+      <Container>
+        <div className="relative isolate overflow-hidden  pt-14">
           <div className="mx-auto max-w-7xl px-6 py-6 lg:px-8">
             <div className="mx-auto max-w-2xl lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-6 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8">
-              <h1 className="max-w-2xl text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl lg:col-span-2 xl:col-auto">
+              <h1 className="max-w-2xl text-4xl font-bold tracking-tight sm:text-6xl lg:col-span-2 xl:col-auto">
               {t("category")}: <span className="text-gray-500">{category?.title || slug}</span>
               </h1>
               <div className="mt-6 max-w-xl lg:mt-0 xl:col-end-1 xl:row-start-1">
-                <p className="text-lg leading-8 text-gray-600">
+                <p className="text-lg leading-8">
                 {category?.categoryinfo}
                 </p>
                 <div dangerouslySetInnerHTML={{ __html: category?.content || '' }} className="mt-4" />
@@ -109,7 +105,7 @@ export default async function CategoryPage({
       <Container className="mt-6">
         <div className="grid md:grid-cols-3 gap-4 mt-8">
           {products.map((product) => (
-            <div key={product.id} className="group relative">
+            <div key={product.id} className="group relative rounded-md bg-[hsl(var(--citrus-lemon))]/30 hover:bg-[hsl(var(--citrus-lemon))]/40 border hover:border-[hsl(var(--citrus-lemon))]">
             <div className="h-56 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">
               <div className="h-full w-full object-cover object-center">
                 <Image
@@ -122,13 +118,15 @@ export default async function CategoryPage({
                 />
               </div>
             </div>
-            <h3 className="mt-4 text-gray-700 text-xl">
-              <Link href={`/product/${product.slug}`}>
-                <span className="absolute inset-0" />
-                {product.title}
-              </Link>
-            </h3>
-            <h4 className="min-h-[3.5rem] text-sm">{product.pageinfo}</h4>
+            <div className="p-3">
+              <h3 className="mt-4 text-xl">
+                <Link href={`/product/${product.slug}`}>
+                  <span className="absolute inset-0" />
+                  {product.title}
+                </Link>
+              </h3>
+              <h4 className="min-h-[3.5rem] text-sm">{product.pageinfo}</h4>
+            </div>
             <img src={product.image ? product.image : '/images/placeholder.jpg'} className="hidden" />
           </div>
           ))}
