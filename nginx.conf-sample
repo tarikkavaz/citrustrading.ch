@@ -67,7 +67,7 @@ server {
     }
 
     location /media/ {
-        alias /backend/media/images;
+        alias /backend/media/images/;
         expires 30d;
         add_header Cache-Control "public, max-age=2592000";
     }
