@@ -40,8 +40,8 @@ export default function Footer() {
       aria-labelledby="footer-heading"
     >
       <Container size="fluid" className="pb-16 pt-16 relative z-20 md:px-10 px-2">
-        <div className="gap-8 flex items-center justify-between">
-            <div className=" flex items-center gap-4">
+        <div className="gap-8 flex items-center justify-between flex-col md:flex-row">
+            <div className="flex items-center gap-4">
               <div className="relative h-[35px] w-[35px] md:h-[80px] md:w-[80px]">
                 <Image
                   src="/images/citrus-logo.png"
@@ -60,7 +60,7 @@ export default function Footer() {
                 </p>
               </div>
             </div>
-            <div className="flex space-x-6">
+            <div className="flex gap-6">
               {navigation.social.map((item) => (
                 <a
                   key={item.name}
