@@ -23,7 +23,7 @@ services:
       - mynetwork
     volumes:
       - static:/backend/static_root
-      - images:/backend/media/images
+      - images:/backend/media/
 
   frontend:
     restart: unless-stopped
