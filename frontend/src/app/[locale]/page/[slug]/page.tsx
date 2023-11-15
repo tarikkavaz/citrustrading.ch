@@ -68,7 +68,7 @@ export default async function Page({
                   <div className="relative">
                     {image1 && (
                       <>
-                        <img src="{image1.image}" className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg" />
+                        <img src={image1.image} className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg" />
                       </>
                     )}
                     <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
@@ -78,7 +78,7 @@ export default async function Page({
                   <div className="relative">
                     {image2 && (
                       <>
-                        <img src="{image2.image}" className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg" />
+                        <img src={image2.image} className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg" />
                       </>
                     )}
                     <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
@@ -86,7 +86,7 @@ export default async function Page({
                   <div className="relative">
                     {image3 && (
                       <>
-                        <img src="{image3.image}" className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg" />
+                        <img src={image3.image} className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg" />
                       </>
                     )}
                     <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
@@ -96,7 +96,7 @@ export default async function Page({
                   <div className="relative">
                     {image4 && (
                       <>
-                        <img src="{image4.image}" className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg" />
+                        <img src={image4.image} className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg" />
                       </>
                     )}
                     <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
@@ -104,7 +104,7 @@ export default async function Page({
                   <div className="relative">
                   {image5 && (
                       <>
-                        <img src="{image5.image}" className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg" />
+                        <img src={image5.image} className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg" />
                       </>
                     )}
                     <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
