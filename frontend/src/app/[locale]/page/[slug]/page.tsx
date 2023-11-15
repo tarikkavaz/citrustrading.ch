@@ -44,7 +44,6 @@ export default async function Page({
   };
 }) {
   const page = await getPage(slug);
-  const t = await getTranslator(locale, "Globals");
 
   const image1 = page.images && page.images.length > 0 ? page.images[0] : null;
   const image2 = page.images && page.images.length > 1 ? page.images[1] : null;
