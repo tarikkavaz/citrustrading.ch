@@ -49,7 +49,7 @@ function Logo({ mobileMenuOpen, setMobileMenuOpen }: MobileMenuOpenProps) {
         className="text-3xl block p-3 space-y-1 leading-none no-underline rounded-md outline-none select-none"
         onClick={handleLogoClick}
       >
-        <div className="flex">
+        <div className="flex items-center gap-4">
           <div className="relative h-[35px] w-[35px] md:h-[100px] md:w-[100px]">
             <Image
               src="/images/citrus-logo.png"
@@ -60,7 +60,7 @@ function Logo({ mobileMenuOpen, setMobileMenuOpen }: MobileMenuOpenProps) {
               className=" object-cover"
               />
           </div>
-          <div className="relative h-[35px] w-[150px] md:h-[100px] md:w-[450px]">
+          <div className="relative h-[35px] w-[150px] md:h-[59px] md:w-[250px]">
             <Image
               src={logoSrc}
               priority={true}
