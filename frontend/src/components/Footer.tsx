@@ -1,9 +1,8 @@
 "use client";
 import Container from "@/components/ui/Container";
 import { useTranslations } from "next-intl";
-import ThemeSwitcher from "@/components/ThemeSwitcher";
-import LocaleSwitcher from "@/components/LocaleSwitcher";
-
+import Image from "next/image";
+import Link from "next/link";
 const navigation = {
   social: [
     {
@@ -41,10 +40,26 @@ export default function Footer() {
       aria-labelledby="footer-heading"
     >
       <Container size="fluid" className="pb-16 pt-16 relative z-20 md:px-10 px-2">
-        <div className="xl:grid xl:grid-cols-3 xl:gap-8 ">
-          <div className="space-y-8">
-            <p className=" text-3xl font-medium ">{t("sitename")}</p>
-            <p className="text-sm leading-6">{t("sitedescription")}</p>
+        <div className="gap-8 flex items-center justify-between">
+            <div className=" flex items-center gap-4">
+              <div className="relative h-[35px] w-[35px] md:h-[80px] md:w-[80px]">
+                <Image
+                  src="/images/citrus-logo.png"
+                  priority={true}
+                  fill={true}
+                  sizes="100%"
+                  alt="Citrus Trading"
+                  className=" object-cover"
+                  />
+              </div>
+              <div>
+                <p className=" text-3xl font-medium ">{t("sitename")}</p>
+                <p className="text-sm leading-6">{t("sitedescription")}</p>
+                <p className="text-xs leading-5 ">
+                  &copy; {year}, {t("copyright")}
+                </p>
+              </div>
+            </div>
             <div className="flex space-x-6">
               {navigation.social.map((item) => (
                 <a
@@ -57,12 +72,12 @@ export default function Footer() {
                 </a>
               ))}
             </div>
-          </div>
-        </div>
-        <div className="mt-4 pt-8">
-          <p className="text-xs leading-5 ">
-            &copy; {year} {t("sitename")}, {t("copyright")}
-          </p>
+            <div>
+              <p className="text-3xl font-medium ">{t("contact")}</p>
+              <p className="leading-7">Förrlibuckstrasse, Zürich, Zurich 8005, CH</p>
+              <p className="text-sm leading-5 "><Link href="mailto:info@citrustrading.ch">info@citrustrading.ch</Link></p>
+              <p className="text-sm leading-5 "><Link href="call:0041434373311">0041434373311</Link></p>
+            </div>
         </div>
       </Container>
     </footer>
