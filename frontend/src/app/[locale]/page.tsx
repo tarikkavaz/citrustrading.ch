@@ -63,7 +63,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
 
   return (
     <>
-      <div className="">
+      <Container size="fluid">
         <div className="relative">
           <div className="mx-auto max-w-7xl">
             <div className="relative z-10 pt-14 lg:w-full lg:max-w-2xl">
@@ -99,16 +99,16 @@ export default async function Products({ params: { locale } }: HomeProps) {
             )}
           </div>
         </div>
-      </div>
+      </Container>
       <hr />
 
       {homepage.products && homepage.products.length > 0 && (
-      <Container>
-        <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-16 lg:max-w-7xl lg:px-8">
-        <h2 className="text-3xl font-bold tracking-tight dark:text-[hsl(var(--citrus-orange))]">{t("featuredproducts")}</h2>
+      <Container size="fluid" className="bg-gradient-to-b from-[hsl(var(--citrus-lemon))]/20 to-[hsl(var(--citrus-orange))]/20">
+        <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-16 lg:max-w-7xl lg:px-8 ">
+          <h2 className="text-3xl font-bold tracking-tight dark:text-[hsl(var(--citrus-orange))] ">{t("featuredproducts")}</h2>
           <div className="mt-6 grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 md:grid-cols-4 md:gap-y-0 lg:gap-x-8">
           {homepage.products.map((product) => (
-            <div key={product.id} className="group relative rounded-md bg-[hsl(var(--citrus-lemon))]/30 hover:bg-[hsl(var(--citrus-lemon))]/40 border hover:border-[hsl(var(--citrus-lemon))]">
+            <div key={product.id} className="group relative rounded-md bg-white/60 hover:bg-[hsl(var(--citrus-lemon))]/40 border hover:border-[hsl(var(--citrus-lemon))]">
               <div className="h-56 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">
                 <div className="h-full w-full object-cover object-center">
                   <Image
@@ -141,7 +141,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
 
       <Container>
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-16 lg:max-w-7xl lg:px-8">
-        <h2 className="text-3xl font-bold tracking-tight dark:text-[hsl(var(--citrus-lemon))]">{t("categories")}</h2>
+          <h2 className="text-3xl font-bold tracking-tight dark:text-[hsl(var(--citrus-lemon))]">{t("categories")}</h2>
           <div className="mt-6 grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 md:grid-cols-4 md:gap-y-0 lg:gap-x-8">
             {categories.map((category) => (
               <div key={category.id} className="group relative rounded-md bg-[hsl(var(--citrus-lemon))]/30 hover:bg-[hsl(var(--citrus-lemon))]/40 border hover:border-[hsl(var(--citrus-lemon))]">
