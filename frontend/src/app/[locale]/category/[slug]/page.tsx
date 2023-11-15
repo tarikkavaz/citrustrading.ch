@@ -87,14 +87,7 @@ export default async function CategoryPage({
               </div>
               {category?.image && (
                 <div className="my-10 relative mt-10 aspect-[6/5] w-full max-w-lg object-cover sm:mt-16 lg:mt-0 lg:max-w-none xl:row-span-2 xl:row-end-2 " key={category?.title}>
-                  <Image
-                    src={category?.image}
-                    priority={true}
-                    fill={true}
-                    alt={category?.title}
-                    className="rounded-2xl object-cover"
-                  />
-                  <img src={category?.image} className="hidden" />
+                  <img src={category?.image} className="rounded-2xl object-cover" />
                 </div>
               )}
 
@@ -110,14 +103,7 @@ export default async function CategoryPage({
               <div key={product.id} className="group relative rounded-md bg-[hsl(var(--citrus-lemon))]/30 hover:bg-[hsl(var(--citrus-lemon))]/40 border hover:border-[hsl(var(--citrus-lemon))]">
               <div className="h-56 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">
                 <div className="h-full w-full object-cover object-center">
-                  <Image
-                  src={product.image ? product.image : "/images/placeholder.jpg"}
-                  className="h-full w-full object-cover object-center"
-                  alt={product.title}
-                  sizes="100%"
-                  width={500}
-                  height={400}
-                  />
+                  <img src={product.image ? product.image : '/images/placeholder.jpg'} className="h-full w-full object-cover object-center" />
                 </div>
               </div>
               <div className="p-3">
@@ -129,7 +115,7 @@ export default async function CategoryPage({
                 </h3>
                 <h4 className="min-h-[3.5rem] text-sm">{product.pageinfo}</h4>
               </div>
-              <img src={product.image ? product.image : '/images/placeholder.jpg'} className="hidden" />
+              
             </div>
             ))}
           </div>

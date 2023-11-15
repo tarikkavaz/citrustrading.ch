@@ -80,15 +80,7 @@ export default async function Page({
                   </div>
                   <div>
                     <div className="relative w-full h-[300px]">
-                      <Image
-                        src={post.image ? post.image : "/images/placeholder.jpg"}
-                        priority={true}
-                        fill={true}
-                        sizes="100%"
-                        alt={post.title}
-                        className=" object-cover"
-                      />
-                      <img src={post.image ? post.image : '/images/placeholder.jpg'} className="hidden" />
+                      <img src={post.image ? post.image : '/images/placeholder.jpg'} className="object-cover" />
                     </div>
                   </div>
                   <h4>{post.pageinfo}</h4>

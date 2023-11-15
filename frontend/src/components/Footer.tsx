@@ -43,14 +43,7 @@ export default function Footer() {
         <div className="gap-8 flex items-center justify-between flex-col md:flex-row">
             <div className="flex items-center gap-4">
               <div className="relative h-[35px] w-[35px] md:h-[80px] md:w-[80px]">
-                <Image
-                  src="/images/citrus-logo.png"
-                  priority={true}
-                  fill={true}
-                  sizes="100%"
-                  alt="Citrus Trading"
-                  className=" object-cover"
-                  />
+                  <img src="/images/citrus-logo.png" className="object-cover" />
               </div>
               <div>
                 <p className=" text-3xl font-medium ">{t("sitename")}</p>

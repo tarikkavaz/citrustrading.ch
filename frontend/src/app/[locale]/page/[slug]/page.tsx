@@ -68,14 +68,7 @@ export default async function Page({
                   <div className="relative">
                     {image1 && (
                       <>
-                        <Image
-                          src={image1.image}
-                          width={500}
-                          height={300}
-                          alt={image1.alt_text}
-                          className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
-                        />
-                        <img src="{image1.image}" className="hidden" />
+                        <img src="{image1.image}" className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg" />
                       </>
                     )}
                     <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
@@ -85,14 +78,7 @@ export default async function Page({
                   <div className="relative">
                     {image2 && (
                       <>
-                        <Image
-                          src={image2.image}
-                          width={500}
-                          height={300}
-                          alt={image2.alt_text}
-                          className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
-                        />
-                        <img src="{image2.image}" className="hidden" />
+                        <img src="{image2.image}" className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg" />
                       </>
                     )}
                     <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
@@ -100,14 +86,7 @@ export default async function Page({
                   <div className="relative">
                     {image3 && (
                       <>
-                        <Image
-                          src={image3.image}
-                          width={500}
-                          height={300}
-                          alt={image3.alt_text}
-                          className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
-                        />
-                        <img src="{image3.image}" className="hidden" />
+                        <img src="{image3.image}" className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg" />
                       </>
                     )}
                     <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
@@ -117,14 +96,7 @@ export default async function Page({
                   <div className="relative">
                     {image4 && (
                       <>
-                        <Image
-                          src={image4.image}
-                          width={500}
-                          height={300}
-                          alt={image4.alt_text}
-                          className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
-                        />
-                        <img src="{image4.image}" className="hidden" />
+                        <img src="{image4.image}" className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg" />
                       </>
                     )}
                     <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
@@ -132,14 +104,7 @@ export default async function Page({
                   <div className="relative">
                   {image5 && (
                       <>
-                        <Image
-                          src={image5.image}
-                          width={500}
-                          height={300}
-                          alt={image5.alt_text}
-                          className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
-                        />
-                        <img src="{image5.image}" className="hidden" />
+                        <img src="{image5.image}" className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg" />
                       </>
                     )}
                     <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
@@ -153,14 +118,7 @@ export default async function Page({
       <Container className="">
         {page.image && (
           <div className="my-10 relative w-full h-[500px]">
-            <Image
-              src={page.image}
-              priority={true}
-              fill={true}
-              alt={page.title}
-              className="object-cover md:rounded-3xl"
-            />
-            <img src={page.image} className="hidden" />
+            <img src={page.image} className="object-cover md:rounded-3xl" />
           </div>
         )}
       </Container>

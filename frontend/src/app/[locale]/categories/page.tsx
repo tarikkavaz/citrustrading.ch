@@ -44,14 +44,7 @@ export default async function CategoriesPage({ params: { locale } }: MetadataPro
             <div key={category.id} className="group relative rounded-md bg-white/60 hover:bg-[hsl(var(--citrus-lemon))]/40 border hover:border-[hsl(var(--citrus-lemon))]">
             <div className="h-56 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">
               <div className="h-full w-full object-cover object-center">
-                <Image
-                src={category.image ? category.image : "/images/placeholder.jpg"}
-                className="h-full w-full object-cover object-center"
-                alt={category.title}
-                sizes="100%"
-                width={500}
-                height={400}
-                />
+                <img src={category.image ? category.image : '/images/placeholder.jpg'} className="h-full w-full object-cover object-center" />
               </div>
             </div>
             <div className="p-3">
@@ -63,7 +56,7 @@ export default async function CategoriesPage({ params: { locale } }: MetadataPro
               </h3>
               <h4 className="min-h-[3.5rem] text-sm">{category.categoryinfo}</h4>
             </div>
-            <img src={category.image ? category.image : '/images/placeholder.jpg'} className="hidden" />
+            
           </div>
           ))}
         </div>

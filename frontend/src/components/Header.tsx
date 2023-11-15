@@ -51,24 +51,10 @@ function Logo({ mobileMenuOpen, setMobileMenuOpen }: MobileMenuOpenProps) {
       >
         <div className="flex items-center gap-4">
           <div className="relative h-[35px] w-[35px] md:h-[100px] md:w-[100px]">
-            <Image
-              src="/images/citrus-logo.png"
-              priority={true}
-              fill={true}
-              sizes="100%"
-              alt="Citrus Trading"
-              className=" object-cover"
-              />
+              <img src="/images/citrus-logo.png" className="object-cover" />
           </div>
           <div className="relative h-[35px] w-[150px] md:h-[59px] md:w-[250px]">
-            <Image
-              src={logoSrc}
-              priority={true}
-              fill={true}
-              sizes="100%"
-              alt="Citrus Trading"
-              className=" object-cover"
-              />
+              <img src={logoSrc} className="object-cover" />
           </div>
         </div>
       </Link>
