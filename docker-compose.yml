@@ -1,7 +1,7 @@
 version: '3.1'
 
 volumes:
-  images:
+  media:
 
 networks:
   mynetwork:
@@ -17,7 +17,7 @@ services:
       - "8000:8000"
     volumes:
       - ./backend:/backend
-      - images:/backend/media/images
+      - media:/backend/media/images
     environment:
       - DEBUG=True
       - ENVIRONMENT=local
@@ -35,7 +35,7 @@ services:
     volumes:
       - ./frontend:/frontend
       - ./frontend/.next:/frontend/.next
-      - images:/frontend/public/media/images
+      - media:/frontend/public/media/images
     networks:
       - mynetwork
     tty: true
