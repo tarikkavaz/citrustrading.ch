@@ -1,7 +1,7 @@
 version: '3.1'
 
 volumes:
-  images:
+  media:
   static:
 
 networks:
@@ -23,7 +23,7 @@ services:
       - mynetwork
     volumes:
       - static:/backend/static_root
-      - images:/backend/media/
+      - media:/backend/media/
 
   frontend:
     restart: unless-stopped
@@ -39,7 +39,7 @@ services:
     env_file:
       - frontend/.env
     volumes:
-      - images:/frontend/public/media/
+      - media:/frontend/public/media/
 
   nginx:
       image: nginx:alpine
@@ -52,7 +52,7 @@ services:
         - /etc/ssl/certs:/etc/ssl/certs:ro
         - /etc/ssl/private:/etc/ssl/private:ro
         - static:/backend/static_root
-        - images:/backend/media/
+        - media:/backend/media/
       networks:
         - mynetwork
       depends_on:
