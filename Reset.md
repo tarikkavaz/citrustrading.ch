@@ -2,17 +2,18 @@
 On Server
 
 ```bash
-cd ~ &&
-rm -rf citrustrading.ch &&
-git clone https://github.com/tarikkavaz/citrustrading.ch.git &&
 cd citrustrading.ch &&
-cp frontend/.env-sample-server frontend/.env &&
-cp nginx.conf-sample nginx.conf &&
 docker stop $(docker ps -aq) &&
 docker rm $(docker ps -aq) &&
 docker rmi $(docker images -q) &&
 docker volume rm $(docker volume ls -q) &&
 docker network prune -f &&
+cd .. &&
+rm -rf citrustrading.ch &&
+git clone https://github.com/tarikkavaz/citrustrading.ch.git &&
+cd citrustrading.ch &&
+cp frontend/.env-sample-server frontend/.env &&
+cp nginx.conf-sample nginx.conf &&
 docker-compose -f docker-compose.prod.yml up --build -d &&
 docker-compose exec backend python manage.py migrate &&
 docker-compose exec backend python manage.py collectstatic && 
