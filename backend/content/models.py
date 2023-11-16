@@ -19,6 +19,11 @@ class Image(models.Model):
         return format_html('<img src="{}" height="50" />', self.image.url)
     image_thumbnail.short_description = 'Thumbnail'
 
+    def clean(self):
+        super().clean()
+        if self.image.size > 10 * 1024 * 1024:  # 10MB limit
+            raise ValidationError("Image file too large - more than 10MB.")
+
 class MenuItem(models.Model):
     title = models.CharField(max_length=200)
     link = models.CharField(max_length=500, blank=True, null=True)
