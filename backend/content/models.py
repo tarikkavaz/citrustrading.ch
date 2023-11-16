@@ -21,7 +21,7 @@ class Image(models.Model):
 
     def clean(self):
         super().clean()
-        if self.image.size > 10 * 1024 * 1024:  # 10MB limit
+        if self.image.size > 10 * 1024:  # 10MB limit
             raise ValidationError("Image file too large - more than 10MB.")
 
 class MenuItem(models.Model):
