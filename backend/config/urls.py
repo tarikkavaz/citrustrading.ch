@@ -10,7 +10,6 @@ from content.views import (
     ImageViewSet, 
     HomePageViewSet, 
     CategoryProductsView, 
-    CategoryProductsView, 
     TagProductsView, 
     MenuItemViewSet, 
     SocialViewSet
