@@ -1,6 +1,6 @@
 import { Page, ContentImage, MetadataProps } from "@/utils/types";
 import Container from "@/components/ui/Container";
-import Image from "next/image";
+import { GlobalCarousel } from "@/components/animation/GlobalCarousel";
 import { fetchData, API_URL } from "@/utils/api"; // Imported API_URL
 import { useLocale } from "next-intl";
 import { getTranslator } from "next-intl/server";
@@ -53,73 +53,34 @@ export default async function Page({
 
   return (
     <>
-      <div className="relative isolate">
-        <div className="overflow-hidden">
-          <div className="mx-auto max-w-7xl px-6 pb-32 pt-36 sm:pt-60 lg:px-8 lg:pt-32">
-            <div className="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
-              <div className="w-full max-w-xl lg:shrink-0 xl:max-w-2xl">
-                <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
-                {page.title}
-                </h1>
-                <div dangerouslySetInnerHTML={{ __html: page.content }} className="relative mt-6 text-lg leading-8 sm:max-w-md lg:max-w-none" />
-              </div>
-              <div className="mt-14 flex justify-end gap-8 sm:-mt-44 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-0">
-                <div className="ml-auto w-44 flex-none space-y-8 pt-32 sm:ml-0 sm:pt-80 lg:order-last lg:pt-36 xl:order-none xl:pt-80">
-                  <div className="relative">
-                    {image1 && (
-                      <>
-                        <img src={image1.image} className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg" />
-                      </>
-                    )}
-                    <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
-                  </div>
-                </div>
-                <div className="mr-auto w-44 flex-none space-y-8 sm:mr-0 sm:pt-52 lg:pt-36">
-                  <div className="relative">
-                    {image2 && (
-                      <>
-                        <img src={image2.image} className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg" />
-                      </>
-                    )}
-                    <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
-                  </div>
-                  <div className="relative">
-                    {image3 && (
-                      <>
-                        <img src={image3.image} className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg" />
-                      </>
-                    )}
-                    <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
-                  </div>
-                </div>
-                <div className="w-44 flex-none space-y-8 pt-32 sm:pt-0">
-                  <div className="relative">
-                    {image4 && (
-                      <>
-                        <img src={image4.image} className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg" />
-                      </>
-                    )}
-                    <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
-                  </div>
-                  <div className="relative">
-                  {image5 && (
-                      <>
-                        <img src={image5.image} className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg" />
-                      </>
-                    )}
-                    <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
-                  </div>
-                </div>
-              </div>
+      <div className="relative isolate overflow-hidden pt-14">
+        <div className="mx-auto max-w-7xl px-6 pt-32 sm:pt-40 lg:px-8">
+          <div className="mx-auto max-w-2xl lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-6 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8">
+            <h1 className="max-w-2xl text-4xl font-bold tracking-tight sm:text-6xl lg:col-span-2 xl:col-auto">
+            {page.title}
+            </h1>
+            <div className="mt-6 max-w-xl lg:mt-0 xl:col-end-1 xl:row-start-1">
+              <div dangerouslySetInnerHTML={{ __html: page.content }} className="text-lg leading-8" />
             </div>
+            {page.image && (
+              <div className="my-10 relative mt-10 w-full max-w-lg sm:mt-16 lg:mt-0 lg:max-w-none xl:row-span-2 xl:row-end-2 " key={page.title}>
+                <img src={page.image} className="object-cover w-full rounded-2xl" />
+              </div>
+            )}
           </div>
         </div>
+        <div className="absolute inset-x-0 bottom-0 -z-10 h-24 sm:h-32" />
       </div>
+    
       <Container className="p-10">
-        {page.image && (
-          <div className="h-[200px] md:h-[300px] lg:h-[450px] bg-accent md:rounded-3xl">
-            <img src={page.image} className="object-cover md:rounded-3xl w-full" />
-          </div>
+        {page.images && page.images.length > 0 && (
+        <div className="mt-8">
+          <GlobalCarousel 
+            images={page.images} 
+            navigationEnabled={false} 
+            className="h-[200px] md:h-[300px] lg:h-[450px] bg-accent md:rounded-3xl" 
+          />
+        </div>
         )}
       </Container>
     </>
