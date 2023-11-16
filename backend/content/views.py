@@ -4,15 +4,15 @@ from rest_framework.response import Response
 from .models import Category, Tag, Page, Product, Image, HomePage, MenuItem, Social
 from .serializers import CategorySerializer, TagSerializer, ProductSerializer, PageSerializer, ImageSerializer, HomePageSerializer, MenuItemSerializer, SocialSerializer
 
-class MenuItemViewSet(viewsets.ModelViewSet):
+class MenuItemViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = MenuItem.objects.all()
     serializer_class = MenuItemSerializer
 
-class CategoryViewSet(viewsets.ModelViewSet):
+class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
 
-class CategoryProductsView(generics.ListAPIView):
+class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = ProductSerializer
 
     def get_queryset(self):
@@ -20,7 +20,7 @@ class CategoryProductsView(generics.ListAPIView):
         category = Category.objects.get(slug=slug)
         return Product.objects.filter(categories=category)
 
-class TagProductsView(generics.ListAPIView):
+class TagViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = ProductSerializer
 
     def get_queryset(self):
@@ -28,11 +28,11 @@ class TagProductsView(generics.ListAPIView):
         tag = Tag.objects.get(slug=slug)
         return Product.objects.filter(tags=tag)
 
-class TagViewSet(viewsets.ModelViewSet):
+class TagViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
 
-class ProductViewSet(viewsets.ModelViewSet):
+class ProductViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = ProductSerializer
 
     def get_queryset(self):
@@ -54,7 +54,7 @@ class ProductViewSet(viewsets.ModelViewSet):
         else:
             return Response({"detail": "Not found."}, status=404)
 
-class PageViewSet(viewsets.ModelViewSet):
+class PageViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = PageSerializer
 
     def get_queryset(self):
@@ -76,11 +76,11 @@ class PageViewSet(viewsets.ModelViewSet):
         else:
             return Response({"detail": "Not found."}, status=404)
 
-class ImageViewSet(viewsets.ModelViewSet):
+class ImageViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Image.objects.all()
     serializer_class = ImageSerializer
 
-class HomePageViewSet(viewsets.ModelViewSet):
+class HomePageViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = HomePageSerializer
 
     def get_queryset(self):
@@ -89,6 +89,6 @@ class HomePageViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(lang=self.kwargs['lang'])
         return queryset
 
-class SocialViewSet(viewsets.ModelViewSet):
+class SocialViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Social.objects.all()
     serializer_class = SocialSerializer
