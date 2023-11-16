@@ -72,7 +72,7 @@ DerivedData/
 *.iso
 *.jar
 *.rar
-*.tar
+# *.tar
 *.zip
 
 # Node.js
