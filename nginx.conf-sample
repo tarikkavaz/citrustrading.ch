@@ -73,6 +73,6 @@ server {
     }
 
     location = /favicon.ico {
-        alias /frontend/icons/favicon.ico;
+        alias http://frontend:3000/icons/favicon.ico;
     }
 }
