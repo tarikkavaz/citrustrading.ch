@@ -36,7 +36,7 @@ export const GlobalCarousel: FC<GlobalCarouselProps> = ({
         images.map((image: ContentImage) => (
           <SwiperSlide key={image.id}>
             <picture className="block relative w-full h-full">
-              <img src={image.image} className="w-full h-full object-cover object-center" />
+              <img src={image.image} className="w-full h-full object-cover object-center border-b-8 border-[hsl(var(--citrus-lemon))]" />
             </picture>
           </SwiperSlide>
         ))}

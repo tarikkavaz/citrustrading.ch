@@ -81,7 +81,7 @@ export default async function Page({
             </div>
             {product.image && (
               <div className="my-10 relative mt-10 w-full max-w-lg sm:mt-16 lg:mt-0 lg:max-w-none xl:row-span-2 xl:row-end-2 " key={product.title}>
-                <img src={product.image} className="object-cover w-full rounded-2xl" />
+                <img src={product.image} className="object-cover w-full rounded-2xl border-b-8 border-[hsl(var(--citrus-lemon))]" />
               </div>
             )}
           </div>

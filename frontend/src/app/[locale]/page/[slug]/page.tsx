@@ -56,7 +56,7 @@ export default async function Page({
       <div className="relative isolate overflow-hidden pt-14">
         <div className="mx-auto max-w-7xl px-6 pt-32 sm:pt-40 lg:px-8">
           <div className="mx-auto max-w-2xl lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-6 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8">
-            <h1 className="max-w-2xl text-4xl font-bold tracking-tight sm:text-6xl lg:col-span-2 xl:col-auto">
+            <h1 className="max-w-2xl text-4xl font-bold tracking-tight sm:text-6xl lg:col-span-2 xl:col-auto  border-b-8 border-[hsl(var(--citrus-orange))] pb-4">
             {page.title}
             </h1>
             <div className="mt-6 max-w-xl lg:mt-0 xl:col-end-1 xl:row-start-1">
@@ -64,7 +64,7 @@ export default async function Page({
             </div>
             {page.image && (
               <div className="my-10 relative mt-10 w-full max-w-lg sm:mt-16 lg:mt-0 lg:max-w-none xl:row-span-2 xl:row-end-2 " key={page.title}>
-                <img src={page.image} className="object-cover w-full rounded-2xl" />
+                <img src={page.image} className="object-cover w-full rounded-2xl border-b-8 border-[hsl(var(--citrus-lemon))]" />
               </div>
             )}
           </div>

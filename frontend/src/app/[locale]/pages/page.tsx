@@ -50,7 +50,7 @@ export default async function Pages({ params: { locale } }: MetadataProps) {
                   <div>
                   {page.image && (
                     <div className="relative w-full h-[300px]">
-                      <img src={page.image} className="object-cover" />
+                      <img src={page.image} className="object-cover border-b-8 border-[hsl(var(--citrus-lemon))]" />
                     </div>
                   )}
                   </div>

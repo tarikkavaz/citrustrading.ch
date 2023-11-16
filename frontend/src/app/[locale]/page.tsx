@@ -111,7 +111,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
             <div key={product.id} className="group relative rounded-md bg-white/60 hover:bg-[hsl(var(--citrus-lemon))]/40 border hover:border-[hsl(var(--citrus-lemon))]">
               <div className="h-56 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">
                 <div className="h-full w-full object-cover object-center">
-                  <img src={product.image ? product.image : '/images/placeholder.jpg'} className="h-full w-full object-cover object-center" />
+                  <img src={product.image ? product.image : '/images/placeholder.jpg'} className="h-full w-full object-cover object-center border-b-8 border-[hsl(var(--citrus-lemon))]" />
                 </div>
               </div>
               <div className="p-3">
@@ -140,7 +140,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
               <div key={category.id} className="group relative rounded-md bg-[hsl(var(--citrus-lemon))]/30 hover:bg-[hsl(var(--citrus-lemon))]/40 border hover:border-[hsl(var(--citrus-lemon))]">
                 <div className="h-56 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">
                   <div className="h-full w-full object-cover object-center">
-                    <img src={category.image ? category.image : '/images/placeholder.jpg'} className="h-full w-full object-cover object-center" />
+                    <img src={category.image ? category.image : '/images/placeholder.jpg'} className="h-full w-full object-cover object-center border-b-8 border-[hsl(var(--citrus-lemon))]" />
                   </div>
                 </div>
                 <div className="p-3">
