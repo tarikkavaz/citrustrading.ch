@@ -12,7 +12,7 @@ class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
 
-class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
+class CategoryProductsView(generics.ListAPIView):
     serializer_class = ProductSerializer
 
     def get_queryset(self):
@@ -20,7 +20,7 @@ class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
         category = Category.objects.get(slug=slug)
         return Product.objects.filter(categories=category)
 
-class TagViewSet(viewsets.ReadOnlyModelViewSet):
+class TagProductsView(generics.ListAPIView):
     serializer_class = ProductSerializer
 
     def get_queryset(self):

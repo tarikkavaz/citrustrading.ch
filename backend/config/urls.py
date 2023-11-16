@@ -5,12 +5,11 @@ from rest_framework.routers import DefaultRouter
 from content.views import (
     CategoryViewSet, 
     TagViewSet, 
+    TagProductsView, 
     ProductViewSet, 
     PageViewSet, 
     ImageViewSet, 
     HomePageViewSet, 
-    CategoryViewSet, 
-    TagProductsView, 
     MenuItemViewSet, 
     SocialViewSet
 )
