@@ -14,7 +14,7 @@ DEBUG = True if ENVIRONMENT == 'local' else False
 if DEBUG:
     ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'backend', 'frontend']
 else:
-    ALLOWED_HOSTS = ['orangekaos.com', 'www.orangekaos.com', '68.183.5.78']
+    ALLOWED_HOSTS = ['orangekaos.com', 'www.orangekaos.com', '167.71.70.128']
 
 # Dynamic CORS_ALLOWED_ORIGINS
 CORS_ALLOWED_ORIGINS = [
