@@ -76,10 +76,10 @@ export default async function Products({ params: { locale } }: HomeProps) {
               </svg>
               <div className="relative pr-6 py-10 md:py-32 sm:py-40 lg:py-56 lg:pr-0">
                 <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
-                  <h1 className="text-4xl font-bold tracking-tight sm:text-6xl dark:text-[hsl(var(--citrus-lemon))] w-fit border-solid border-b-8 border-gray-400">
+                  <h1 className="text-4xl font-bold tracking-tight sm:text-6xl w-fit border-solid border-b-8 border-gray-400">
                   {homepage.title} <br className="hidden lg:inline" />
                   </h1>
-                  <p className="mt-6 text-lg leading-8 text-[hsl(var(--citrus-orange))]">
+                  <p className="mt-6 text-3xl">
                     {homepage.pageinfo}
                   </p>
                   <div>
@@ -91,7 +91,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
           </div>
           <div className="bg-gray-50 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
             {homepage.images && homepage.images.length > 0 && (
-              <GlobalCarousel 
+              <GlobalCarousel
                 images={homepage.images || []} 
                 className="aspect-[3/2] object-cover lg:aspect-auto lg:h-full lg:w-full rounded-2xl md:rounded-none" 
               />

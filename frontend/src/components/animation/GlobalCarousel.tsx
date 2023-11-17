@@ -2,20 +2,19 @@
 
 import { FC } from 'react';
 import { ContentImage } from "@/utils/types";
-import Image from "next/image";
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Autoplay, Pagination, Navigation, EffectFade } from "swiper/modules";
 import {GlobalCarouselProps} from "@/utils/types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/bundle";
 
 export const GlobalCarousel: FC<GlobalCarouselProps> = ({
   images,
-  autoplayDelay = 5500,
+  autoplayDelay = 2500,
   loop = true,
   centeredSlides = true,
-  paginationClickable = true,
-  navigationEnabled = true,
-  className = "h-[300px] md:h-[400px] lg:h-[550px] bg-[hsl(var(--background))]"
+  paginationClickable = false,
+  navigationEnabled = false,
+  className = "h-[300px] md:h-[400px] lg:h-[550px] bg-[hsl(var(--foreground))]"
 }) => {
   return (
     <Swiper
@@ -28,8 +27,9 @@ export const GlobalCarousel: FC<GlobalCarouselProps> = ({
       pagination={{
         clickable: paginationClickable,
       }}
+      effect={'fade'}
       navigation={navigationEnabled}
-      modules={[Autoplay, Pagination, Navigation]}
+      modules={[Autoplay, Pagination, Navigation, EffectFade]}
       className={className}
     >
       {images &&

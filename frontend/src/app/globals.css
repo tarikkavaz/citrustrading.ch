@@ -47,9 +47,9 @@ h4 {
 
 /* Slider */
 .swiper {
-  --swiper-theme-color: hsl(var(--secondary-foreground));
-  --swiper-pagination-bullet-active-color: hsl(var(--secondary-foreground));
-  --swiper-pagination-bullet-inactive-color: hsl(var(--secondary-foreground));
+  --swiper-theme-color: hsl(var(--secondary-background));
+  --swiper-pagination-bullet-active-color: hsl(var(--secondary-background));
+  --swiper-pagination-bullet-inactive-color: hsl(var(--secondary-background));
 }
 
 /* Navigation font start */

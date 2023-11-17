@@ -107,7 +107,6 @@ export default async function Page({
           <div className="max-w-screen-xl mx-auto pt-10">
             <GlobalCarousel 
               images={product.images} 
-              navigationEnabled={false} 
               className="h-[200px] md:h-[300px] lg:h-[450px] bg-accent md:rounded-2xl" 
             />
           </div>
