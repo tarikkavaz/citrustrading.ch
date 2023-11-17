@@ -10,7 +10,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        lemon: "bg-[hsl(var(--citrus-lemon))] text-primary-background hover:text-primary-foreground hover:bg-primary/90",
+        lemon: "bg-[hsl(var(--citrus-lemon))] text-primary-background hover:text-primary-foreground hover:bg-primary/90 dark:text-primary-foreground",
         orange: "bg-[hsl(var(--citrus-orange))] text-primary-foreground hover:text-primary-foreground hover:bg-primary/90",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
