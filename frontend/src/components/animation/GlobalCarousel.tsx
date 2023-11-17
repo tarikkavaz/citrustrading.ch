@@ -9,7 +9,7 @@ import "swiper/css/bundle";
 
 export const GlobalCarousel: FC<GlobalCarouselProps> = ({
   images,
-  autoplayDelay = 2500,
+  autoplayDelay = 3500,
   loop = true,
   centeredSlides = true,
   paginationClickable = false,
