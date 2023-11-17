@@ -75,7 +75,7 @@ export default async function CategoryPage({
         <div className="relative isolate overflow-hidden">
           <div className="max-w-screen-xl mx-auto pt-10">
             <div className="mx-auto max-w-2xl lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-6 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8">
-              <h1 className="max-w-2xl text-4xl font-bold tracking-tight sm:text-6xl lg:col-span-2 xl:col-auto">
+              <h1 className="max-w-2xl text-4xl font-bold tracking-tight sm:text-6xl lg:col-span-2 xl:col-auto w-fit border-solid border-b-8 border-[hsl(var(--citrus-orange))]">
               {t("category")}: <span className="text-gray-500">{category?.title || slug}</span>
               </h1>
               <div className="mt-6 max-w-xl lg:mt-0 xl:col-end-1 xl:row-start-1">
@@ -95,7 +95,7 @@ export default async function CategoryPage({
       </Container>
       <Container size="fluid" className="">
         <Container className="py-10">
-          <h2 className="text-4xl font-bold tracking-tight sm:text-6xl">{t("products")}</h2>
+          <h2 className="text-4xl font-bold tracking-tight sm:text-6xl w-fit border-solid border-b-8 border-[hsl(var(--citrus-lemon))]">{t("products")}</h2>
           <div className="grid md:grid-cols-4 gap-10 mt-8">
             {products.map((product) => (
             <div key={product.id} className="group relative rounded-2xl bg-[hsl(var(--citrus-lemon))]/30 hover:bg-[hsl(var(--citrus-lemon))]/40 border hover:border-[hsl(var(--citrus-lemon))]">
