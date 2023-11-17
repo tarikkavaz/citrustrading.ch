@@ -93,7 +93,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
             {homepage.images && homepage.images.length > 0 && (
               <GlobalCarousel
                 images={homepage.images || []} 
-                className="aspect-[3/2] object-cover lg:aspect-auto lg:h-full lg:w-full rounded-2xl md:rounded-none" 
+                className="aspect-[3/2] object-cover lg:aspect-auto lg:h-full lg:w-full rounded-2xl  md:rounded-none md:rounded-bl-2xl" 
               />
             )}
           </div>
