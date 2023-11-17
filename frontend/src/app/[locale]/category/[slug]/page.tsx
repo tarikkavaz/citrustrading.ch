@@ -72,9 +72,9 @@ export default async function CategoryPage({
 
   return (
     <>
-      <Container>
-        <div className="relative isolate overflow-hidden pt-14">
-          <div className="mx-auto max-w-7xl px-6 py-6 lg:px-8">
+      <Container size="fluid" className="mt-16">
+        <div className="relative isolate overflow-hidden">
+          <div className="mx-auto max-w-7xl px-6 py-10 lg:px-8">
             <div className="mx-auto max-w-2xl lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-6 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8">
               <h1 className="max-w-2xl text-4xl font-bold tracking-tight sm:text-6xl lg:col-span-2 xl:col-auto">
               {t("category")}: <span className="text-gray-500">{category?.title || slug}</span>
@@ -95,12 +95,12 @@ export default async function CategoryPage({
           </div>
         </div>
       </Container>
-      <Container size="fluid" className="mt-6 bg-gradient-to-b from-[hsl(var(--citrus-lemon))]/20 to-[hsl(var(--citrus-orange))]/20 dark:from-[hsl(var(--citrus-lemon))]/10 dark:to-[hsl(var(--citrus-orange))]/10">
+      <Container size="fluid" className="mt-6">
         <Container className="py-10">
           <h2 className="text-3xl font-bold tracking-tight dark:text-[hsl(var(--citrus-orange))] ">{t("products")}</h2>
           <div className="grid md:grid-cols-4 gap-10 mt-8">
             {products.map((product) => (
-              <div key={product.id} className="group relative rounded-md bg-white/60 dark:bg-white/10 hover:bg-[hsl(var(--citrus-lemon))]/40 border hover:border-[hsl(var(--citrus-lemon))]">
+              <div key={product.id} className="group relative rounded-md bg-[hsl(var(--citrus-lemon))]/30 hover:bg-[hsl(var(--citrus-lemon))]/40 border hover:border-[hsl(var(--citrus-lemon))]">
               <div className="h-56 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">
                 <div className="h-full w-full object-cover object-center">
                   <img src={product.image ? product.image : '/images/placeholder.jpg'} className="h-full w-full object-cover object-center" />

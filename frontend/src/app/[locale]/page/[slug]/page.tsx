@@ -53,9 +53,9 @@ export default async function Page({
 
   return (
     <>
-      <div className="relative isolate overflow-hidden pt-14">
-        <div className="mx-auto max-w-7xl px-6 pt-32 sm:pt-40 lg:px-8">
-          <div className="mx-auto max-w-2xl lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-6 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8">
+      <div className="relative isolate overflow-hidden">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 mt-16">
+          <div className="mx-auto max-w-2xl lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-6 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8 py-10">
             <h1 className="max-w-2xl text-4xl font-bold tracking-tight sm:text-6xl lg:col-span-2 xl:col-auto">
             {page.title}
             </h1>

@@ -63,7 +63,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
 
   return (
     <>
-      <Container size="fluid">
+      <Container size="fluid" className="bg-white">
         <div className="relative">
           <div className="mx-auto max-w-7xl">
             <div className="relative z-10 pt-14 lg:w-full lg:max-w-2xl">
@@ -103,12 +103,12 @@ export default async function Products({ params: { locale } }: HomeProps) {
       <hr />
 
       {homepage.products && homepage.products.length > 0 && (
-      <Container size="fluid" className="bg-gradient-to-b from-[hsl(var(--citrus-lemon))]/20 to-[hsl(var(--citrus-orange))]/20 dark:from-[hsl(var(--citrus-lemon))]/10 dark:to-[hsl(var(--citrus-orange))]/10">
+      <Container size="fluid" className="">
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-16 lg:max-w-7xl lg:px-8 ">
           <h2 className="text-3xl font-bold tracking-tight dark:text-[hsl(var(--citrus-orange))] ">{t("featuredproducts")}</h2>
           <div className="mt-6 grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 md:grid-cols-4 gap-10">
           {homepage.products.map((product) => (
-            <div key={product.id} className="group relative rounded-md bg-white/60 dark:bg-white/10 hover:bg-[hsl(var(--citrus-lemon))]/40 border hover:border-[hsl(var(--citrus-lemon))]">
+            <div key={product.id} className="group relative rounded-md bg-[hsl(var(--citrus-lemon))]/30 hover:bg-[hsl(var(--citrus-lemon))]/40 border hover:border-[hsl(var(--citrus-lemon))]">
               <div className="h-56 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">
                 <div className="h-full w-full object-cover object-center">
                   <img src={product.image ? product.image : '/images/placeholder.jpg'} className="h-full w-full object-cover object-center border-b-8 border-[hsl(var(--citrus-lemon))]" />
