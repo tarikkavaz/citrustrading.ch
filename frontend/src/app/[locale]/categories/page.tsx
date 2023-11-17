@@ -1,8 +1,6 @@
 import { Category, MetadataProps } from "@/utils/types";
 import Container from "@/components/ui/Container";
 import Link from "next/link";
-import Image from "next/image";
-import ProductsList from "@/components/ProductsList";
 import { fetchData, API_URL } from "@/utils/api";
 import { getTranslator } from "next-intl/server";
 import { DEFAULT_OG_IMAGE_URL } from '@/lib/config';

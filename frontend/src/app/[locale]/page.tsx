@@ -7,7 +7,6 @@ import {
 import Container from "@/components/ui/Container";
 import { GlobalCarousel } from "@/components/animation/GlobalCarousel";
 import Link from "next/link";
-import Image from "next/image";
 import { fetchData, API_URL, SERVER_IP } from "@/utils/api";
 import { useLocale } from "next-intl";
 import { getTranslator } from "next-intl/server";

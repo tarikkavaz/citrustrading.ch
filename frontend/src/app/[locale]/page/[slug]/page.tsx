@@ -1,7 +1,7 @@
 import { Page, MetadataProps } from "@/utils/types";
 import Container from "@/components/ui/Container";
 import { GlobalCarousel } from "@/components/animation/GlobalCarousel";
-import { fetchData, API_URL } from "@/utils/api"; // Imported API_URL
+import { fetchData, API_URL } from "@/utils/api";
 import { useLocale } from "next-intl";
 import { getTranslator } from "next-intl/server";
 import { Metadata, ResolvingMetadata } from "next";

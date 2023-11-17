@@ -2,7 +2,6 @@
 import { Product, Category, MetadataProps } from "@/utils/types";
 import Container from "@/components/ui/Container";
 import Link from "next/link";
-import Image from "next/image";
 import { fetchData, API_URL } from "@/utils/api";
 import { getTranslator } from "next-intl/server";
 import { Metadata, ResolvingMetadata } from "next";

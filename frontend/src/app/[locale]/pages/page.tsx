@@ -1,8 +1,7 @@
 import { Page, MetadataProps } from "@/utils/types";
 import Container from "@/components/ui/Container";
 import Link from "next/link";
-import Image from 'next/image';
-import { fetchData, API_URL } from "@/utils/api";  // Imported API_URL
+import { fetchData, API_URL } from "@/utils/api";
 import { useLocale } from "next-intl";
 import { getTranslator } from "next-intl/server";
 import { DEFAULT_OG_IMAGE_URL } from '@/lib/config';
