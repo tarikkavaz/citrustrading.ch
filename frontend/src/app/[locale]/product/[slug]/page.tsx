@@ -54,7 +54,7 @@ export default async function Page({
     <>
       <Container size="fluid" className="mt-16">
         <div className="relative isolate overflow-hidden">
-          <div className="max-w-screen-xl mx-auto py-10">
+          <div className="max-w-screen-xl mx-auto pt-10">
             <div className="mx-auto max-w-2xl lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-6 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8">
               <h1 className="max-w-2xl text-4xl font-bold tracking-tight sm:text-6xl lg:col-span-2 xl:col-auto">
                 {product.title}
@@ -92,10 +92,10 @@ export default async function Page({
         </div>
       </Container>
     
-      <Container size="fluid" className="mt-16">
+      <Container size="fluid" className="">
         {product.images && product.images.length > 0 && (
         <div className="relative isolate overflow-hidden">
-          <div className="max-w-screen-xl mx-auto py-10">
+          <div className="max-w-screen-xl mx-auto pt-10">
             <GlobalCarousel 
               images={product.images} 
               navigationEnabled={false} 

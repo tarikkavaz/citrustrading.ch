@@ -100,10 +100,8 @@ export default async function Products({ params: { locale } }: HomeProps) {
           </div>
         </div>
       </Container>
-      <hr />
 
       {homepage.products && homepage.products.length > 0 && (
-
       <Container size="fluid" className="mt-16">
         <Container className="py-10">
           <h2 className="text-4xl font-bold tracking-tight sm:text-6xl">{t("featuredproducts")}</h2>
@@ -129,9 +127,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
           </div>
         </Container>
       </Container>
-
       )}
-      <hr />
 
       <Container size="fluid" className="mt-16">
         <Container className="py-10">
