@@ -7,7 +7,7 @@ import {
 import Container from "@/components/ui/Container";
 import { GlobalCarousel } from "@/components/animation/GlobalCarousel";
 import Link from "next/link";
-import { fetchData, API_URL, SERVER_IP } from "@/utils/api";
+import { fetchData, API_URL } from "@/utils/api";
 import { useLocale } from "next-intl";
 import { getTranslator } from "next-intl/server";
 import { DEFAULT_OG_IMAGE_URL } from "@/lib/config";
@@ -88,11 +88,11 @@ export default async function Products({ params: { locale } }: HomeProps) {
               </div>
             </div>
           </div>
-          <div className="bg-gray-50 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+          <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
             {homepage.images && homepage.images.length > 0 && (
               <GlobalCarousel
                 images={homepage.images || []} 
-                className="aspect-[3/2] object-cover lg:aspect-auto lg:h-full lg:w-full rounded-2xl  md:rounded-none md:rounded-bl-2xl" 
+                className="aspect-[3/2] object-cover lg:aspect-auto lg:h-full lg:w-full rounded-2xl  md:rounded-none md:rounded-bl-[150px]" 
               />
             )}
           </div>
