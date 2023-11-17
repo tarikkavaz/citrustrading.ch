@@ -70,14 +70,14 @@ export default async function Page({
         </div>
       </Container>
     
-      <Container size="fluid" className="mt-16">
+      <Container size="fluid" className="md:mt-16">
         {page.images && page.images.length > 0 && (
         <div className="relative isolate overflow-hidden">
-          <div className="max-w-screen-xl mx-auto pt-10">
+          <div className="max-w-screen-xl mx-auto md:pt-10">
             <GlobalCarousel 
               images={page.images} 
               navigationEnabled={false} 
-              className="h-[200px] md:h-[300px] lg:h-[450px] bg-accent md:rounded-3xl" 
+              className="h-[200px] md:h-[300px] lg:h-[450px] bg-accent rounded-2xl" 
             />
           </div>
         </div>

@@ -75,7 +75,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
               >
                 <polygon points="0,0 90,0 50,100 0,100" />
               </svg>
-              <div className="relative px-6 py-32 sm:py-40 lg:px-8 lg:py-56 lg:pr-0">
+              <div className="relative pr-6 py-10 md:py-32 sm:py-40 lg:py-56 lg:pr-0">
                 <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
                   <h1 className="text-4xl font-bold tracking-tight sm:text-6xl dark:text-[hsl(var(--citrus-lemon))]">
                   {homepage.title} <br className="hidden lg:inline" />
@@ -94,7 +94,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
             {homepage.images && homepage.images.length > 0 && (
               <GlobalCarousel 
                 images={homepage.images || []} 
-                className="aspect-[3/2] object-cover lg:aspect-auto lg:h-full lg:w-full" 
+                className="aspect-[3/2] object-cover lg:aspect-auto lg:h-full lg:w-full rounded-2xl md:rounded-none" 
               />
             )}
           </div>
