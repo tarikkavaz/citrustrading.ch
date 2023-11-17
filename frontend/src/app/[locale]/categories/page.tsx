@@ -28,7 +28,6 @@ export async function generateMetadata({ params: { locale } }: MetadataProps) {
   };
 }
 
-
 export default async function CategoriesPage({ params: { locale } }: MetadataProps) {
   const categories = await getCategories(locale);
   const t = await getTranslator(locale, "Globals");
@@ -54,7 +53,6 @@ export default async function CategoriesPage({ params: { locale } }: MetadataPro
               </h3>
               <h4 className="min-h-[3.5rem] text-sm">{category.categoryinfo}</h4>
             </div>
-            
           </div>
           ))}
         </div>

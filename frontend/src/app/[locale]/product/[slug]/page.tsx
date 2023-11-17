@@ -7,7 +7,6 @@ import { getTranslator } from "next-intl/server";
 import { Metadata, ResolvingMetadata } from "next";
 import { DEFAULT_OG_IMAGE_URL } from "@/lib/config";
 import { GlobalCarousel } from "@/components/animation/GlobalCarousel";
-import { badgeVariants } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button";
 
 export async function generateMetadata(

@@ -56,7 +56,6 @@ export default async function Products({ params: { locale } }: MetadataProps) {
               </h3>
               <h4 className="min-h-[3.5rem] text-sm">{product.pageinfo}</h4>
             </div>
-            
           </div>
           ))}
         </div>

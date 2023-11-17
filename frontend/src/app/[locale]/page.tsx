@@ -13,7 +13,6 @@ import { getTranslator } from "next-intl/server";
 import { DEFAULT_OG_IMAGE_URL } from "@/lib/config";
 import { Metadata, ResolvingMetadata } from "next";
 
-
 const getHomepage = async (): Promise<Homepage[]> => {
   const locale = useLocale();
   const endpoint = `/api/${locale}/homepage/`;

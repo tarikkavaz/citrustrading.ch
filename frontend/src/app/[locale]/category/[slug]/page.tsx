@@ -1,4 +1,3 @@
-// Import necessary components and types
 import { Product, Category, MetadataProps } from "@/utils/types";
 import Container from "@/components/ui/Container";
 import Link from "next/link";
@@ -7,15 +6,12 @@ import { getTranslator } from "next-intl/server";
 import { Metadata, ResolvingMetadata } from "next";
 import { DEFAULT_OG_IMAGE_URL } from "@/lib/config";
 
-
-// Helper function to fetch the category by slug
 const getCategoryBySlug = async (locale: string, slug: string): Promise<Category | undefined> => {
   const categoriesEndpoint = `/api/categories/`;
   const allCategories: Category[] = await fetchData(API_URL, categoriesEndpoint);
   return allCategories.find(category => category.slug === slug && category.lang === locale);
 };
 
-// Helper function to fetch products by category slug
 const getProductsByCategory = async (locale: string, categorySlug: string): Promise<Product[]> => {
   const productsEndpoint = `/api/products/`;
   const allProducts: Product[] = await fetchData(API_URL, productsEndpoint);
@@ -33,8 +29,6 @@ export async function generateMetadata(
   const category = await getCategoryBySlug(params.locale, params.slug);
 
   if (!category) {
-    // Handle the case where category is undefined
-    // For example, return default metadata
     return {
       title: t("defaultTitle"),
       description: t("defaultDescription"),
@@ -60,11 +54,9 @@ export async function generateMetadata(
   };
 }
 
-// The main component for the category page
 export default async function CategoryPage({
   params: { locale, slug }
 }: MetadataProps) {
-  // Fetch both products and category details
   const products = await getProductsByCategory(locale, slug);
   const category = await getCategoryBySlug(locale, slug);
   const t = await getTranslator(locale, "Globals");
@@ -93,6 +85,7 @@ export default async function CategoryPage({
           </div>
         </div>
       </Container>
+
       <Container size="fluid" className="">
         <Container className="py-10">
           <h2 className="text-4xl font-bold tracking-tight sm:text-6xl w-fit border-solid border-b-8 border-[hsl(var(--citrus-lemon))]">{t("products")}</h2>
@@ -118,7 +111,6 @@ export default async function CategoryPage({
           </div>
         </Container>
       </Container>
-
     </>
   );
 }
