@@ -99,7 +99,7 @@ export default async function Page({
             <GlobalCarousel 
               images={product.images} 
               navigationEnabled={false} 
-              className="h-[200px] md:h-[300px] lg:h-[450px] bg-accent md:rounded-3xl" 
+              className="h-[200px] md:h-[300px] lg:h-[450px] bg-accent md:rounded-2xl" 
             />
           </div>
         </div>

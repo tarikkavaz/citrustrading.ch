@@ -22,7 +22,7 @@ export default function Navigation({
         <div className="flex lg:hidden">
           <button
             type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-foreground"
+            className="-m-2.5 inline-flex items-center justify-center rounded-2xl p-2.5 text-foreground"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             <span className="sr-only">Open main menu</span>
@@ -35,7 +35,7 @@ export default function Navigation({
               {({ open }) => (
                 <>
                   {menuItem.children ? (
-                    <Popover.Button className="inline-flex w-full justify-center rounded-md text-sm font-medium focus:outline-none ui-focus-visible:ring-2 ui-focus-visible:ring-offset-2 px-4 py-2 bg-accent/0 hover:bg-accent ">
+                    <Popover.Button className="inline-flex w-full justify-center rounded-2xl text-sm font-medium focus:outline-none ui-focus-visible:ring-2 ui-focus-visible:ring-offset-2 px-4 py-2 bg-accent/0 hover:bg-accent ">
                       {menuItem.title}
                       <ChevronDownIcon
                         className={
@@ -51,7 +51,7 @@ export default function Navigation({
                       href={menuItem.link}
                       target={menuItem.newtab ? "_blank" : "_self"}
                       rel={menuItem.newtab ? "noopener noreferrer" : ""}
-                      className="text-sm font-semibold leading-6 rounded-md px-4 py-2 bg-accent/0 hover:bg-accent"
+                      className="text-sm font-semibold leading-6 rounded-2xl px-4 py-2 bg-accent/0 hover:bg-accent"
                     >
                       {menuItem.title}
                     </Link>
@@ -118,7 +118,7 @@ export default function Navigation({
                     <Disclosure>
                       {({ open }) => (
                         <>
-                          <Disclosure.Button className="flex items-center justify-stretch w-full rounded-md px-3 py-2 text-base font-medium text-foreground  hover:text-foreground hover:bg-background">
+                          <Disclosure.Button className="flex items-center justify-stretch w-full rounded-2xl px-3 py-2 text-base font-medium text-foreground  hover:text-foreground hover:bg-background">
                             {menuItem.title}
                             <ChevronDownIcon
                               className={`${
@@ -134,7 +134,7 @@ export default function Navigation({
                                   key={submenuItem.title}
                                   href={submenuItem.link}
                                   onClick={() => setMobileMenuOpen(false)}
-                                  className="block rounded-md px-3 py-2 text-base font-medium text-foreground
+                                  className="block rounded-2xl px-3 py-2 text-base font-medium text-foreground
                                   hover:bg-background hover:text-foreground"
                                 >
                                   {submenuItem.title}
@@ -149,7 +149,7 @@ export default function Navigation({
                     <Link
                       href={menuItem.link}
                       onClick={() => setMobileMenuOpen(false)}
-                      className="block rounded-md px-3 py-2 text-base font-medium text-foreground
+                      className="block rounded-2xl px-3 py-2 text-base font-medium text-foreground
                                   hover:bg-background hover:text-foreground"
                     >
                       {menuItem.title}

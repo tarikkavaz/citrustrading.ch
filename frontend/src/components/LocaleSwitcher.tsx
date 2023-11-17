@@ -181,7 +181,7 @@ export default function LocaleSwitcher() {
                     handleLocaleChange(cur);
                   }
                 }}
-                className="block text-sm p-3 space-y-1 leading-none no-underline transition-colors rounded-md outline-none cursor-pointer select-none text-foreground  hover:text-foreground hover:bg-background"
+                className="block text-sm p-3 space-y-1 leading-none no-underline transition-colors rounded-2xl outline-none cursor-pointer select-none text-foreground  hover:text-foreground hover:bg-background"
               >
                 {t("localeLocale", { locale: cur })}
               </DropdownMenuItem>

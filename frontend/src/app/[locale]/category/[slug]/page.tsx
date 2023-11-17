@@ -99,8 +99,8 @@ export default async function CategoryPage({
           <h2 className="text-4xl font-bold tracking-tight sm:text-6xl">{t("products")}</h2>
           <div className="grid md:grid-cols-4 gap-10 mt-8">
             {products.map((product) => (
-            <div key={product.id} className="group relative rounded-md bg-[hsl(var(--citrus-lemon))]/30 hover:bg-[hsl(var(--citrus-lemon))]/40 border hover:border-[hsl(var(--citrus-lemon))]">
-              <div className="h-56 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">
+            <div key={product.id} className="group relative rounded-2xl bg-[hsl(var(--citrus-lemon))]/30 hover:bg-[hsl(var(--citrus-lemon))]/40 border hover:border-[hsl(var(--citrus-lemon))]">
+              <div className="h-56 w-full overflow-hidden rounded-2xl bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">
                 <div className="h-full w-full object-cover object-center">
                   <img src={product.image ? product.image : '/images/placeholder.jpg'} className="h-full w-full object-cover object-center border-b-8 border-[hsl(var(--citrus-lemon))]" />
                 </div>

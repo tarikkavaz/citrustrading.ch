@@ -41,8 +41,8 @@ export default async function CategoriesPage({ params: { locale } }: MetadataPro
         <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">{t("categories")}</h1>
         <div className="grid md:grid-cols-4 gap-10 mt-8">
           {categories.map((category) => (
-            <div key={category.id} className="group relative rounded-md bg-[hsl(var(--citrus-orange))]/30 hover:bg-[hsl(var(--citrus-orange))]/40 border hover:border-[hsl(var(--citrus-orange))]">
-            <div className="h-56 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">
+            <div key={category.id} className="group relative rounded-2xl bg-[hsl(var(--citrus-orange))]/30 hover:bg-[hsl(var(--citrus-orange))]/40 border hover:border-[hsl(var(--citrus-orange))]">
+            <div className="h-56 w-full overflow-hidden rounded-2xl bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">
               <div className="h-full w-full object-cover object-center">
                 <img src={category.image ? category.image : '/images/placeholder.jpg'} className="h-full w-full object-cover object-center border-b-8 border-[hsl(var(--citrus-orange))]" />
               </div>
