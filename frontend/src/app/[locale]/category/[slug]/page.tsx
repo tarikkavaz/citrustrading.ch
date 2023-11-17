@@ -87,7 +87,7 @@ export default async function CategoryPage({
               </div>
               {category?.image && (
                 <div className="my-10 relative mt-10 w-full max-w-lg sm:mt-16 lg:mt-0 lg:max-w-none xl:row-span-2 xl:row-end-2 " key={category?.title}>
-                  <img src={category?.image} className="rounded-2xl object-cover border-b-8 border-[hsl(var(--citrus-lemon))]" />
+                  <img src={category?.image} className="rounded-2xl w-full object-cover border-b-8 border-[hsl(var(--citrus-lemon))]" />
                 </div>
               )}
             </div>
@@ -95,7 +95,7 @@ export default async function CategoryPage({
         </div>
       </Container>
       <Container size="fluid" className="">
-        <Container className="p-10">
+        <Container className="py-10">
           <h2 className="text-4xl font-bold tracking-tight sm:text-6xl">{t("products")}</h2>
           <div className="grid md:grid-cols-4 gap-10 mt-8">
             {products.map((product) => (
