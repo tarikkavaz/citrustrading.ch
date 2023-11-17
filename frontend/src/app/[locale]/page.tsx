@@ -66,14 +66,14 @@ export default async function Products({ params: { locale } }: HomeProps) {
         <div className="relative">
           <div className="mx-auto max-w-7xl">
             <div className="relative z-10 pt-14 lg:w-full lg:max-w-2xl">
-              <svg
+              {/* <svg
                 className="absolute inset-y-0 right-8 hidden h-full w-80 translate-x-1/2 transform fill-white dark:fill-black lg:block"
                 viewBox="0 0 100 100"
                 preserveAspectRatio="none"
                 aria-hidden="true"
               >
                 <polygon points="0,0 90,0 50,100 0,100" />
-              </svg>
+              </svg> */}
               <div className="relative pr-6 py-10 md:py-32 sm:py-40 lg:py-56 lg:pr-0">
                 <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
                   <h1 className="text-4xl font-bold tracking-tight sm:text-6xl w-fit border-solid border-b-8 border-gray-400">
