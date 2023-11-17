@@ -66,17 +66,26 @@ export default async function Page({
                 <div dangerouslySetInnerHTML={{ __html: product?.content || '' }} className="text-lg leading-8" />
                 {product.categories.length > 0 && (
                 <div className="mt-16">
-                  <h3 className="mb-3 text-base">{t("categories")}:</h3>
+                  <h3 className="max-w-2xl text-xl font-bold tracking-tight lg:col-span-2 xl:col-auto mb-5 w-fit border-solid border-b-4 border-[hsl(var(--citrus-lemon))]">{t("categories")}:</h3>
+                  <div className="flex items-center gap-x-3">
                     {product.categories.map((category) => (
-                      <Link key={category.slug} href={`/${locale}/category/${category.slug}`} className={`${badgeVariants({ variant: "default" })} mr-1`}>{category.title}</Link>
+                      <Link key={category.slug} href={`/${locale}/category/${category.slug}`}>
+                        <Button variant="orange" className="font-bold">{category.title}</Button>
+                      </Link>
                     ))}
                 </div>
+                </div>
               )}
-              <div className="mt-10 flex items-center gap-x-6">
+              <div className="mt-16">
                 {product.shoplink && (
-                <div className="mt-12" key={product.title}>
+                <div className="mt-8" key={product.title}>
                   <Link href={product.shoplink || '#'}>
-                    <Button>{t("buy")}</Button>
+                    <Button variant="lemon" size="lg" className="font-bold flex items-center gap-x-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                      </svg>
+                      <span>{t("buy")}</span>
+                    </Button>
                   </Link>
                 </div>
                 )}
