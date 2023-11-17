@@ -63,7 +63,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
 
   return (
     <>
-      <Container size="fluid" className="bg-white">
+      <Container size="fluid" className="bg-white dark:bg-black">
         <div className="relative">
           <div className="mx-auto max-w-7xl">
             <div className="relative z-10 pt-14 lg:w-full lg:max-w-2xl">
@@ -103,11 +103,12 @@ export default async function Products({ params: { locale } }: HomeProps) {
       <hr />
 
       {homepage.products && homepage.products.length > 0 && (
-      <Container size="fluid" className="">
-        <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-16 lg:max-w-7xl lg:px-8 ">
-          <h2 className="text-3xl font-bold tracking-tight dark:text-[hsl(var(--citrus-orange))] ">{t("featuredproducts")}</h2>
-          <div className="mt-6 grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 md:grid-cols-4 gap-10">
-          {homepage.products.map((product) => (
+
+      <Container size="fluid" className="mt-16">
+        <Container className="py-10">
+          <h2 className="text-4xl font-bold tracking-tight sm:text-6xl">{t("featuredproducts")}</h2>
+          <div className="grid md:grid-cols-4 gap-10 mt-8">
+            {homepage.products.map((product) => (
             <div key={product.id} className="group relative rounded-md bg-[hsl(var(--citrus-lemon))]/30 hover:bg-[hsl(var(--citrus-lemon))]/40 border hover:border-[hsl(var(--citrus-lemon))]">
               <div className="h-56 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">
                 <div className="h-full w-full object-cover object-center">
@@ -115,7 +116,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
                 </div>
               </div>
               <div className="p-3">
-                <h3 className="mt-4 text-xl">
+                <h3 className="mt-4  text-xl">
                   <Link href={`/product/${product.slug}`}>
                     <span className="absolute inset-0" />
                     {product.title}
@@ -123,40 +124,39 @@ export default async function Products({ params: { locale } }: HomeProps) {
                 </h3>
                 <h4 className="min-h-[3.5rem] text-sm">{product.pageinfo}</h4>
               </div>
-              
             </div>
-          ))}
+            ))}
           </div>
-        </div>
+        </Container>
       </Container>
+
       )}
       <hr />
 
-      <Container>
-        <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-16 lg:max-w-7xl lg:px-8">
-          <h2 className="text-3xl font-bold tracking-tight dark:text-[hsl(var(--citrus-lemon))]">{t("categories")}</h2>
-          <div className="mt-6 grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 md:grid-cols-4 gap-10">
+      <Container size="fluid" className="mt-16">
+        <Container className="py-10">
+          <h2 className="text-4xl font-bold tracking-tight sm:text-6xl">{t("categories")}</h2>
+          <div className="grid md:grid-cols-4 gap-10 mt-8">
             {categories.map((category) => (
-              <div key={category.id} className="group relative rounded-md bg-[hsl(var(--citrus-lemon))]/30 hover:bg-[hsl(var(--citrus-lemon))]/40 border hover:border-[hsl(var(--citrus-lemon))]">
-                <div className="h-56 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">
-                  <div className="h-full w-full object-cover object-center">
-                    <img src={category.image ? category.image : '/images/placeholder.jpg'} className="h-full w-full object-cover object-center border-b-8 border-[hsl(var(--citrus-lemon))]" />
-                  </div>
+            <div key={category.id} className="group relative rounded-md bg-[hsl(var(--citrus-orange))]/30 hover:bg-[hsl(var(--citrus-orange))]/40 border hover:border-[hsl(var(--citrus-orange))]">
+              <div className="h-56 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">
+                <div className="h-full w-full object-cover object-center">
+                  <img src={category.image ? category.image : '/images/placeholder.jpg'} className="h-full w-full object-cover object-center border-b-8 border-[hsl(var(--citrus-orange))]" />
                 </div>
-                <div className="p-3">
-                  <h3 className="mt-4 text-xl">
-                    <Link href={`/${locale}/category/${category.slug}`}>
-                      <span className="absolute inset-0" />
-                      {category.title}
-                    </Link>
-                  </h3>
-                  <h4 className="min-h-[3.5rem] text-sm">{category.categoryinfo}</h4>
-                </div>
-                
               </div>
+              <div className="p-3">
+                <h3 className="mt-4  text-xl">
+                  <Link href={`/category/${category.slug}`}>
+                    <span className="absolute inset-0" />
+                    {category.title}
+                  </Link>
+                </h3>
+                <h4 className="min-h-[3.5rem] text-sm">{category.categoryinfo}</h4>
+              </div>
+            </div>
             ))}
           </div>
-        </div>
+        </Container>
       </Container>
     </>
   );

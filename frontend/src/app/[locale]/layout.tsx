@@ -69,7 +69,7 @@ export default async function LocaleLayout({
         <body
           className={clsx(
             inter.className,
-            "flex h-screen flex-col justify-between bg-gradient-to-br from-white to-[hsl(var(--citrus-lemon))]/30 bg-fixed"
+            "flex h-screen flex-col justify-between bg-fixed"
           )}
         >
           <ThemeProvider
