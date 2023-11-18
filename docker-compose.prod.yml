@@ -21,10 +21,11 @@ services:
       - static:/backend/static_root
       - media:/backend/media/images
     environment:
-      - DEBUG=True
-      - ENVIRONMENT=local
+      - DEBUG=False
+      - ENVIRONMENT=production
     networks:
       - mynetwork
+      
 
   frontend:
     restart: unless-stopped
