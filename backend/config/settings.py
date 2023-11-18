@@ -12,7 +12,7 @@ DEBUG = True if ENVIRONMENT == 'local' else False
 
 # Dynamic ALLOWED_HOSTS
 if DEBUG:
-    ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'backend', 'frontend']
+    ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'backend', 'frontend', 'orangekaos.com', 'www.orangekaos.com',]
 else:
     ALLOWED_HOSTS = ['orangekaos.com', 'www.orangekaos.com', '167.71.70.128']
 
