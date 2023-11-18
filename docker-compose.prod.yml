@@ -23,7 +23,7 @@ services:
       - mynetwork
     volumes:
       - static:/backend/static_root
-      - media:/backend/media/
+      - media:/backend/media/images
 
   frontend:
     restart: unless-stopped
@@ -39,7 +39,7 @@ services:
     env_file:
       - frontend/.env
     volumes:
-      - media:/frontend/public/media/
+      - media:/frontend/public/media/images
 
   nginx:
       image: nginx:alpine
