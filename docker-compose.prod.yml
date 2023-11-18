@@ -16,14 +16,14 @@ services:
     build: ./backend
     ports:
       - "8000:8000"
-    environment:
-      - DEBUG=False
-      - ENVIRONMENT=local
-    networks:
-      - mynetwork
     volumes:
       - static:/backend/static_root
       - media:/backend/media/images
+    environment:
+      - DEBUG=True
+      - ENVIRONMENT=local
+    networks:
+      - mynetwork
 
   frontend:
     restart: unless-stopped
