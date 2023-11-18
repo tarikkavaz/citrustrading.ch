@@ -6,7 +6,6 @@ from django.utils.translation import gettext_lazy as _
 from ckeditor.fields import RichTextField
 from django.utils.html import format_html
 from django.core.validators import URLValidator
-from django.core.exceptions import ValidationError
 
 class Image(models.Model):
     image = models.ImageField(upload_to='images/')
@@ -18,11 +17,6 @@ class Image(models.Model):
     def image_thumbnail(self):
         return format_html('<img src="{}" height="50" />', self.image.url)
     image_thumbnail.short_description = 'Thumbnail'
-
-    def clean(self):
-        super().clean()
-        if self.image.size > 10 * 1024 * 1024:
-            raise ValidationError("Image file too large - more than 10MB.")
 
 class MenuItem(models.Model):
     title = models.CharField(max_length=200)
