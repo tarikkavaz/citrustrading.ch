@@ -19,7 +19,7 @@ services:
       - "8000:8000"
     volumes:
       - static:/backend/static_root
-      - media:/backend/media/images
+      - media:/backend/media
     environment:
       - DEBUG=False
       - ENVIRONMENT=production
@@ -41,7 +41,7 @@ services:
     env_file:
       - frontend/.env
     volumes:
-      - media:/frontend/public/media/images
+      - media:/frontend/public/media
 
   nginx:
       image: nginx:alpine
@@ -54,7 +54,7 @@ services:
         - /etc/ssl/certs:/etc/ssl/certs:ro
         - /etc/ssl/private:/etc/ssl/private:ro
         - static:/backend/static_root
-        - media:/backend/media/
+        - media:/backend/media
       networks:
         - mynetwork
       depends_on:
