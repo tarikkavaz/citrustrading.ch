@@ -79,7 +79,7 @@ export default async function Page({
         <div className="relative isolate overflow-hidden">
           <div className="max-w-screen-xl mx-auto md:pt-10">
             <GlobalCarousel 
-              images={page.images} 
+              images={page.images || []} 
               navigationEnabled={false} 
               className="h-[200px] md:h-[300px] lg:h-[450px] bg-accent rounded-2xl" 
             />
