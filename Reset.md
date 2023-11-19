@@ -22,7 +22,7 @@ docker-compose exec backend python manage.py loaddata /backend/datadump.json &&
 docker-compose exec backend python manage.py createsuperuser
 ```
 
-auth
+authentications
 
 ```bash
 admin
