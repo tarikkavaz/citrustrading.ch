@@ -38,8 +38,10 @@ export default async function Products({ params: { locale } }: MetadataProps) {
   return (
     <Container size="fluid" className="mt-16 md:mt-[7.5rem]">
       <Container className="py-10">
-        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl after:bg-[hsl(var(--citrus-lemon))]">{t("products")}</h1>
         <FadeInStagger>
+          <FadeIn>
+            <h1 className="text-4xl font-bold tracking-tight sm:text-6xl after:bg-[hsl(var(--citrus-lemon))]">{t("products")}</h1>
+          </FadeIn>
           <div className="grid md:grid-cols-4 gap-10 mt-8">
             {products.map((product) => (
               <FadeIn key={product.id} className="group relative rounded-2xl bg-[hsl(var(--citrus-lemon))]/30 hover:bg-[hsl(var(--citrus-lemon))]/40 border hover:border-[hsl(var(--citrus-lemon))]">

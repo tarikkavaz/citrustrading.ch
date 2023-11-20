@@ -36,8 +36,10 @@ export default async function CategoriesPage({ params: { locale } }: MetadataPro
   return (
     <Container size="fluid" className="mt-16 md:mt-[7.5rem]">
       <Container className="py-10">
-        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl after:bg-[hsl(var(--citrus-orange))]">{t("categories")}</h1>
         <FadeInStagger>
+          <FadeIn>
+            <h1 className="text-4xl font-bold tracking-tight sm:text-6xl after:bg-[hsl(var(--citrus-orange))]">{t("categories")}</h1>
+          </FadeIn>
           <div className="grid md:grid-cols-4 gap-10 mt-8">
             {categories.map((category) => (
             <FadeIn key={category.slug} className="group relative rounded-2xl bg-[hsl(var(--citrus-orange))]/30 hover:bg-[hsl(var(--citrus-orange))]/40 border hover:border-[hsl(var(--citrus-orange))]">

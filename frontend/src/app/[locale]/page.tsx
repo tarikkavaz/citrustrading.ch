@@ -76,17 +76,21 @@ export default async function Products({ params: { locale } }: HomeProps) {
                 <polygon points="0,0 90,0 50,100 0,100" />
               </svg> */}
               <div className="relative pr-6 py-10 md:py-32 sm:py-40 lg:py-56 lg:pr-0">
-                <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
-                  <h1 className="text-4xl font-bold tracking-tight sm:text-6xl after:bg-gray-400">
-                  {homepage.title} <br className="hidden lg:inline" />
-                  </h1>
-                  <p className="mt-6 text-3xl">
-                    {homepage.pageinfo}
-                  </p>
-                  <div>
+                <FadeInStagger className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
+                  <FadeIn>
+                    <h1 className="text-4xl font-bold tracking-tight sm:text-6xl after:bg-gray-400">
+                    {homepage.title} <br className="hidden lg:inline" />
+                    </h1>
+                  </FadeIn>
+                  <FadeIn>
+                    <p className="mt-6 text-3xl">
+                      {homepage.pageinfo}
+                    </p>
+                  </FadeIn>
+                  <FadeIn>
                     <div dangerouslySetInnerHTML={{ __html: homepage.content }}  className="mt-6 text-lg leading-8" />
-                  </div>
-                </div>
+                  </FadeIn>
+                </FadeInStagger>
               </div>
             </div>
           </div>
@@ -108,8 +112,10 @@ export default async function Products({ params: { locale } }: HomeProps) {
       {homepage.products && homepage.products.length > 0 && (
       <Container size="fluid" className="mt-16">
         <Container className="py-10">
-          <h2 className="text-4xl font-bold tracking-tight sm:text-6xl after:bg-[hsl(var(--citrus-lemon))]">{t("featuredproducts")}</h2>
           <FadeInStagger>
+            <FadeIn>
+              <h2 className="text-4xl font-bold tracking-tight sm:text-6xl after:bg-[hsl(var(--citrus-lemon))]">{t("featuredproducts")}</h2>
+            </FadeIn>
             <div className="grid md:grid-cols-4 gap-10 mt-8">
               {homepage.products.map((product) => (
               <FadeIn key={product.id} className="group relative rounded-2xl bg-[hsl(var(--citrus-lemon))]/30 hover:bg-[hsl(var(--citrus-lemon))]/40 border hover:border-[hsl(var(--citrus-lemon))]">
@@ -137,8 +143,10 @@ export default async function Products({ params: { locale } }: HomeProps) {
 
       <Container size="fluid" className="mt-16">
         <Container className="py-10">
-          <h2 className="text-4xl font-bold tracking-tight sm:text-6xl after:bg-[hsl(var(--citrus-orange))]">{t("categories")}</h2>
           <FadeInStagger>
+          <FadeIn>
+            <h2 className="text-4xl font-bold tracking-tight sm:text-6xl after:bg-[hsl(var(--citrus-orange))]">{t("categories")}</h2>
+          </FadeIn>
             <div className="grid md:grid-cols-4 gap-10 mt-8">
               {categories.map((category) => (
               <FadeIn key={category.slug} className="group relative rounded-2xl bg-[hsl(var(--citrus-orange))]/30 hover:bg-[hsl(var(--citrus-orange))]/40 border hover:border-[hsl(var(--citrus-orange))]">
