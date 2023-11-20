@@ -36,7 +36,7 @@ export default async function Products({ params: { locale } }: MetadataProps) {
   const products = await getProducts();
   const t = await getTranslator(locale, "Globals");
   return (
-    <Container size="fluid" className="mt-16">
+    <Container size="fluid" className="mt-16 md:mt-[7.5rem]">
       <Container className="py-10">
         <h1 className="text-4xl font-bold tracking-tight sm:text-6xl after:bg-[hsl(var(--citrus-lemon))]">{t("products")}</h1>
         <FadeInStagger>

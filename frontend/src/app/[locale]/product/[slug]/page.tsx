@@ -51,7 +51,7 @@ export default async function Page({
 
   return (
     <>
-      <Container size="fluid" className="mt-16">
+      <Container size="fluid" className="mt-16 md:mt-[7.5rem]">
         <div className="relative isolate overflow-hidden">
           <div className="max-w-screen-xl mx-auto pt-10">
             <div className="mx-auto max-w-2xl lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-6 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8">
