@@ -55,7 +55,7 @@ export default async function Page({
         <div className="relative isolate overflow-hidden">
           <div className="max-w-screen-xl mx-auto pt-10">
             <div className="mx-auto max-w-2xl lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-6 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8">
-              <h1 className="max-w-2xl text-4xl font-bold tracking-tight sm:text-6xl lg:col-span-2 xl:col-auto w-fit border-solid border-b-8 border-[hsl(var(--citrus-lemon))]">
+              <h1 className="max-w-2xl text-4xl lg:col-span-2 xl:col-auto w-fittext-4xl font-bold tracking-tight sm:text-6xl after:bg-[hsl(var(--citrus-lemon))]">
                 {product.title}
               </h1>
               <div className="mt-6 max-w-xl lg:mt-0 xl:col-end-1 xl:row-start-1">
@@ -65,7 +65,7 @@ export default async function Page({
                 <div dangerouslySetInnerHTML={{ __html: product?.content || '' }} className="text-lg leading-8" />
                 {product.categories.length > 0 && (
                 <div className="mt-16">
-                  <h3 className="max-w-2xl text-xl font-bold tracking-tight lg:col-span-2 xl:col-auto mb-5 w-fit border-solid border-b-4 border-[hsl(var(--citrus-lemon))]">{t("categories")}:</h3>
+                  <h3 className="max-w-2xl text-xl font-bold tracking-tight lg:col-span-2 xl:col-auto mb-5 w-fit after:bg-[hsl(var(--citrus-lemon))]">{t("categories")}:</h3>
                   <div className="flex items-center gap-x-3">
                     {product.categories.map((category) => (
                       <Link key={category.slug} href={`/${locale}/category/${category.slug}`}>

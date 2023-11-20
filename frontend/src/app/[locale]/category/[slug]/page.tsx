@@ -92,7 +92,7 @@ export default async function CategoryPage({
 
       <Container size="fluid" className="">
         <Container className="py-10">
-          <h2 className="text-4xl font-bold tracking-tight sm:text-6xl w-fit border-solid border-b-8 border-[hsl(var(--citrus-lemon))]">{t("products")}</h2>
+          <h2 className="text-4xl font-bold tracking-tight sm:text-6xl after:bg-[hsl(var(--citrus-lemon))]">{t("products")}</h2>
           <div className="grid md:grid-cols-4 gap-10 mt-8">
             {products.map((product) => (
             <div key={product.id} className="group relative rounded-2xl bg-[hsl(var(--citrus-lemon))]/30 hover:bg-[hsl(var(--citrus-lemon))]/40 border hover:border-[hsl(var(--citrus-lemon))]">

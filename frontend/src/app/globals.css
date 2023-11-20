@@ -10,22 +10,11 @@ html {
 }
 
 /* headings */
-/* h1 {
-  @apply my-6 text-5xl tracking-tight;
-  color: hsl(var(--secondary-foreground));
+h1, h2, h3, h4, h5, h6 {
+  @apply relative w-fit pb-1
+  /* rounded underline */
+  after:content-[''] after:block after:w-full after:h-2 after:absolute after:rounded-md after:left-0 after:bottom-0 after:z-[-1];
 }
-h2 {
-  @apply my-4 text-2xl tracking-tight;
-  color: hsl(var(--secondary-foreground));
-}
-h3 {
-  @apply my-3 text-xl tracking-tight;
-  color: hsl(var(--secondary-foreground));
-}
-h4 {
-  @apply my-2 text-lg tracking-tight;
-  color: hsl(var(--secondary-foreground));
-} */
 
 /* text */
 #content p, #content ul {
