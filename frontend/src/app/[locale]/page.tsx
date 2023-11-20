@@ -13,6 +13,7 @@ import { getTranslator } from "next-intl/server";
 import { DEFAULT_OG_IMAGE_URL } from "@/lib/config";
 import { Metadata, ResolvingMetadata } from "next";
 import {FadeIn, FadeInStagger} from "@/components/animation/FadeIn";
+import {SlideIn, SlideInStagger} from "@/components/animation/SlideIn";
 
 const getHomepage = async (): Promise<Homepage[]> => {
   const locale = useLocale();
@@ -90,14 +91,16 @@ export default async function Products({ params: { locale } }: HomeProps) {
             </div>
           </div>
           <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-          {homepage.images && homepage.images.length > 0 ? (
-            <GlobalCarousel
-              images={homepage.images || []} 
-              className="aspect-[3/2] object-cover lg:aspect-auto lg:h-full lg:w-full rounded-2xl md:rounded-none md:rounded-bl-[150px]" 
-            />
-          ) : (
-            <img src="/images/placeholder.jpg" alt="Placeholder" className="aspect-[3/2] object-cover lg:aspect-auto lg:h-full lg:w-full rounded-2xl md:rounded-none md:rounded-bl-[150px]" />
-          )}
+            <SlideInStagger className="aspect-[3/2] object-cover lg:aspect-auto lg:h-full lg:w-full rounded-2xl md:rounded-none md:rounded-bl-[150px]">
+            {homepage.images && homepage.images.length > 0 ? (
+              <GlobalCarousel
+                images={homepage.images || []} 
+                className="aspect-[3/2] object-cover lg:aspect-auto lg:h-full lg:w-full rounded-2xl md:rounded-none md:rounded-bl-[150px]" 
+              />
+            ) : (
+              <img src="/images/placeholder.jpg" alt="Placeholder" className="aspect-[3/2] object-cover lg:aspect-auto lg:h-full lg:w-full rounded-2xl md:rounded-none md:rounded-bl-[150px]" />
+            )}
+            </SlideInStagger>
           </div>
         </div>
       </Container>
