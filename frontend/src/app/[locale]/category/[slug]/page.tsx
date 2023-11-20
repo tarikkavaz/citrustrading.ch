@@ -5,6 +5,7 @@ import { fetchData, API_URL } from "@/utils/api";
 import { getTranslator } from "next-intl/server";
 import { Metadata, ResolvingMetadata } from "next";
 import { DEFAULT_OG_IMAGE_URL } from "@/lib/config";
+import {FadeIn, FadeInStagger} from "@/components/animation/FadeIn";
 
 const getCategoryBySlug = async (locale: string, slug: string): Promise<Category | undefined> => {
   const categoriesEndpoint = `/api/categories/`;
@@ -93,9 +94,10 @@ export default async function CategoryPage({
       <Container size="fluid" className="">
         <Container className="py-10">
           <h2 className="text-4xl font-bold tracking-tight sm:text-6xl after:bg-[hsl(var(--citrus-lemon))]">{t("products")}</h2>
-          <div className="grid md:grid-cols-4 gap-10 mt-8">
+          
+          <FadeInStagger className="grid md:grid-cols-4 gap-10 mt-8">
             {products.map((product) => (
-            <div key={product.id} className="group relative rounded-2xl bg-[hsl(var(--citrus-lemon))]/30 hover:bg-[hsl(var(--citrus-lemon))]/40 border hover:border-[hsl(var(--citrus-lemon))]">
+            <FadeIn key={product.id} className="group relative rounded-2xl bg-[hsl(var(--citrus-lemon))]/30 hover:bg-[hsl(var(--citrus-lemon))]/40 border hover:border-[hsl(var(--citrus-lemon))]">
               <div className="h-56 w-full overflow-hidden rounded-2xl bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">
                 <div className="h-full w-full object-cover object-center">
                   <img src={product.image ? product.image : '/images/placeholder.jpg'} className="h-full w-full object-cover object-center border-b-8 border-[hsl(var(--citrus-lemon))]" />
@@ -110,9 +112,10 @@ export default async function CategoryPage({
                 </h3>
                 <h4 className="min-h-[3.5rem] text-sm">{product.pageinfo}</h4>
               </div>
-            </div>
+            </FadeIn>
             ))}
-          </div>
+          </FadeInStagger>
+          
         </Container>
       </Container>
     </>
