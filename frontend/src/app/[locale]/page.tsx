@@ -110,20 +110,20 @@ export default async function Products({ params: { locale } }: HomeProps) {
             <div className="grid md:grid-cols-4 gap-10 mt-8">
               {homepage.products.map((product) => (
               <FadeIn key={product.id} className="group relative rounded-2xl bg-[hsl(var(--citrus-lemon))]/30 hover:bg-[hsl(var(--citrus-lemon))]/40 border hover:border-[hsl(var(--citrus-lemon))]">
-                <div className="h-56 w-full overflow-hidden rounded-2xl bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">
-                  <div className="h-full w-full object-cover object-center">
-                    <img src={product.image ? product.image : '/images/placeholder.jpg'} className="h-full w-full object-cover object-center border-b-8 border-[hsl(var(--citrus-lemon))]" />
+                <Link href={`/product/${product.slug}`}>
+                  <div className="h-56 w-full overflow-hidden rounded-2xl bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">
+                    <div className="h-full w-full object-cover object-center">
+                      <img src={product.image ? product.image : '/images/placeholder.jpg'} className="h-full w-full object-cover object-center border-b-8 border-[hsl(var(--citrus-lemon))]" />
+                    </div>
                   </div>
-                </div>
-                <div className="p-3">
-                  <h3 className="mt-4  text-xl">
-                    <Link href={`/product/${product.slug}`}>
-                      <span className="absolute inset-0" />
-                      {product.title}
-                    </Link>
-                  </h3>
-                  <h4 className="min-h-[3.5rem] text-sm">{product.pageinfo}</h4>
-                </div>
+                  <div className="p-3">
+                    <h3 className="mt-4  text-xl">
+                        <span className="absolute inset-0" />
+                        {product.title}
+                    </h3>
+                    <h4 className="min-h-[3.5rem] text-sm">{product.pageinfo}</h4>
+                  </div>
+                </Link>
               </FadeIn>
               ))}
             </div>
@@ -139,6 +139,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
             <div className="grid md:grid-cols-4 gap-10 mt-8">
               {categories.map((category) => (
               <FadeIn key={category.slug} className="group relative rounded-2xl bg-[hsl(var(--citrus-orange))]/30 hover:bg-[hsl(var(--citrus-orange))]/40 border hover:border-[hsl(var(--citrus-orange))]">
+                <Link href={`/category/${category.slug}`}>
                 <div className="h-56 w-full overflow-hidden rounded-2xl bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">
                   <div className="h-full w-full object-cover object-center">
                     <img src={category.image ? category.image : '/images/placeholder.jpg'} className="h-full w-full object-cover object-center border-b-8 border-[hsl(var(--citrus-orange))]" />
@@ -146,13 +147,12 @@ export default async function Products({ params: { locale } }: HomeProps) {
                 </div>
                 <div className="p-3">
                   <h3 className="mt-4  text-xl">
-                    <Link href={`/category/${category.slug}`}>
-                      <span className="absolute inset-0" />
-                      {category.title}
-                    </Link>
+                    <span className="absolute inset-0" />
+                    {category.title}
                   </h3>
                   <h4 className="min-h-[3.5rem] text-sm">{category.categoryinfo}</h4>
                 </div>
+                </Link>
               </FadeIn>
               ))}
             </div>
