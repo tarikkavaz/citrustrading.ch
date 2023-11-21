@@ -65,7 +65,7 @@ export default async function Page({
                   </div>
                   <div dangerouslySetInnerHTML={{ __html: page?.content || '' }} className="text-lg leading-8" />
                 </FadeIn>
-                <SlideInStagger className="my-10 relative mt-10 w-full max-w-lg sm:mt-16 lg:mt-0 lg:max-w-none xl:row-span-2 xl:row-end-2">
+                <div className="my-10 relative mt-10 w-full max-w-lg sm:mt-16 lg:mt-0 lg:max-w-none xl:row-span-2 xl:row-end-2">
                   {page?.image ? (
                     <div className="my-10 relative mt-10 w-full max-w-lg sm:mt-16 lg:mt-0 lg:max-w-none xl:row-span-2 xl:row-end-2" key={page?.title}>
                       <img src={page?.image} className="rounded-2xl w-full object-cover border-b-8 border-[hsl(var(--citrus-lemon))]" />
@@ -75,7 +75,7 @@ export default async function Page({
                     <img src="/images/placeholder.jpg" alt="Placeholder" className="rounded-2xl w-full object-cover border-b-8 border-[hsl(var(--citrus-lemon))]"/>
                     </div>
                   )}
-                </SlideInStagger>
+                </div>
               </div>
             </FadeInStagger>
           </div>

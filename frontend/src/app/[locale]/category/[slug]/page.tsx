@@ -82,9 +82,9 @@ export default async function CategoryPage({
                   <div dangerouslySetInnerHTML={{ __html: category?.content || '' }} className="mt-4" />
                 </FadeIn>
                 {category?.image ? (
-                  <SlideInStagger className="my-10 relative mt-10 w-full max-w-lg sm:mt-16 lg:mt-0 lg:max-w-none xl:row-span-2 xl:row-end-2" key={category?.title}>
+                  <div className="my-10 relative mt-10 w-full max-w-lg sm:mt-16 lg:mt-0 lg:max-w-none xl:row-span-2 xl:row-end-2" key={category?.title}>
                     <img src={category?.image} className="rounded-2xl w-full object-cover border-b-8 border-[hsl(var(--citrus-lemon))]" />
-                  </SlideInStagger>
+                  </div>
                 ) : (
                   <div className="my-10 relative mt-10 w-full max-w-lg sm:mt-16 lg:mt-0 lg:max-w-none xl:row-span-2 xl:row-end-2"> 
                   <img src="/images/placeholder.jpg" alt="Placeholder" className="rounded-2xl w-full object-cover border-b-8 border-[hsl(var(--citrus-lemon))]"/>
