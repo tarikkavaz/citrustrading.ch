@@ -14,6 +14,7 @@ import { DEFAULT_OG_IMAGE_URL } from "@/lib/config";
 import { Metadata, ResolvingMetadata } from "next";
 import {FadeIn, FadeInStagger} from "@/components/animation/FadeIn";
 import {SlideIn, SlideInStagger} from "@/components/animation/SlideIn";
+import SearchResults from "@/components/SearchResults";
 
 const getHomepage = async (): Promise<Homepage[]> => {
   const locale = useLocale();
@@ -169,6 +170,9 @@ export default async function Products({ params: { locale } }: HomeProps) {
             </div>
           </FadeInStagger>
         </Container>
+      </Container>
+      <Container className="mt-16">
+        <SearchResults />
       </Container>
     </>
   );

@@ -161,3 +161,11 @@ export interface PageTransitionProps {
   children: React.ReactNode;
   keyProp: string;
 }
+
+export interface SearchResult {
+  title: string;
+  snippet: string;
+  type: string;
+  locale?: string;
+  link: string;
+}

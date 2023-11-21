@@ -50,7 +50,7 @@ export default async function CategoriesPage({ params: { locale } }: MetadataPro
                 </div>
               </div>
               <div className="p-3">
-                <h3 className="mt-4  text-xl">
+                <h3 className="mt-4 text-xl">
                     <span className="absolute inset-0" />
                     {category.title}
                 </h3>

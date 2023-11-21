@@ -24,6 +24,10 @@
     "localeLocale": "{locale, select, tr {Türkçe} en {English} other {Unknown}}",
     "button": "Button",
     "wait": "Please wait",
+    "quicksearch": "Quick search",
+    "search": "Search",
+    "result": "Search result",
+    "noresult": "No result found",
     "copyright": "All rights reserved."
   },
   "Navigation": {

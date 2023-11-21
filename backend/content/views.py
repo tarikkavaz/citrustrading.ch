@@ -3,6 +3,8 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from .models import Category, Tag, Page, Product, Image, HomePage, MenuItem, Social
 from .serializers import CategorySerializer, TagSerializer, ProductSerializer, PageSerializer, ImageSerializer, HomePageSerializer, MenuItemSerializer, SocialSerializer
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import filters
 
 class MenuItemViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = MenuItem.objects.all()
@@ -11,6 +13,8 @@ class MenuItemViewSet(viewsets.ReadOnlyModelViewSet):
 class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+    search_fields = ['title', 'categoryinfo']
 
 class CategoryProductsView(generics.ListAPIView):
     serializer_class = ProductSerializer
@@ -34,6 +38,8 @@ class TagViewSet(viewsets.ReadOnlyModelViewSet):
 
 class ProductViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = ProductSerializer
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+    search_fields = ['title', 'pageinfo']
 
     def get_queryset(self):
         queryset = Product.objects.all()
