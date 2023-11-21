@@ -8,27 +8,29 @@ interface PageTransitionProps {
 }
 
 const pageTransitionVariants = {
-  initial: { opacity: 0 }, // Start with zero opacity
-  animate: {
-    opacity: 1, // Fade in to full opacity
-    transition: { duration: 1 }
+  initial: { 
+    opacity: 0
+  },
+  enter: {
+    opacity: 1,
+    transition: {duration: 0.5}
   },
   exit: {
-    opacity: 0, // Fade out to zero opacity
-    transition: { duration: 1 }
+    opacity: 0,
+    transition: {duration: 0.5}
   },
 };
 
 const PageTransition: React.FC<PageTransitionProps> = ({ children, keyProp }) => {
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="wait">
       <motion.main
         key={keyProp}
         variants={pageTransitionVariants}
         initial="initial"
-        animate="animate"
+        animate="enter"
         exit="exit"
-        className="flex-1 mb-20 px-2 md:px-0"
+        className="flex-1 px-2 mb-20 md:px-0"
       >
         {children}
       </motion.main>

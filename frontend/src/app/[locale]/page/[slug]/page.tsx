@@ -54,11 +54,13 @@ export default async function Page({
           <div className="max-w-screen-xl mx-auto pt-10">
             <FadeInStagger>
               <div className="mx-auto max-w-2xl lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-6 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8">
-                <FadeIn>
-                  <h1 className="max-w-2xl lg:col-span-2 xl:col-auto w-fit text-4xl font-bold tracking-tight sm:text-6xl after:bg-gray-400">
-                    {page.title}
-                  </h1>
-                </FadeIn>
+                <div className="max-w-2xl lg:col-span-2 xl:col-auto">
+                  <FadeIn>
+                    <h1 className="w-fit text-4xl font-bold tracking-tight sm:text-6xl after:bg-gray-400">
+                      {page.title}
+                    </h1>
+                  </FadeIn>
+                </div>
                 <FadeIn className="mt-6 max-w-xl lg:mt-0 xl:col-end-1 xl:row-start-1">
                   <div className="text-lg leading-8">
                   {page?.pageinfo}
