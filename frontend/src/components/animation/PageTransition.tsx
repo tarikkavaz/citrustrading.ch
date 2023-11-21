@@ -29,11 +29,11 @@ const PageTransition: React.FC<PageTransitionProps> = ({ children, keyProp }) =>
   return (
     <AnimatePresence mode="wait" initial={false}>
       <motion.main
-        // key={keyProp}
-        // variants={pageTransitionVariants}
-        // animate="in"
-        // initial="out"
-        // exit="out"
+        key={keyProp}
+        variants={pageTransitionVariants}
+        animate="in"
+        initial="out"
+        exit="out"
         className="flex-1 px-2 mb-20 md:px-0"
       >
         {children}

@@ -1,6 +1,4 @@
-"use client"
 import clsx from "clsx";
-import { usePathname } from 'next/navigation';
 import { Inter } from "next/font/google";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
@@ -9,7 +7,6 @@ import { Layout } from "@/utils/types";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import type { Metadata } from "next";
-import PageTransition from '@/components/animation/PageTransition';
 
 import { ThemeProvider } from "@/components/theme-provider";
 
@@ -59,12 +56,10 @@ export default async function LocaleLayout({
   children,
   params: { locale },
 }: Layout) {
-  const pathname = usePathname();
-
   const messages = await getMessages(locale);
+  // Validate that the incoming `locale` parameter is valid
   const isValidLocale = locales.some((cur) => cur === locale);
   if (!isValidLocale) notFound();
-
   return (
     <>
       <html lang={locale} suppressHydrationWarning>
@@ -85,9 +80,7 @@ export default async function LocaleLayout({
           >
             <NextIntlClientProvider locale={locale} messages={messages}>
               <Header />
-              <PageTransition keyProp={pathname}>
-                {children}
-              </PageTransition>
+              <main className="flex-1 mb-20 px-2 md:px-0">{children}</main>
               <Footer />
             </NextIntlClientProvider>
           </ThemeProvider>
