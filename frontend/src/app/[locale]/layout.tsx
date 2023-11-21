@@ -7,11 +7,9 @@ import { Layout } from "@/utils/types";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import type { Metadata } from "next";
-
 import { ThemeProvider } from "@/components/theme-provider";
 
 const locales = ["en", "tr"];
-
 const inter = Inter({ subsets: ["latin"] });
 
 export async function getMetadata(locale: string): Promise<Metadata> {
@@ -57,7 +55,6 @@ export default async function LocaleLayout({
   params: { locale },
 }: Layout) {
   const messages = await getMessages(locale);
-  // Validate that the incoming `locale` parameter is valid
   const isValidLocale = locales.some((cur) => cur === locale);
   if (!isValidLocale) notFound();
   return (
