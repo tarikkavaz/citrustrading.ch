@@ -156,3 +156,8 @@ export interface GlobalCarouselProps {
   navigationEnabled?: boolean;
   className?: string;
 }
+
+export interface PageTransitionProps {
+  children: React.ReactNode;
+  keyProp: string;
+}
