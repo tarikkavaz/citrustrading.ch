@@ -192,6 +192,12 @@ chmod +x deploy.sh
 
 ### Application Deployment and Maintenance Commands
 
+To **Restart Docker** on server, use the following command:
+
+```bash
+./deploy.sh restart
+```
+
 To **Pull Changes** perform a git pull on the server, use the following command:
 
 ```bash
