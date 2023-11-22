@@ -36,7 +36,7 @@ run_on_remote() {
 restart_docker() {
     printf "Restarting Docker on remote...\n"
     full_width_line '-'
-    run_on_remote "cd $SERVER_PATH && git pull && docker-compose down && docker-compose -f docker-compose.prod.yml up -d"
+    run_on_remote "cd $SERVER_PATH && git pull && docker-compose -f docker-compose.prod.yml up -d"
     full_width_line '-'
     printf "Docker restarted.\n"
 }
