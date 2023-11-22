@@ -34,7 +34,7 @@ run_on_remote() {
 
 # Restart Docker on remote
 restart_docker() {
-    printf "Restarting Docker on remote...\n"
+    printf "Restarting Docker on remote server\n"
     full_width_line '-'
     run_on_remote "cd $SERVER_PATH && git pull && docker-compose -f docker-compose.prod.yml up -d"
     full_width_line '-'
@@ -43,7 +43,7 @@ restart_docker() {
 
 # Function to pull from remote
 pull_repo() {
-    printf "Pulling changes from the repo\n"
+    printf "Pulling changes from the repo to remote server\n"
     full_width_line '-'
     run_on_remote "cd $SERVER_PATH && git pull"
     full_width_line '-'
@@ -52,7 +52,7 @@ pull_repo() {
 
 # Function to add, commit, and push changes to the repository
 push_changes() {
-    printf "Adding, committing, and pushing changes to the repo\n"
+    printf "Adding, committing, and pushing changes to the repo from remote server\n"
     full_width_line '-'
     git add .
     git commit -m "pushed from server"
@@ -63,7 +63,7 @@ push_changes() {
 
 # Function to update and rebuild the frontend
 update_frontend() {
-    printf "Updating Frontend on remote...\n"
+    printf "Updating Frontend on remote server\n"
     full_width_line '-'
     run_on_remote "cd $SERVER_PATH && git pull && docker-compose -f docker-compose.prod.yml up --build -d frontend"
     full_width_line '-'
@@ -72,7 +72,7 @@ update_frontend() {
 
 # Function to update and rebuild the backend
 update_backend() {
-    printf "Updating Backend on remote...\n"
+    printf "Updating Backend on remote server\n"
     full_width_line '-'
     run_on_remote "cd $SERVER_PATH && git pull && docker-compose -f docker-compose.prod.yml up --build -d backend && docker-compose exec backend python manage.py migrate && docker-compose exec backend python manage.py collectstatic --no-input"
     full_width_line '-'
@@ -81,7 +81,7 @@ update_backend() {
 
 # Function to update both frontend and backend
 update_all() {
-    printf "Updating Frontend and Backend on remote...\n"
+    printf "Updating Frontend and Backend on remote server\n"
     full_width_line '-'
     run_on_remote "cd $SERVER_PATH && git pull && docker-compose -f docker-compose.prod.yml up --build -d && docker-compose exec backend python manage.py migrate && docker-compose exec backend python manage.py collectstatic --no-input"
     full_width_line '-'
@@ -90,7 +90,7 @@ update_all() {
 
 # Function to dump data
 dumpdata() {
-    printf "Dumping data on remote...\n"
+    printf "Dumping data on remote server\n"
     full_width_line '-'
     run_on_remote "cd $SERVER_PATH && docker-compose exec backend python manage.py dumpdata > backend/datadump.json"
     full_width_line '-'
@@ -99,7 +99,7 @@ dumpdata() {
 
 # Function to load data dump
 loaddata() {
-    printf "Loading data dump on remote...\n"
+    printf "Loading data dump on remote server\n"
     full_width_line '-'
     run_on_remote "cd $SERVER_PATH && docker-compose exec backend python manage.py loaddata /backend/datadump.json"
     full_width_line '-'
@@ -108,7 +108,7 @@ loaddata() {
 
 # Function to prune Docker system
 prune_docker() {
-    printf "Pruning Docker system on remote...\n"
+    printf "Pruning Docker system on remote server\n"
     full_width_line '-'
     run_on_remote "cd $SERVER_PATH && docker system prune -a -f"
     full_width_line '-'
@@ -117,7 +117,7 @@ prune_docker() {
 
 # Function to create a tar file with all files from the volume images
 create_images_tar() {
-    printf "Creating tar file from images volume on remote...\n"
+    printf "Creating tar file from images volume on remote server\n"
     full_width_line '-'
     run_on_remote "cd $SERVER_PATH && docker run --rm -v ${IMAGEVOLUMEPREFIX}_images:/images -v $(pwd):/backup ubuntu tar cvf /backup/images.tar /images"
     full_width_line '-'
@@ -126,7 +126,7 @@ create_images_tar() {
 
 # Function to download the tar file to local
 download_images_tar() {
-    printf "Downloading images tar file to local...\n"
+    printf "Downloading images tar file to local\n"
     full_width_line '-'
     scp "$SSH_ALIAS:$SERVER_PATH/images.tar" .
     full_width_line '-'
@@ -135,7 +135,7 @@ download_images_tar() {
 
 # Function to extract the tar file to local images volume
 extract_images_tar() {
-    printf "Extracting images from tar file to local volume...\n"
+    printf "Extracting images from tar file to local volume\n"
     full_width_line '-'
     tar xvf images.tar -C ./${IMAGEVOLUMEPREFIX}_images
     full_width_line '-'
