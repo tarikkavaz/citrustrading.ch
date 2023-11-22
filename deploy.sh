@@ -32,6 +32,15 @@ run_on_remote() {
     ssh -t "$SSH_ALIAS" "$@" # -t flag forces TTY allocation
 }
 
+# Restart Docker on remote
+restart_docker() {
+    printf "Restarting Docker on remote...\n"
+    full_width_line '-'
+    run_on_remote "cd $SERVER_PATH && git pull && docker-compose down && docker-compose -f docker-compose.prod.yml up -d"
+    full_width_line '-'
+    printf "Docker restarted.\n"
+}
+
 # Function to pull from remote
 pull_repo() {
     printf "Pulling changes from the repo\n"
@@ -136,6 +145,9 @@ extract_images_tar() {
 
 # Check command line argument
 case "$1" in
+    restart)
+        restart_docker
+        ;;
     pull)
         pull_repo
         ;;
@@ -170,6 +182,6 @@ case "$1" in
         extract_images_tar
         ;;
     *)
-        printf "Usage: $0 {frontend|pull|push|backend|all|loaddata|dumpdata|prune|create-tar|download-tar|extract-tar}\n"
+        printf "Usage: $0 {restart|pull|push|frontend|backend|all|loaddata|dumpdata|prune|create-tar|download-tar|extract-tar}\n"
         exit 1
 esac
