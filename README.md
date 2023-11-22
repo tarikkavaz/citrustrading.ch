@@ -4,6 +4,16 @@ This Guide provides a comprehensive set of instructions for setting up, developi
 
 ---
 
+## Index
+
+- [Initial Setup](#initial-setup)
+- [Development Setup](#development-setup)
+- [Production Setup on Digitalocean Droplet](#production-setup-on-digitalocean-droplet)
+- [Deploy from Local Machine to Digitalocean Droplet](#deploy-from-local-machine-to-digitalocean-droplet)
+- Bonus - Install OhMyZsh
+
+---
+
 ## Initial Setup
 
 ### Prerequisites
@@ -14,11 +24,12 @@ This Guide provides a comprehensive set of instructions for setting up, developi
 ### Steps
 
 1. **Clone the Repository**
+   
     ```bash
     git clone https://github.com/tarikkavaz/citrustrading.ch.git
     cd citrustrading.ch
     ```
-
+    
 2. **Setup Frontend Environment Variables**
     ```bash
     cp frontend/.env-sample-local frontend/.env
@@ -73,7 +84,7 @@ This Guide provides a comprehensive set of instructions for setting up, developi
 
 ---
 
-## Productoion Setup on Digitalocean Droplet
+## Production Setup on Digitalocean Droplet
 
 ### Prerequisites
 
@@ -136,6 +147,22 @@ Connect to the server via SSH and run the following commands:
     docker-compose exec backend python manage.py createsuperuser
     ```
     ( u:`admin` p:`boilerplate123` ) 
+
+### Media File backup and restore
+
+**On local**
+
+```bash
+docker run --rm -v citrustradingch_media:/data -v $(pwd):/backup ubuntu bash -c 'cd /data && tar cvf /backup/images.tar *' &&
+scp images.tar citrustrading:/var/lib/docker/volumes/citrustradingch_media/_data/images
+```
+
+**On Server**
+
+```bash
+tar -xvf images.tar -C /var/lib/docker/volumes/citrustradingch_media/_data/images
+```
+
 ---
 
 ## Deploy from Local Machine to Digitalocean Droplet
@@ -226,4 +253,51 @@ To **download the tar file** to the local root of the project:
 To **extract files from the tar file** to the `local` images volume:
 ```bash
 ./deploy.sh extract-tar
+```
+
+---
+
+## Bonus - Install OhMyZsh
+
+Install zsh
+
+```
+sudo apt install zsh -y
+```
+
+Set zsh as default
+
+```
+chsh -s $(which zsh)
+```
+
+Install Oh my Zsh
+
+```
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+Install p10k
+
+```
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
+```
+
+Source zshrc
+
+```
+source .zshrc
+```
+
+If not autoloaded, setup p10k
+
+```
+p10k configure
+```
+
+hushlogin
+
+```
+touch ~/.hushlogin
 ```
