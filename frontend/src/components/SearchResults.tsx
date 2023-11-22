@@ -25,7 +25,7 @@ const SearchResults = () => {
   
     setResults([...filteredProducts, ...filteredCategories].map(item => ({
       title: item.title,
-      snippet: item.pageinfo || item.categoryinfo,
+      snippet: item.pageinfo || item.categoryinfo || item.content,
       type: item.pageinfo ? 'Product' : 'Category',
       link: item.slug,
       locale: item.lang

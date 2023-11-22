@@ -14,7 +14,7 @@ class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
-    search_fields = ['title', 'categoryinfo']
+    search_fields = ['title', 'content', 'categoryinfo']
 
 class CategoryProductsView(generics.ListAPIView):
     serializer_class = ProductSerializer
@@ -39,7 +39,7 @@ class TagViewSet(viewsets.ReadOnlyModelViewSet):
 class ProductViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = ProductSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
-    search_fields = ['title', 'pageinfo']
+    search_fields = ['title', 'content', 'pageinfo']
 
     def get_queryset(self):
         queryset = Product.objects.all()
