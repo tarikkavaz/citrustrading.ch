@@ -89,7 +89,7 @@ This Guide provides a comprehensive set of instructions for setting up, developi
 ### Prerequisites
 
 - Docker Droplet installed from Digitalocean Marketplace (Ubuntu 20.04)
-    Select a minimum Plan of __2 GB / 1 CPU 50 GB SSD Disk 2 TB transfer__
+    - Select a minimum Plan of __2 GB / 1 CPU 50 GB SSD Disk 2 TB transfer__
 - Domain name pointing to the server
 
 ### Steps
