@@ -10,7 +10,7 @@ This Guide provides a comprehensive set of instructions for setting up, developi
 - [Development Setup](#development-setup)
 - [Production Setup on Digitalocean Droplet](#production-setup-on-digitalocean-droplet)
 - [Deploy from Local Machine to Digitalocean Droplet](#deploy-from-local-machine-to-digitalocean-droplet)
-- Bonus - Install OhMyZsh
+- [Bonus - Install OhMyZsh](#bonus---install-ohmyzsh)
 
 ---
 
