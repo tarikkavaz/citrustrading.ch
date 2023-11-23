@@ -94,7 +94,6 @@ Ensure you have a clean installation of Ubuntu Server without Nginx, Docker Comp
 Connect to the server via SSH and run the following commands:
 
 1. **Install Docker Engine**
-
     ```bash
     sudo apt update
     sudo apt install apt-transport-https ca-certificates curl software-properties-common
@@ -105,7 +104,6 @@ Connect to the server via SSH and run the following commands:
     ```
 
 2. **Manage Docker as a Non-root User**
-
     ```bash
     sudo groupadd docker
     sudo usermod -aG docker $USER
@@ -113,13 +111,11 @@ Connect to the server via SSH and run the following commands:
     ```
 
 3. **Install Docker Compose**
-
     ```bash
     sudo apt install docker-compose
     ```
 
 4. **Install nvm and Set Node Version to 18.12.0**
-
     ```bash
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
     echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.zshrc
@@ -130,9 +126,6 @@ Connect to the server via SSH and run the following commands:
     ```
 
 5. **Install Yarn**
-
-    Install Yarn:
-
     ```bash
     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
@@ -140,16 +133,12 @@ Connect to the server via SSH and run the following commands:
     sudo apt install yarn
     ```
 
-6. **Install Git** (Optional)
-
-    If you need Git for version control:
-
+6. **Install Git**
     ```bash
     sudo apt install git
     ```
 
 7. **Configure Firewalll** (Optional)
-
     Configure the firewall to allow traffic on necessary ports (80, 443, 8000, 3000):
 
     ```bash
