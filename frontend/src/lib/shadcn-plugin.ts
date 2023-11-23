@@ -9,6 +9,7 @@ export const shadcnPlugin = plugin(
       ":root": {
         "--citrus-lemon": "63 100% 41%",
         "--citrus-orange": "36 100% 48%",
+
         "--background": "0 0% 100%",
         "--foreground": "222.2 47.4% 11.2%",
         "--muted": "210 40% 96.1%",
@@ -33,6 +34,7 @@ export const shadcnPlugin = plugin(
       ".dark": {
         "--citrus-lemon": "63 100% 41%",
         "--citrus-orange": "36 100% 48%",
+        
         "--background": "224 71% 4%",
         "--foreground": "213 31% 91%",
         "--muted": "223 47% 11%",
