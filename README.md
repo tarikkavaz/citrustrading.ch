@@ -262,7 +262,7 @@ tar -xvf images.tar -C /var/lib/docker/volumes/citrustradingch_media/_data/image
 
 <img src="1.png" alt="image" height="100px" width="1px"/>
 
-## Deploy Script Command
+## Deploy Script Commands
 
 ### Setup for Deploy Script
 
