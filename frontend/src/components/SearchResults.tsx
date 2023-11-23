@@ -14,6 +14,9 @@ const SearchResults = () => {
   const [results, setResults] = useState<SearchResult[]>([]);
   const [searchPerformed, setSearchPerformed] = useState(false);
   const currentLocale = useLocale();
+  const stripHtmlTags = (text: string) => {
+    return text.replace(/<[^>]*>?/gm, '');
+  };
 
   const handleSearch = async () => {
     if (query.length === 0) return;
@@ -25,7 +28,7 @@ const SearchResults = () => {
   
     setResults([...filteredProducts, ...filteredCategories].map(item => ({
       title: item.title,
-      snippet: item.pageinfo || item.categoryinfo || item.content,
+      snippet: stripHtmlTags(item.pageinfo || item.content || item.categoryinfo),
       type: item.pageinfo ? 'Product' : 'Category',
       link: item.slug,
       locale: item.lang
