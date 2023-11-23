@@ -96,20 +96,20 @@ Connect to the server via SSH and run the following commands:
 1. **Install Docker Engine**
 
     ```bash
-sudo apt update
-sudo apt install apt-transport-https ca-certificates curl software-properties-common
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-sudo apt update
-sudo apt install docker-ce
+    sudo apt update
+    sudo apt install apt-transport-https ca-certificates curl software-properties-common
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+    sudo apt update
+    sudo apt install docker-ce
     ```
 
 2. **Manage Docker as a Non-root User**
 
     ```bash
-sudo groupadd docker
-sudo usermod -aG docker $USER
-newgrp docker 
+    sudo groupadd docker
+    sudo usermod -aG docker $USER
+    newgrp docker 
     ```
 
 3. **Install Docker Compose**
@@ -121,12 +121,12 @@ newgrp docker
 4. **Install nvm and Set Node Version to 18.12.0**
 
     ```bash
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
-echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.zshrc
-echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> ~/.zshrc
-echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"' >> ~/.zshrc
-source ~/.zshrc
-nvm install 18.12.0
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+    echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.zshrc
+    echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> ~/.zshrc
+    echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"' >> ~/.zshrc
+    source ~/.zshrc
+    nvm install 18.12.0
     ```
 
 5. **Install Yarn**
@@ -134,10 +134,10 @@ nvm install 18.12.0
     Install Yarn:
 
     ```bash
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-sudo apt update
-sudo apt install yarn
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+    sudo apt update
+    sudo apt install yarn
     ```
 
 6. **Install Git** (Optional)
@@ -145,18 +145,18 @@ sudo apt install yarn
     If you need Git for version control:
 
     ```bash
-sudo apt install git
+    sudo apt install git
     ```
 
-7. **Configure Firewal**l (Optional)
+7. **Configure Firewalll** (Optional)
 
     Configure the firewall to allow traffic on necessary ports (80, 443, 8000, 3000):
 
     ```bash
-sudo ufw allow 80
-sudo ufw allow 443
-sudo ufw allow 8000
-sudo ufw allow 3000
+    sudo ufw allow 80
+    sudo ufw allow 443
+    sudo ufw allow 8000
+    sudo ufw allow 3000
     ```
 
 8. **SSL Certificates Setup** (Optional)
