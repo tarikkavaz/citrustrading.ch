@@ -10,7 +10,7 @@ This Guide provides a comprehensive set of instructions for setting up, developi
 - [Development Setup](#development-setup)
 - [Production Setup on any Ubuntu Server](#production-setup-on-any-ubuntu-server)
 - [Production Setup on Digitalocean Droplet](#production-setup-on-digitalocean-droplet)
-- [Deploy from Local Machine to Digitalocean Droplet](#deploy-from-local-machine-to-digitalocean-droplet)
+- [Deploy Script Commands](#deploy-script-commands)
 - [Bonus - Install OhMyZsh](#bonus---install-ohmyzsh)
 
 ---
@@ -260,7 +260,7 @@ tar -xvf images.tar -C /var/lib/docker/volumes/citrustradingch_media/_data/image
 
 <img src="1.png" alt="image" height="100px" width="1px"/>
 
-## Deploy from Local Machine to Digitalocean Droplet
+## Deploy Script Command
 
 ### Setup for Deploy Script
 
