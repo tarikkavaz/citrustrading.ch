@@ -4,6 +4,8 @@ This Guide provides a comprehensive set of instructions for setting up, developi
 
 ---
 
+<img src="1.png" alt="image" height="100px" width="1px"/>
+
 ## Index
 
 - [Initial Setup](#initial-setup)
