@@ -14,6 +14,7 @@ This Guide provides a comprehensive set of instructions for setting up, developi
 - [Bonus - Install OhMyZsh](#bonus---install-ohmyzsh)
 
 ---
+![](1.png =50x1)
 
 ## Initial Setup
 
