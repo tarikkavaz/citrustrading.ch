@@ -8,6 +8,7 @@ This Guide provides a comprehensive set of instructions for setting up, developi
 
 - [Initial Setup](#initial-setup)
 - [Development Setup](#development-setup)
+- [Production Setup on any Ubuntu Server](#production-setup-on-any-ubuntu-server)
 - [Production Setup on Digitalocean Droplet](#production-setup-on-digitalocean-droplet)
 - [Deploy from Local Machine to Digitalocean Droplet](#deploy-from-local-machine-to-digitalocean-droplet)
 - [Bonus - Install OhMyZsh](#bonus---install-ohmyzsh)
@@ -81,6 +82,101 @@ This Guide provides a comprehensive set of instructions for setting up, developi
     - Open [http://0.0.0.0:3000](http://0.0.0.0:3000) for the site. 
     - Open [http://0.0.0.0:8000/api](http://0.0.0.0:8000/api) for the API. 
     - Open [http://0.0.0.0:8000/admin](http://0.0.0.0:8000/admin) for the Django Admin Panel. 
+
+---
+
+## Production Setup on any Ubuntu Server
+
+Ensure you have a clean installation of Ubuntu Server without Nginx, Docker Compose, or other related software pre-installed.
+
+### Steps
+
+Connect to the server via SSH and run the following commands:
+
+1. **Install Docker Engine**
+
+    ```bash
+sudo apt update
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+sudo apt update
+sudo apt install docker-ce
+    ```
+
+2. **Manage Docker as a Non-root User**
+
+    ```bash
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker 
+    ```
+
+3. **Install Docker Compose**
+
+    ```bash
+    sudo apt install docker-compose
+    ```
+
+4. **Install nvm and Set Node Version to 18.12.0**
+
+    ```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.zshrc
+echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> ~/.zshrc
+echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"' >> ~/.zshrc
+source ~/.zshrc
+nvm install 18.12.0
+    ```
+
+5. **Install Yarn**
+
+    Install Yarn:
+
+    ```bash
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt update
+sudo apt install yarn
+    ```
+
+6. **Install Git** (Optional)
+
+    If you need Git for version control:
+
+    ```bash
+sudo apt install git
+    ```
+
+7. **Configure Firewal**l (Optional)
+
+    Configure the firewall to allow traffic on necessary ports (80, 443, 8000, 3000):
+
+    ```bash
+sudo ufw allow 80
+sudo ufw allow 443
+sudo ufw allow 8000
+sudo ufw allow 3000
+    ```
+
+8. **SSL Certificates Setup** (Optional)
+
+    If using HTTPS, set up your SSL certificates and reference them in your Nginx configuration.
+
+9. **Running the Application**
+    Navigate to your project directory and start your Docker containers:
+
+    ```bash
+    docker-compose -f docker-compose.prod.yml up
+    ```
+
+
+
+**Notes**
+
+- Adjust commands as necessary for your specific Ubuntu version and server configuration.
+- Always refer to the official Docker documentation for the most up-to-date installation procedures.
+
 
 ---
 
