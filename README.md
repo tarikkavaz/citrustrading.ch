@@ -70,6 +70,8 @@ This Guide provides a comprehensive set of instructions for setting up, developi
     ```
 ---
 
+<img src="1.png" alt="image" height="100px" width="1px"/>
+
 ## Development Setup
 
 ### Steps
@@ -86,6 +88,8 @@ This Guide provides a comprehensive set of instructions for setting up, developi
     - Open [http://0.0.0.0:8000/admin](http://0.0.0.0:8000/admin) for the Django Admin Panel. 
 
 ---
+
+<img src="1.png" alt="image" height="100px" width="1px"/>
 
 ## Production Setup on any Ubuntu Server
 
@@ -171,6 +175,8 @@ Connect to the server via SSH and run the following commands:
 
 ---
 
+<img src="1.png" alt="image" height="100px" width="1px"/>
+
 ## Production Setup on Digitalocean Droplet
 
 ### Prerequisites
@@ -251,6 +257,8 @@ tar -xvf images.tar -C /var/lib/docker/volumes/citrustradingch_media/_data/image
 ```
 
 ---
+
+<img src="1.png" alt="image" height="100px" width="1px"/>
 
 ## Deploy from Local Machine to Digitalocean Droplet
 
@@ -349,6 +357,8 @@ To **extract files from the tar file** to the `local` images volume:
 ```
 
 ---
+
+<img src="1.png" alt="image" height="100px" width="1px"/>
 
 ## Bonus - Install OhMyZsh
 
