@@ -167,7 +167,10 @@ export default function LocaleSwitcher() {
     <>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="outline" size="icon">
+          <Button
+            variant="outline"
+            className="border-[hsl(var(--citrus-lemon))] bg-[hsl(var(--citrus-lemon))]/30"
+          >
             <Globe className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all " />
             <span className="sr-only">Toggle Language</span>
           </Button>

@@ -6,7 +6,7 @@ import { Disclosure, Popover, Transition } from "@headlessui/react";
 import { NavbarProps } from "@/utils/types";
 import { Bars3Icon } from "@heroicons/react/24/outline";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
-
+import { Button } from "@/components/ui/button";
 export default function Navigation({
   links,
   mobileMenuOpen,
@@ -47,14 +47,14 @@ export default function Navigation({
                       />
                     </Popover.Button>
                   ) : (
-                    <Link
-                      href={menuItem.link}
-                      target={menuItem.newtab ? "_blank" : "_self"}
+                    <Button
+                      // target={menuItem.newtab ? "_blank" : "_self"}
                       rel={menuItem.newtab ? "noopener noreferrer" : ""}
-                      className="text-sm font-semibold leading-6 rounded-2xl px-4 py-2 bg-accent/0 hover:bg-accent"
+                      variant="outline"
+                      className="border-[hsl(var(--citrus-lemon))] bg-[hsl(var(--citrus-lemon))]/30"
                     >
-                      {menuItem.title}
-                    </Link>
+                      <Link href={menuItem.link}>{menuItem.title}</Link>
+                    </Button>
                   )}
 
                   {menuItem.children && (
@@ -152,7 +152,7 @@ export default function Navigation({
                       className="block rounded-2xl px-3 py-2 text-base font-medium text-foreground
                                   hover:bg-background hover:text-foreground"
                     >
-                      {menuItem.title}
+                      {menuItem.title} 1
                     </Link>
                   )}
                 </div>

@@ -75,15 +75,6 @@ class ImageAdmin(admin.ModelAdmin):
         return format_html('<img src="{}" height="50" />', obj.image.url) if obj.image else '-'
     image_display.short_description = 'Image Preview'
 
-class ProductAdminForm(forms.ModelForm):
-    content = forms.CharField(widget=CKEditorWidget())
-    images = forms.ModelChoiceField(queryset=Image.objects.all(),
-                                widget=ImageThumbnailWidget,
-                                required=False)
-    
-    class Meta:
-        model = Product
-        fields = '__all__'
 
 class ProductAdmin(SortableAdminMixin, admin.ModelAdmin):
     form = ProductAdminForm
@@ -128,16 +119,6 @@ class CategoryAdmin(SortableAdminMixin, admin.ModelAdmin):
     )
     list_display = ('title', 'lang', 'image_display', 'order')
     list_filter = ('lang',)
-
-class PageAdminForm(forms.ModelForm):
-    content = forms.CharField(widget=CKEditorWidget())
-    images = forms.ModelChoiceField(queryset=Image.objects.all(),
-                                widget=ImageThumbnailWidget,
-                                required=False)
-    
-    class Meta:
-        model = Page
-        fields = '__all__'
 
 class PageAdmin(SortableAdminMixin, admin.ModelAdmin):
     form = PageAdminForm

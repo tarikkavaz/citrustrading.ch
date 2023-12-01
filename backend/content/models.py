@@ -90,7 +90,7 @@ class Product(models.Model):
     slug = models.SlugField(max_length=255, unique=True, blank=True, verbose_name="Product URL")
     langslug = models.CharField(max_length=255, blank=True, verbose_name="Translation Link")
     pageinfo = models.TextField(blank=True, verbose_name="Product Description")
-    content = RichTextField(verbose_name="Product Content")
+    content = RichTextField(verbose_name="Product Content", blank=True)
     shoplink = models.CharField(max_length=255, blank=True, verbose_name="Shop Link")
     image = models.ForeignKey('Image', on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Selected Cover Image", related_name="product_selected_image")
     images = models.ManyToManyField('Image', blank=True, verbose_name="Select Content Images", related_name="product_images")

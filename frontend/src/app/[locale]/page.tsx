@@ -13,7 +13,6 @@ import { getTranslator } from "next-intl/server";
 import { DEFAULT_OG_IMAGE_URL } from "@/lib/config";
 import { Metadata, ResolvingMetadata } from "next";
 import {FadeIn, FadeInStagger} from "@/components/animation/FadeIn";
-import {SlideIn, SlideInStagger} from "@/components/animation/SlideIn";
 import SearchResults from "@/components/SearchResults";
 
 const getHomepage = async (): Promise<Homepage[]> => {
@@ -111,7 +110,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
       </Container>
 
       {homepage.products && homepage.products.length > 0 && (
-      <Container size="fluid" className="mt-16">
+      <Container size="fluid" className="mt-16 hidden">
         <Container className="py-10">
           <FadeInStagger>
             <FadeIn>
@@ -146,15 +145,15 @@ export default async function Products({ params: { locale } }: HomeProps) {
         <Container className="py-10">
           <FadeInStagger>
           <FadeIn>
-            <h2 className="text-4xl font-bold tracking-tight sm:text-6xl after:bg-[hsl(var(--citrus-orange))]">{t("categories")}</h2>
+            <h2 className="text-4xl font-bold tracking-tight sm:text-6xl after:bg-[hsl(var(--citrus-lemon))]">{t("categories")}</h2>
           </FadeIn>
             <div className="grid md:grid-cols-4 gap-10 mt-8">
               {categories.map((category) => (
-              <FadeIn key={category.slug} className="group relative rounded-2xl bg-[hsl(var(--citrus-orange))]/30 hover:bg-[hsl(var(--citrus-orange))]/40 border hover:border-[hsl(var(--citrus-orange))]">
+              <FadeIn key={category.slug} className="group relative rounded-2xl bg-[hsl(var(--citrus-lemon))]/30 hover:bg-[hsl(var(--citrus-lemon))]/40 border hover:border-[hsl(var(--citrus-lemon))]">
                 <Link href={`/category/${category.slug}`}>
                 <div className="h-56 w-full overflow-hidden rounded-2xl bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">
                   <div className="h-full w-full object-cover object-center">
-                    <img src={category.image ? category.image : '/images/placeholder.jpg'} className="h-full w-full object-cover object-center border-b-8 border-[hsl(var(--citrus-orange))]" />
+                    <img src={category.image ? category.image : '/images/placeholder.jpg'} className="h-full w-full object-cover object-center border-b-8 border-[hsl(var(--citrus-lemon))]" />
                   </div>
                 </div>
                 <div className="p-3">
@@ -171,7 +170,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
           </FadeInStagger>
         </Container>
       </Container>
-      <Container className="mt-16">
+      <Container className="mt-16 hidden">
         <SearchResults />
       </Container>
     </>

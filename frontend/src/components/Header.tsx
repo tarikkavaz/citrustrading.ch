@@ -112,13 +112,20 @@ export default function Header() {
           />
         </div>
         <div>
+          <div className="hidden">
+            <Navigation
+              links={navigationData || []}
+              mobileMenuOpen={mobileMenuOpen}
+              setMobileMenuOpen={setMobileMenuOpen}
+            />
+          </div>
+        </div>
+        <div className="flex gap-2">
           <Navigation
             links={navigationData || []}
             mobileMenuOpen={mobileMenuOpen}
             setMobileMenuOpen={setMobileMenuOpen}
           />
-        </div>
-        <div className="flex gap-2">
           <ThemeSwitcher />
           <LocaleSwitcher />
         </div>
