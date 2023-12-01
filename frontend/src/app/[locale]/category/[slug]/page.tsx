@@ -100,13 +100,13 @@ export default async function CategoryPage({
         <Container className="py-10">
           <FadeInStagger>
             <FadeIn>
-              <h2 className="text-4xl font-bold tracking-tight sm:text-6xl after:bg-[hsl(var(--citrus-lemon))]">{t("products")}</h2>
+              <h2 className="text-4xl font-bold tracking-tight sm:text-3xl after:bg-[hsl(var(--citrus-lemon))]">{t("products")}</h2>
             </FadeIn>
 
             <div className="mt-8">
               {products.map((product) => (
-              <FadeIn key={product.id} className="group relative rounded-2xl bg-[hsl(var(--citrus-lemon))]/10 border mb-4">
-                <div className="p-3 m-2">
+              <FadeIn key={product.id} className="group relative rounded-lg mb-4 border-b-2 border-[hsl(var(--citrus-lemon))]/30 last:border-b-0">
+                <div className="py-3 my-2">
                   <h3 className="text-xl font-bold">
                     {product.title}
                   </h3>
