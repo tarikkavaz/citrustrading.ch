@@ -39,14 +39,14 @@ export default function Footer() {
       className="bg-background text-foreground relative border-t border-[hsl(var(--border))]"
       aria-labelledby="footer-heading"
     >
-      <Container size="fluid" className="pb-16 pt-16 relative z-20 md:px-10 px-2">
+      <Container size="fluid" className="pb-16 pt-16 relative z-20 md:px-12 md:py-8 px-2">
         <div className="gap-8 flex items-center justify-between flex-col md:flex-row">
             <div className="flex items-center gap-4">
               <div className="relative h-[35px] w-[35px] md:h-[80px] md:w-[80px]">
                   <img src="/images/citrus-logo.png" className="object-cover" />
               </div>
               <div>
-                <p className=" text-3xl font-medium ">{t("sitename")}</p>
+                <p className="text-xl font-medium ">{t("sitename")}</p>
                 <p className="text-sm leading-6">{t("sitedescription")}</p>
                 <p className="text-xs leading-5 ">
                   &copy; {year}, {t("copyright")}
@@ -68,12 +68,12 @@ export default function Footer() {
             <div>
               
 
-              <div className="flex items-center leading-7 gap-3 mb-2">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-              </svg>
-                <span className="font-semibold">CITRUS TRADING & CONSULTING AG</span>
-              </div>
+              {/* <div className="flex items-center leading-7 gap-3 mb-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                </svg>
+                <span className="font-semibold">Citrus Trading & Consulting AG</span>
+              </div> */}
               
               <Link href="https://maps.app.goo.gl/dSa1AQzc47jJQEaA6" className="flex items-center leading-7 gap-3 mb-2 hover:text-gray-400">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">

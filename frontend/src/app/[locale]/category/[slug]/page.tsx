@@ -105,7 +105,7 @@ export default async function CategoryPage({
 
             <div className="mt-8">
               {products.map((product) => (
-              <FadeIn key={product.id} className="group relative rounded-lg mb-4 border-b-2 border-[hsl(var(--citrus-lemon))]/30 last:border-b-0">
+              <FadeIn key={product.id} className="group relative mb-4 border-b-2 border-[hsl(var(--citrus-lemon))]/30 last:border-b-0">
                 <div className="py-3 my-2">
                   <h3 className="text-xl font-bold">
                     {product.title}
