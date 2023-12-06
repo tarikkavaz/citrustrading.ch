@@ -76,10 +76,10 @@ export default async function CategoryPage({
                   </h1>
                   </FadeIn>
                 <FadeIn className="mt-6 max-w-xl lg:mt-0 xl:col-end-1 xl:row-start-1">
-                  <p className="text-lg leading-8">
+                  <p className="text-lg leading-8 hidden">
                   {category?.categoryinfo}
                   </p>
-                  <div dangerouslySetInnerHTML={{ __html: category?.content || '' }} className="mt-4" />
+                  <div dangerouslySetInnerHTML={{ __html: category?.content || '' }} className="mt-4 text-lg leading-8" />
                 </FadeIn>
                 {category?.image ? (
                   <div className="my-10 relative mt-10 w-full max-w-lg sm:mt-16 lg:mt-0 lg:max-w-none xl:row-span-2 xl:row-end-2" key={category?.title}>
