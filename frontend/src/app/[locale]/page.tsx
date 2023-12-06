@@ -157,11 +157,11 @@ export default async function Products({ params: { locale } }: HomeProps) {
                   </div>
                 </div>
                 <div className="p-3">
-                  <h3 className="mt-4  text-xl">
+                  <h3 className="mt-4 font-bold text-xl">
                     <span className="absolute inset-0" />
                     {category.title}
                   </h3>
-                  <h4 className="min-h-[3.5rem] text-sm">{category.categoryinfo}</h4>
+                  <h4 className="min-h-[3.5rem] text-sm hidden">{category.categoryinfo}</h4>
                 </div>
                 </Link>
               </FadeIn>
