@@ -72,7 +72,8 @@ export default async function CategoryPage({
               <div className="mx-auto max-w-2xl lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-6 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8">
                 <FadeIn>
                   <h1 className="max-w-2xl text-4xl font-bold tracking-tight sm:text-6xl lg:col-span-2 xl:col-auto w-fit border-solid border-b-8 border-[hsl(var(--citrus-orange))]">
-                  {t("category")}: <span className="text-gray-500">{category?.title || slug}</span>
+                  {/* {t("category")}: <span className="text-gray-500">{category?.title || slug}</span> */}
+                  {category?.title || slug}
                   </h1>
                   </FadeIn>
                 <FadeIn className="mt-6 max-w-xl lg:mt-0 xl:col-end-1 xl:row-start-1">
