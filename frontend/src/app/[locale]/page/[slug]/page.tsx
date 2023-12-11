@@ -49,7 +49,52 @@ export default async function Page({
 
   return (
     <>
-      <Container size="fluid" className="mt-16 md:mt-[7.5rem]">
+    <Container size="fluid" className="bg-white dark:bg-black">
+        <div className="relative">
+          <div className="mx-auto max-w-7xl">
+            <div className="relative z-10 pt-14 lg:w-full lg:max-w-2xl">
+              {/* <svg
+                className="absolute inset-y-0 right-8 hidden h-full w-80 translate-x-1/2 transform fill-white dark:fill-black lg:block"
+                viewBox="0 0 100 100"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <polygon points="0,0 90,0 50,100 0,100" />
+              </svg> */}
+              <div className="relative pr-6 py-10 md:py-32 sm:py-40 lg:py-56 lg:pr-0">
+                <FadeInStagger className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
+                  <FadeIn>
+                    <h1 className="text-4xl font-bold tracking-tight sm:text-6xl after:bg-gray-400">
+                    {page.title} <br className="hidden lg:inline" />
+                    </h1>
+                  </FadeIn>
+                  <FadeIn className="hidden">
+                    <p className="mt-6 text-3xl">
+                      {page.pageinfo}
+                    </p>
+                  </FadeIn>
+                  <FadeIn>
+                    <div dangerouslySetInnerHTML={{ __html: page.content }}  className="mt-6 text-lg leading-8" />
+                  </FadeIn>
+                </FadeInStagger>
+              </div>
+            </div>
+          </div>
+          <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+            <div className="aspect-[3/2] object-cover lg:aspect-auto lg:h-full lg:w-full">
+            {page?.image ? (
+              <GlobalCarousel
+                images={page.images || []} 
+                className="aspect-[3/2] object-cover lg:aspect-auto lg:h-full lg:w-full rounded-2xl md:rounded-none md:rounded-bl-[150px]" 
+              />
+            ) : (
+              <img src="/images/placeholder.jpg" alt="Placeholder" className="aspect-[3/2] object-cover lg:aspect-auto lg:h-full lg:w-full rounded-2xl md:rounded-none md:rounded-bl-[150px]" />
+            )}
+            </div>
+          </div>
+        </div>
+      </Container>
+      <Container size="fluid" className="mt-16 md:mt-[7.5rem] hidden">
         <div className="relative isolate overflow-hidden">
           <div className="max-w-screen-xl mx-auto pt-10">
             <FadeInStagger>
