@@ -59,9 +59,10 @@ export async function generateMetadata(
 export default async function CategoryPage({
   params: { locale, slug }
 }: MetadataProps) {
-  const products = await getProductsByCategory(locale, slug);
+  let products = await getProductsByCategory(locale, slug);
   const category = await getCategoryBySlug(locale, slug);
   const t = await getTranslator(locale, "Globals");
+  products = products.sort((a, b) => a.title.localeCompare(b.title));
 
   return (
     <>
@@ -106,14 +107,14 @@ export default async function CategoryPage({
 
             <div className="mt-8">
               {products.map((product) => (
-              <FadeIn key={product.id} className="group relative mb-4 border-b-2 border-[hsl(var(--citrus-lemon))]/30 last:border-b-0">
-                <div className="py-3 my-2">
-                  <h3 className="text-xl font-bold">
-                    {product.title}
-                  </h3>
-                  <h4 className="text-sm">{product.pageinfo}</h4>
-                </div>
-              </FadeIn>
+                <FadeIn key={product.id} className="group relative mb-4 border-b-2 border-[hsl(var(--citrus-lemon))]/30 last:border-b-0">
+                  <div className="py-3 my-2">
+                    <h3 className="text-xl font-bold">
+                      {product.title}
+                    </h3>
+                    <h4 className="text-sm">{product.pageinfo}</h4>
+                  </div>
+                </FadeIn>
               ))}
             </div>
           </FadeInStagger>

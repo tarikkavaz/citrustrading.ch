@@ -57,9 +57,13 @@ export async function generateMetadata(
 
 export default async function Products({ params: { locale } }: HomeProps) {
   const products = await getHomepage();
-  const categories = await getCategories(locale);
+  let categories = await getCategories(locale);
   const homepage = products[0];
   const t = await getTranslator(locale, "Globals");
+
+  // Sort categories alphabetically by title
+  categories = categories.sort((a, b) => a.title.localeCompare(b.title));
+
 
   return (
     <>
@@ -144,27 +148,27 @@ export default async function Products({ params: { locale } }: HomeProps) {
       <Container size="fluid" className="mt-16">
         <Container className="py-10">
           <FadeInStagger>
-          <FadeIn>
-            <h2 className="text-4xl font-bold tracking-tight sm:text-6xl after:bg-[hsl(var(--citrus-lemon))]">{t("categories")}</h2>
-          </FadeIn>
+            <FadeIn>
+              <h2 className="text-4xl font-bold tracking-tight sm:text-6xl after:bg-[hsl(var(--citrus-lemon))]">{t("categories")}</h2>
+            </FadeIn>
             <div className="grid md:grid-cols-4 gap-10 mt-8">
               {categories.map((category) => (
-              <FadeIn key={category.slug} className="group relative rounded-2xl bg-[hsl(var(--citrus-lemon))]/30 hover:bg-[hsl(var(--citrus-lemon))]/40 border hover:border-[hsl(var(--citrus-lemon))]">
-                <Link href={`/category/${category.slug}`}>
-                <div className="h-56 w-full overflow-hidden rounded-2xl bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">
-                  <div className="h-full w-full object-cover object-center">
-                    <img src={category.image ? category.image : '/images/placeholder.jpg'} className="h-full w-full object-cover object-center border-b-8 border-[hsl(var(--citrus-lemon))]" />
-                  </div>
-                </div>
-                <div className="p-3">
-                  <h3 className="font-bold text-xl">
-                    <span className="absolute inset-0" />
-                    {category.title}
-                  </h3>
-                  <h4 className="min-h-[3.5rem] text-sm hidden">{category.categoryinfo}</h4>
-                </div>
-                </Link>
-              </FadeIn>
+                <FadeIn key={category.slug} className="group relative rounded-2xl bg-[hsl(var(--citrus-lemon))]/30 hover:bg-[hsl(var(--citrus-lemon))]/40 border hover:border-[hsl(var(--citrus-lemon))]">
+                  <Link href={`/category/${category.slug}`}>
+                    <div className="h-56 w-full overflow-hidden rounded-2xl bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">
+                      <div className="h-full w-full object-cover object-center">
+                        <img src={category.image ? category.image : '/images/placeholder.jpg'} className="h-full w-full object-cover object-center border-b-8 border-[hsl(var(--citrus-lemon))]" />
+                      </div>
+                    </div>
+                    <div className="p-3">
+                      <h3 className="font-bold text-xl">
+                        <span className="absolute inset-0" />
+                        {category.title}
+                      </h3>
+                      <h4 className="min-h-[3.5rem] text-sm hidden">{category.categoryinfo}</h4>
+                    </div>
+                  </Link>
+                </FadeIn>
               ))}
             </div>
           </FadeInStagger>
