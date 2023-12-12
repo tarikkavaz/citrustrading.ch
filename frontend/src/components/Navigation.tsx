@@ -35,7 +35,7 @@ export default function Navigation({
               {({ open }) => (
                 <>
                   {menuItem.children ? (
-                    <Popover.Button className="inline-flex w-full justify-center rounded-2xl text-sm font-medium focus:outline-none ui-focus-visible:ring-2 ui-focus-visible:ring-offset-2 px-4 py-2 bg-accent/0 hover:bg-accent ">
+                    <Popover.Button className="inline-flex items-center justify-center rounded-2xl text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 border-[hsl(var(--citrus-lemon))] bg-[hsl(var(--citrus-lemon))]/30">
                       {menuItem.title}
                       <ChevronDownIcon
                         className={
@@ -69,7 +69,7 @@ export default function Navigation({
                     >
                       <Popover.Panel className="before:w-0 before:h-0 before:left-[calc(50%-5px)] before:border-l-[10px] before:border-l-transparent before:border-b-[10px] before:border-b-accent before:border-r-[10px] before:border-r-transparent before:top-[-10px] before:absolute before:z-10 absolute z-10 left-1/2 mt-3 w-screen max-w-xs -translate-x-1/2 transform px-2 sm:px-0">
                         <div className="overflow-hidden relative z-20 rounded-lg shadow-lg">
-                          <div className="relative grid grid-cols-1 gap-6 px-5 py-6 sm:gap-8 sm:p-4 bg-accent">
+                          <div className="relative grid grid-cols-1 gap-6 px-5 py-6 sm:gap-8 sm:p-4 bg-[hsl(var(--citrus-lemon))]/30">
                             {menuItem.children.map((submenuItem) => (
                               <Link
                                 key={submenuItem.title}
