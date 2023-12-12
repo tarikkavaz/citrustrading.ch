@@ -99,14 +99,14 @@ export default async function Products({ params: { locale } }: HomeProps) {
             </div>
           </div>
           <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-            <div className="aspect-[3/2] object-cover lg:aspect-auto lg:h-full lg:w-full">
+            <div className="aspect-[3/2] object-cover lg:aspect-auto lg:h-screen lg:w-full">
             {homepage.images && homepage.images.length > 0 ? (
               <GlobalCarousel
                 images={homepage.images || []} 
-                className="aspect-[3/2] object-cover lg:aspect-auto lg:h-full lg:w-full rounded-2xl md:rounded-none md:rounded-bl-[150px]" 
+                className="aspect-[3/2] object-cover lg:aspect-auto lg:h-screen lg:w-full rounded-2xl md:rounded-none md:rounded-bl-[150px]" 
               />
             ) : (
-              <img src="/images/placeholder.jpg" alt="Placeholder" className="aspect-[3/2] object-cover lg:aspect-auto lg:h-full lg:w-full rounded-2xl md:rounded-none md:rounded-bl-[150px]" />
+              <img src="/images/placeholder.jpg" alt="Placeholder" className="aspect-[3/2] object-cover lg:aspect-auto lg:h-screen lg:w-full rounded-2xl md:rounded-none md:rounded-bl-[150px]" />
             )}
             </div>
           </div>
