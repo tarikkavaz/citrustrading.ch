@@ -87,7 +87,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
                     </h1>
                   </FadeIn>
                   <FadeIn>
-                    <p className="mt-6 text-3xl">
+                    <p className="mt-6 text-3xl playfair">
                       {homepage.pageinfo}
                     </p>
                   </FadeIn>
