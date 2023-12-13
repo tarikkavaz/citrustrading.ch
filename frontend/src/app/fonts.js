@@ -1,7 +1,7 @@
 import { Inter_Tight, Playfair_Display } from "next/font/google";
 
 export const intertight = Inter_Tight({
-  weight: ['400', '700'],
+  weight: ['100', '400'],
   style: ['normal', 'italic'],
   subsets: ['latin'],
   display: 'swap',
