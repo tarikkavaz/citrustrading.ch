@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import { Inter } from "next/font/google";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import { getTranslator } from "next-intl/server";
@@ -8,9 +7,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/theme-provider";
-
+import {intertight, playfair} from "@/app/fonts.js"
 const locales = ["en", "tr"];
-const inter = Inter({ subsets: ["latin"] });
 
 export async function getMetadata(locale: string): Promise<Metadata> {
   const t = await getTranslator(locale, "Globals");
@@ -65,7 +63,7 @@ export default async function LocaleLayout({
         <link rel="shortcut icon" href="/icons/favicon.png" sizes="any" />
         <body
           className={clsx(
-            inter.className,
+            intertight.className,
             "flex h-screen flex-col justify-between bg-fixed"
           )}
         >
@@ -77,6 +75,7 @@ export default async function LocaleLayout({
           >
             <NextIntlClientProvider locale={locale} messages={messages}>
               <Header />
+              {/* <main className={clsx(playfair.className, "flex-1 mb-20 px-2 md:px-0")}>{children}</main> */}
               <main className="flex-1 mb-20 px-2 md:px-0">{children}</main>
               <Footer />
             </NextIntlClientProvider>

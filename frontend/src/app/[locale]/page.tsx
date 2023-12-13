@@ -82,7 +82,7 @@ export default async function Products({ params: { locale } }: HomeProps) {
               <div className="relative pr-6 py-10 md:py-32 sm:py-40 lg:py-56 lg:pr-0">
                 <FadeInStagger className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
                   <FadeIn>
-                    <h1 className="text-4xl font-bold tracking-tight sm:text-6xl after:bg-gray-400">
+                    <h1 className="text-4xl font-bold tracking-tight sm:text-6xl after:bg-gray-400 playfair">
                     {homepage.title} <br className="hidden lg:inline" />
                     </h1>
                   </FadeIn>

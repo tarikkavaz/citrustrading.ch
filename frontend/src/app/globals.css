@@ -11,9 +11,13 @@ html {
 
 /* headings */
 h1, h2, h3, h4, h5, h6 {
-  @apply relative w-fit pb-1
+  @apply relative w-fit pb-1 
   /* rounded underline */
   after:content-[''] after:block after:w-full after:h-2 after:absolute after:rounded-md after:left-0 after:bottom-0 after:z-[-1];
+}
+
+.playfair {
+  font-family: 'Playfair Display', serif;
 }
 
 /* text */
